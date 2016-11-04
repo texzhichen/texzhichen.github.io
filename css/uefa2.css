@@ -1,0 +1,36 @@
+  .axis text{
+  font-family: Arial;
+  font-size: 13px;
+  color: #333333;
+  text-anchor: end;
+   }
+
+  .axis path {
+  fill:none;
+  stroke:#333333 ;
+  stroke-width: 1.5px;
+  shape-rendering: crispEdges
+ font-family: Arial;
+  }
+
+
+    .bar{
+    stroke: none;
+    fill: #037FAA;
+
+   }
+     .axis .label{
+    font-family:  Arial;
+    font-size:13px;
+    color: #333333;
+    text-anchor: middle;
+
+    }
+     .textlabel{
+    font-family:  Arial;
+    font-size:13px;
+    color: #333333;
+    text-anchor: left;
+   }
+
+  }
