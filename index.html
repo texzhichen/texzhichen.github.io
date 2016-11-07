@@ -1,168 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
 <head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Visualize UEFA</title>
+<link rel="stylesheet" type="text/css"
+	href="bootstrap/css/bootstrap-responsive.css">
+<link rel="stylesheet" type="text/css"
+	href="bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="css/normalize.css" />
+<link rel="stylesheet" href="css/foundation.css" />
+<link rel="stylesheet" href="css/social_foundicons.css">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <title>UEFA Visualization</title>
+<link rel="stylesheet" href="css/style_dimple.css" />
+<link href="/css/bootstrap-toggle.min.css" rel="stylesheet">
+<style>
+body {
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
 
-    <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+#body {
+	position: relative;
+}
 
-    <!-- Theme CSS -->
-    <link href="css/clean-blog.css" rel="stylesheet">
+h1 {
+	font-size: 64px;
+	font-weight: 300;
+	letter-spacing: -2px;
+	margin: .3em 0 .1em 0;
+}
 
-    <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+h2 {
+	margin-top: 2em;
+}
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+h1, h2 {
+	text-rendering: optimizeLegibility;
+}
+
+.testo {
+	font-size: 0.7em;
+}
+
+text {
+	font-size: 0.7em;
+}
+</style>
+
 
 </head>
 
+
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    Menu <i class="fa fa-bars"></i>
-                </button>
-                  <a class="navbar-brand" href="http://www.cc.gatech.edu/~stasko/7450/project.html">CS 7450, Fall 2016</a>
-            </div>
+	<div id="body">
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                  <!-- zx     <a href="about.html">About</a> -->
-                    </li>
-                    <li>
-                   <!-- zx    <a href="post.html">Sample Post</a> -->
-                    </li>
-                    <li>
-                    <!-- zx   <a href="contact.html">Contact</a> -->
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+		<div class="row">
+			<div class="large-12 columns small-12 columns">
 
-    <!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/champions-league-2017.jpg')">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>UEFA Champion Leagues</h1>
-                        <hr class="small">
-                        <span class="subheading">Visualize The Race Between Top Clubs 13-16</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-
-
-<!-- ZX: Our code begins -->
-<script src="js/d3.min.js"></script>
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4">
-      <h3>Options</h3>
-
-      <h4>Years</h4><hr>
-        <div class="checkbox">
-          <label><input type="checkbox" value="">2013-14</label>
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" value="">2014-15</label>
-        </div>      
-        <div class="checkbox">
-          <label><input type="checkbox" value="">2015-16</label>
-        </div>
-      
-      <h4>Clubs</h4><hr>
-		<div class="checkbox">
-		  <label><input type="checkbox" value="">Barcelona</label>
+				<h1 id="titolo">UEFA Champion Leagues</h1>
+				<h6>Visualize The Race Between Top Clubs 15-16</h6>
+			</div>
+			<hr>
 		</div>
-		<div class="checkbox">
-		  <label><input type="checkbox" value="">Bayern</label>
+		<div class="row">
+			<h6 align="center">Clubs</h6>
+			<div class="col-sm-3">
+				<div class="checkbox">
+					<label><input id="barcelona" type="checkbox"
+						data-toggle="toggle" data-size="small" data-onstyle="info">Barcelona</label>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="checkbox">
+					<label><input id="bayern" type="checkbox"
+						data-toggle="toggle" data-size="small" data-onstyle="info">Bayern</label>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="checkbox">
+					<label><input id="madrid" type="checkbox"
+						data-toggle="toggle" data-size="small" data-onstyle="info">Madrid</label>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="checkbox">
+					<label><input id="lyon" type="checkbox"
+						data-toggle="toggle" data-size="small" data-onstyle="info">Lyon</label>
+				</div>
+			</div>
+
+			<h6 align="center">Attributes</h6>
+			<div class="col-sm-3">
+				<div class="checkbox">
+					<label><input id="networth" type="checkbox"
+						data-toggle="toggle" data-size="small" data-onstyle="info">Net
+						worth</label>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="checkbox">
+					<label><input id="attack" type="checkbox"
+						data-toggle="toggle" data-size="small" data-onstyle="info">Attack</label>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="checkbox">
+					<label><input id="defense" type="checkbox"
+						data-toggle="toggle" data-size="small" data-onstyle="info">Defense</label>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="checkbox">
+					<label><input id="possession" type="checkbox"
+						data-toggle="toggle" data-size="small" data-onstyle="info">Possession</label>
+				</div>
+			</div>
+
+
+			<div class="large-12 columns small-6 columns ">
+				<ul class="large-block-grid-2 small-block-grid-1">
+					<div id="chartContainer"></div>
+				</ul>
+			</div>
+
 		</div>
-              
-      <h4>Attributes</h4><hr>
-        <div class="checkbox">
-          <label><input type="checkbox" value="">Net worth</label>
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" value="">Squad score</label>
-        </div>
-      
-    </div>
-    <div class="col-sm-8">
-      <h3>Visualization</h3>
-      
-      <div class="row">
-        <div class="col-sm-4">
-        <h4>2013-14</h4>
-	        <link href="css/uefa1.css" rel="stylesheet">
-	        <svg width="280" height="180"></svg>
-	        <script src="uefa/uefa1.js"></script>	        
-        </div>
-        <div class="col-sm-4" id="area2">
-        <h4>2014-15</h4>
 
-        </div>
-        <div class="col-sm-4">
-        <h4>2015-16</h4>
-        </div>
-      </div>
-      
-      
-    </div>
-  </div>
-</div>
+		<!-- <script src="js/d3/d3.v3.min.js"></script> -->
+		<!-- <script src="dist/dimple.v1.js"></script> -->
+		<script src="/js/d3.v3.4.8.min.js"></script>
+		<script src="/js/dimple.v2.2.0.min.js"></script>
+		<script src="/js/jquery-3.1.1.min.js"></script>
+		<script src="/js/bootstrap-toggle.min.js"></script>
 
-
-
-<!-- ZX: Our code ends here -->
-
-
-
-    <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
-
-    <!-- Theme JavaScript -->
-    <script src="js/clean-blog.js"></script>
-
+		<script src="/js/script_dimple.js"></script>
 </body>
+
+<footer> </footer>
 
 </html>
