@@ -1,22 +1,17 @@
 var clubsName = [ "barcelona", "bayern", "madrid", "lyon" ];
 var attrsName = [ "networth", "attack", "defense", "possession" ];
 
-$(":checkbox").on('change', function(event) {
-    var clubsOn = {};
-    for (var i in clubsName) {
-        clubsOn[i] = false;
-    }
+var clubsOn = {};
+for (var i in clubsName) {
+    clubsOn[clubsName[i]] = false;
+}
 
-    var attrsOn = {};
-    for (var i in attrsName) {
-        attrsOn[i] = false;
-    }
- 
-    for (var i in clubsName) {
-        if (clubsOn[id])
-            console.log("tt" + clubsOn[id]);
-    }
-    
+var attrsOn = {};
+for (var i in attrsName) {
+    attrsOn[attrsName[i]] = false;
+}
+
+$(":checkbox").on('change', function(event) {
     var id = event.target.id;
     var isClub = $.inArray(id, clubsName) > -1;
     if (isClub) {
@@ -25,19 +20,13 @@ $(":checkbox").on('change', function(event) {
         attrsOn[id] = $(this).prop('checked') ? true : false;
     }
     for (var i in clubsName) {
-        if (clubsOn[id])
-            console.log(clubsOn[id]);
+        console.log(clubsName[i] + " " + clubsOn[clubsName[i]]);
     }
-    
-});
+    for (var i in attrsName) {
+        console.log(attrsName[i] + " " + attrsOn[attrsName[i]]);
+    }
 
-function checkClubs() {
-    for (var i in clubsName) {
-        if (clubsOn[i]) {
-            console.log(clubsName + " is on");
-        }
-    }
-}
+});
 
 var larghezzaChart = 430;
 var altezzaChart = 335;
