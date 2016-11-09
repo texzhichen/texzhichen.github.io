@@ -28,7 +28,7 @@ $(":checkbox").on('change', function(event) {
 
 });
 
-var larghezzaChart = 430;
+var larghezzaChart = 860;
 var altezzaChart = 335;
 var primoBound = 80;
 var secondoBound = 30;
