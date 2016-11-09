@@ -18,6 +18,7 @@
 
 <link rel="stylesheet" href="css/style_dimple.css" />
 <link href="/css/bootstrap-toggle.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/slider.css" />
 <style>
 body {
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
@@ -57,115 +58,138 @@ text {
 
 <body>
 
-	<div id="body">
+	<div class="row">
+		<div class="large-12 columns small-12 columns">
 
+			<h1 id="titolo">UEFA Champion Leagues</h1>
+			<h6>Visualize Top Clubs in Top Five Leagues 13-16</h6>
+		</div>
+		<hr>
+	</div>
+
+	<div class="row">
+		<h6 align="center">Clubs</h6>
 		<div class="row">
-			<div class="large-12 columns small-12 columns">
-
-				<h1 id="titolo">UEFA Champion Leagues</h1>
-				<h6>Visualize The Race Between Top Clubs 15-16</h6>
+			Spain <br>
+			<div class="col-sm-2">
+				<div class="checkbox">
+					<label> <input id="Barcelona" type="checkbox"
+						data-toggle="toggle" checked data-size="small" data-onstyle="info">Barcelona
+					</label>
+				</div>
 			</div>
-			<hr>
+			<div class="col-sm-2">
+				<div class="checkbox">
+					<label> <input id="Real Madrid" type="checkbox"
+						data-toggle="toggle" checked data-size="small" data-onstyle="info">Real
+						Madrid
+					</label>
+				</div>
+			</div>
 		</div>
 
 		<div class="row">
-			<h6 align="center">Clubs</h6>
-			<div class="row">
-				Spain <br>
-				<div class="col-sm-2">
-					<div class="checkbox">
-						<label> <input id="Barcelona" type="checkbox"
-							data-toggle="toggle" checked data-size="small"
-							data-onstyle="info">Barcelona
-						</label>
-					</div>
-				</div>
-				<div class="col-sm-2">
-					<div class="checkbox">
-						<label> <input id="Real Madrid" type="checkbox"
-							data-toggle="toggle" checked data-size="small"
-							data-onstyle="info">Real Madrid
-						</label>
-					</div>
+			Germany <br>
+			<div class="col-sm-2">
+				<div class="checkbox">
+					<label> <input id="Bayern" type="checkbox"
+						data-toggle="toggle" checked data-size="small" data-onstyle="info">Bayern
+					</label>
 				</div>
 			</div>
-
-			<div class="row">
-				Germany <br>
-				<div class="col-sm-2">
-					<div class="checkbox">
-						<label> <input id="Bayern" type="checkbox"
-							data-toggle="toggle" checked data-size="small"
-							data-onstyle="info">Bayern
-						</label>
-					</div>
-				</div>
-				<div class="col-sm-2">
-					<div class="checkbox">
-						<label> <input id="Dortmund" type="checkbox"
-							data-toggle="toggle" checked data-size="small"
-							data-onstyle="info">Dortmund
-						</label>
-					</div>
+			<div class="col-sm-2">
+				<div class="checkbox">
+					<label> <input id="Dortmund" type="checkbox"
+						data-toggle="toggle" checked data-size="small" data-onstyle="info">Dortmund
+					</label>
 				</div>
 			</div>
-
-			<div class="row">
-				England <br>
-				<div class="col-sm-2">
-					<div class="checkbox">
-						<label> <input id="Leicester" type="checkbox"
-							data-toggle="toggle" checked data-size="small"
-							data-onstyle="info">Leicester
-						</label>
-					</div>
-				</div>
-				<div class="col-sm-2">
-					<div class="checkbox">
-						<label> <input id="Arsenal" type="checkbox"
-							data-toggle="toggle" checked data-size="small"
-							data-onstyle="info">Arsenal
-						</label>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				France <br>
-				<div class="col-sm-2">
-					<div class="checkbox">
-						<label> <input id="Paris" type="checkbox"
-							data-toggle="toggle" checked data-size="small"
-							data-onstyle="info">Paris
-						</label>
-					</div>
-				</div>
-				<div class="col-sm-2">
-					<div class="checkbox">
-						<label> <input id="Lyon" type="checkbox"
-							data-toggle="toggle" checked data-size="small"
-							data-onstyle="info">Lyon
-						</label>
-					</div>
-				</div>
-			</div>
-
-			<div class="large-12 columns small-6 columns ">
-				<ul class="large-block-grid-2 small-block-grid-1">
-					<div id="chartContainer"></div>
-				</ul>
-			</div>
-
 		</div>
 
-		<!-- <script src="js/d3/d3.v3.min.js"></script> -->
-		<!-- <script src="dist/dimple.v1.js"></script> -->
-		<script src="/js/d3.v3.4.8.min.js"></script>
-		<script src="/js/dimple.v2.2.0.min.js"></script>
-		<script src="/js/jquery-3.1.1.min.js"></script>
-		<script src="/js/bootstrap-toggle.min.js"></script>
+		<div class="row">
+			England <br>
+			<div class="col-sm-2">
+				<div class="checkbox">
+					<label> <input id="Leicester" type="checkbox"
+						data-toggle="toggle" checked data-size="small" data-onstyle="info">Leicester
+					</label>
+				</div>
+			</div>
+			<div class="col-sm-2">
+				<div class="checkbox">
+					<label> <input id="Arsenal" type="checkbox"
+						data-toggle="toggle" checked data-size="small" data-onstyle="info">Arsenal
+					</label>
+				</div>
+			</div>
+		</div>
 
-		<script src="/js/script_dimple.js"></script>
+		<div class="row">
+			France <br>
+			<div class="col-sm-2">
+				<div class="checkbox">
+					<label> <input id="Paris" type="checkbox"
+						data-toggle="toggle" checked data-size="small" data-onstyle="info">Paris
+					</label>
+				</div>
+			</div>
+			<div class="col-sm-2">
+				<div class="checkbox">
+					<label> <input id="Lyon" type="checkbox"
+						data-toggle="toggle" checked data-size="small" data-onstyle="info">Lyon
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<h6 align="center">Plots</h6>
+
+		<div class="row">
+			<div class="col-sm-4">
+				<span id="barchartcurr"><span id="barchartval">bar chart: 1</span></span>
+			</div>
+			<div class="col-sm-4">
+				<span id="scatterplotcurr"><span id="scatterplotval">scatter plot: 1</span></span>
+			</div>
+			<div class="col-sm-4">
+				<span id="treemapcurr"><span id="treemapval">tree map: 1</span></span>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-4">
+				<input id="barchart" type="text" data-slider-min="1"
+					data-slider-max="10" data-slider-step="1" data-slider-value="1" />
+			</div>
+			<div class="col-sm-4">
+				<input id="scatterplot" type="text" data-slider-min="1"
+					data-slider-max="10" data-slider-step="1" data-slider-value="1" />
+			</div>
+			<div class="col-sm-4">
+				<input id="treemap" type="text" data-slider-min="1"
+					data-slider-max="10" data-slider-step="1" data-slider-value="1" />
+			</div>
+		</div>
+
+		<h6 align="center">Visualization</h6>
+		<div class="large-12 columns small-6 columns ">
+			<ul class="large-block-grid-2 small-block-grid-1">
+				<div id="chartContainer"></div>
+			</ul>
+		</div>
+
+	</div>
+
+	<!-- <script src="js/d3/d3.v3.min.js"></script> -->
+	<!-- <script src="dist/dimple.v1.js"></script> -->
+	<script src="/js/d3.v3.4.8.min.js"></script>
+	<script src="/js/dimple.v2.2.0.min.js"></script>
+	<script src="/js/jquery-3.1.1.min.js"></script>
+	<script src="/js/bootstrap-toggle.min.js"></script>
+	<script src="js/bootstrap-slider.js"></script>
+	<script src="/js/uefa_slider.js"></script>
+
+	<script src="/js/script_dimple.js"></script>
 </body>
 
 <footer> </footer>
