@@ -1,9 +1,9 @@
 var clubsName = [ "barcelona", "bayern", "madrid", "lyon" ];
 var attrsName = [ "networth", "attack", "defense", "possession" ];
 
-var clubsOn = {};
+var clubs = {};
 for (var i in clubsName) {
-    clubsOn[clubsName[i]] = false;
+    clubs[clubsName[i]] = false;
 }
 
 var attrsOn = {};
@@ -15,12 +15,12 @@ $(":checkbox").on('change', function(event) {
     var id = event.target.id;
     var isClub = $.inArray(id, clubsName) > -1;
     if (isClub) {
-        clubsOn[id] = $(this).prop('checked') ? true : false;
+        clubs[id] = $(this).prop('checked') ? true : false;
     } else {
         attrsOn[id] = $(this).prop('checked') ? true : false;
     }
     for (var i in clubsName) {
-        console.log(clubsName[i] + " " + clubsOn[clubsName[i]]);
+        console.log(clubsName[i] + " " + clubs[clubsName[i]]);
     }
     for (var i in attrsName) {
         console.log(attrsName[i] + " " + attrsOn[attrsName[i]]);
@@ -70,7 +70,7 @@ for (i = 0; i < maxNumChart; i++) {
 for (i = 0; i < maxNumChart; i++) {
     s = "#barchart" + i;
     svg = d3.select(s).append("svg").attr("width", 860).attr("height", 355);
-    drawBarChart(svg);
+    drawBarChart(svg, clubs);
 }
 for (i = minNumChart; i < maxNumChart; i++) {
     s = "#barchart" + i;

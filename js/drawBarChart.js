@@ -1,4 +1,4 @@
-function drawBarChart(svg) {
+function drawBarChart(svg, clubs) {
     var margin = {
             top : 20,
             right : 20,
