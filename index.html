@@ -50,6 +50,18 @@ h1, h2 {
 text {
 	font-size: 0.7em;
 }
+
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.axis--x path {
+  display: none;
+}
 </style>
 
 
@@ -158,24 +170,22 @@ text {
 
 		<div class="row">
 			<div class="col-sm-4">
-				<input id="barchart" type="text" data-slider-min="1"
+				<input id="barchart" type="text" data-slider-min="0"
 					data-slider-max="10" data-slider-step="1" data-slider-value="1" />
 			</div>
 			<div class="col-sm-4">
-				<input id="scatterplot" type="text" data-slider-min="1"
+				<input id="scatterplot" type="text" data-slider-min="0"
 					data-slider-max="10" data-slider-step="1" data-slider-value="1" />
 			</div>
 			<div class="col-sm-4">
-				<input id="treemap" type="text" data-slider-min="1"
+				<input id="treemap" type="text" data-slider-min="0"
 					data-slider-max="10" data-slider-step="1" data-slider-value="1" />
 			</div>
 		</div>
 
 		<h6 align="center">Visualization</h6>
 		<div class="large-12 columns small-6 columns ">
-			<ul class="large-block-grid-2 small-block-grid-1">
-				<div id="chartContainer"></div>
-			</ul>
+			<ul class="large-block-grid-2 small-block-grid-1" id="chart"></ul>
 		</div>
 
 	</div>
@@ -187,9 +197,14 @@ text {
 	<script src="/js/jquery-3.1.1.min.js"></script>
 	<script src="/js/bootstrap-toggle.min.js"></script>
 	<script src="js/bootstrap-slider.js"></script>
-	<script src="/js/uefa_slider.js"></script>
-
+	<script src="/js/uefa_slider.js"></script>    
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    
+    <script src="/js/drawBarChart.js"></script>
 	<script src="/js/script_dimple.js"></script>
+	
+	
+
 </body>
 
 <footer> </footer>
