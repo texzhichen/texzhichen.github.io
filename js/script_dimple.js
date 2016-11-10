@@ -60,7 +60,7 @@ var oldVal;
 // create chart containers
 for (i = 0; i < maxNumChart; i++) {
     //    s = "<div id=barchart" + i + "></div>";
-    s = "<div id=barchart" + i + ">" + "<label><input type='checkbox'> Sort values</label>" + "</div>";
+    s = "<div id=barchart" + i + ">" + "<label><input type='checkbox'> Sort</label>" + "</div>";
     $("#chart").append(s)
 }
 

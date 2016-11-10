@@ -8,30 +8,22 @@ function drawBarChart(svg, clubs) {
         width = +svg.attr("width") - margin.left - margin.right,
         height = +svg.attr("height") - margin.top - margin.bottom;
 
-    var formatPercent = d3.format(".0%");
+    var x = d3.scaleBand().rangeRound([ 0, width ]).padding(0.1),
+        y = d3.scaleLinear().rangeRound([ height, 0 ]);
 
-    var x = d3.scale.ordinal()
-        .rangeRoundBands([ 0, width ], .1, 1);
+    var g = svg.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    var y = d3.scale.linear()
-        .range([ height, 0 ]);
+    d3.tsv("data/uefa.tsv", function(d) {
+        d.AttackScore = +d.AttackScore;
+        return d;
+    }, function(error, data) {
+        if (error)
+            throw error;
 
-    var xAxis = d3.svg.axis()
-        .scale(x)
-        .orient("bottom");
-
-    var yAxis = d3.svg.axis()
-        .scale(y)
-        .orient("left")
-        .tickFormat(formatPercent);
-
-    var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    d3.tsv("data/uefa.tsv", function(error, data) {
-
-        data.forEach(function(d) {
-            d.AttackScore = +d.AttackScore;
-        });
+        var data = data.sort(function(a, b) {
+            return d3.ascending(a.ClubCode, b.ClubCode);
+        })
 
         x.domain(data.map(function(d) {
             return d.ClubCode;
@@ -40,45 +32,40 @@ function drawBarChart(svg, clubs) {
             return d.AttackScore;
         }) ]);
 
-        svg.append("g")
-            .attr("class", "x axis")
+        g.append("g")
+            .attr("class", "axis axis--x")
             .attr("transform", "translate(0," + height + ")")
-            .call(xAxis);
+            .call(d3.axisBottom(x));
 
-        svg.append("g")
-            .attr("class", "y axis")
-            .call(yAxis)
+        g.append("g")
+            .attr("class", "axis axis--y")
+            .call(d3.axisLeft(y))
             .append("text")
             .attr("transform", "rotate(-90)")
             .attr("y", 6)
-            .attr("dy", ".71em")
-            .style("text-anchor", "end")
-            .text("AttackScore");
+            .attr("dy", "0.71em")
+            .attr("text-anchor", "end")
+            .text("Frequency");
 
-        svg.selectAll(".bar")
+        g.selectAll(".bar")
             .data(data)
             .enter().append("rect")
             .attr("class", "bar")
             .attr("x", function(d) {
                 return x(d.ClubCode);
             })
-            .attr("width", x.rangeBand())
             .attr("y", function(d) {
                 return y(d.AttackScore);
             })
+            .attr("width", x.bandwidth())
             .attr("height", function(d) {
                 return height - y(d.AttackScore);
             });
 
-        d3.select("input").on("change", change);
 
-        var sortTimeout = setTimeout(function() {
-            d3.select("input").property("checked", true).each(change);
-        }, 2000);
+        d3.select("#barchart0").select("input").on("change", change);
 
         function change() {
-            clearTimeout(sortTimeout);
-
             // Copy-on-write since tweens are evaluated after a delay.
             var x0 = x.domain(data.sort(this.checked
                 ? function(a, b) {
@@ -97,10 +84,10 @@ function drawBarChart(svg, clubs) {
                     return x0(a.ClubCode) - x0(b.ClubCode);
                 });
 
-            var transition = svg.transition().duration(750),
-                delay = function(d, i) {
-                    return i * 50;
-                };
+            var transition = svg.transition().duration(500);
+            var delay = function(d, i) {
+                return i * 50;
+            };
 
             transition.selectAll(".bar")
                 .delay(delay)
@@ -108,11 +95,10 @@ function drawBarChart(svg, clubs) {
                     return x0(d.ClubCode);
                 });
 
-            transition.select(".x.axis")
-                .call(xAxis)
+            transition.select(".axis")
+                .call(d3.axisBottom(x))
                 .selectAll("g")
                 .delay(delay);
         }
     });
-
 }
