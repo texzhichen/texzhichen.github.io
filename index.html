@@ -19,6 +19,9 @@
 <link rel="stylesheet" href="css/style_dimple.css" />
 <link href="/css/bootstrap-toggle.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/slider.css" />
+
+<link rel="stylesheet" href="css/drawBarChart.css" />
+<link rel="stylesheet" href="css/transport.css" />
 <style>
 body {
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
@@ -51,17 +54,6 @@ text {
 	font-size: 0.7em;
 }
 
-.bar {
-	fill: steelblue;
-}
-
-.bar:hover {
-	fill: brown;
-}
-
-.axis--x path {
-	display: none;
-}
 </style>
 
 
@@ -124,27 +116,25 @@ text {
 
 		<div class="row">
 			German Bundasliga <br>
-            <div class="col-sm-2">
-                <div class="checkbox">
-                    <label> <input id="Bayern Munich" type="checkbox"
-                        data-toggle="toggle" checked data-size="small" data-onstyle="info">Bayern
-                        Munich
-                    </label>
-                </div>
-            </div>			
 			<div class="col-sm-2">
 				<div class="checkbox">
-					<label> <input id="Bayer Leverkusen" type="checkbox"
-						data-toggle="toggle" checked data-size="small" data-onstyle="info">
-						<font size="2">Leverkusen</font>
+					<label> <input id="Bayern Munich" type="checkbox"
+						data-toggle="toggle" checked data-size="small" data-onstyle="info">Bayern
+						Munich
 					</label>
 				</div>
 			</div>
 			<div class="col-sm-2">
 				<div class="checkbox">
-					<label> <input id="Gladbach"
-						type="checkbox" data-toggle="toggle" checked data-size="small"
-						data-onstyle="info">Gladbach
+					<label> <input id="Leverkusen" type="checkbox"
+						data-toggle="toggle" checked data-size="small" data-onstyle="info">Leverkusen
+					</label>
+				</div>
+			</div>
+			<div class="col-sm-2">
+				<div class="checkbox">
+					<label> <input id="Gladbach" type="checkbox"
+						data-toggle="toggle" checked data-size="small" data-onstyle="info">Gladbach
 					</label>
 				</div>
 			</div>
@@ -292,7 +282,6 @@ text {
 	<script src="/js/bootstrap-toggle.min.js"></script>
 	<script src="js/bootstrap-slider.js"></script>
 	<script src="/js/uefa_slider.js"></script>
-	<script src="https://d3js.org/d3.v4.min.js"></script>
 
 	<script src="/js/drawBarChart.js"></script>
 	<script src="/js/script_dimple.js"></script>
