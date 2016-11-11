@@ -59,20 +59,28 @@ var oldVal;
 
 // create chart containers
 for (i = 0; i < maxNumChart; i++) {
-    var stringSort = "<label><input type='checkbox' id='sort'> Sort Values</label>";
+    var stringSort = "<div class='row'>"
+        + "<div class=col-sm-1><label><input type='checkbox' id='sort'> Sort Values</label></div>"
+        + "</div>";
     var stringYear = "<div class='row' id='year'>"
         + "<div class=col-sm-1><label><input type='checkbox' id='2013-14'> 2013-14</label></div>"
         + "<div class=col-sm-1><label><input type='checkbox' id='2014-15'> 2014-15</label></div>"
-        + "<div class=col-sm-1><label><input type='checkbox' id='2015-16' checked> 2015-16</label></div>"
-        + "<div class=col-sm-1><label><input type='checkbox' id='2016-17'> 2016-17</label></div>"
+        + "<div class=col-sm-1><label><input type='checkbox' id='2015-16'> 2015-16</label></div>"
+        + "<div class=col-sm-1><label><input type='checkbox' id='2016-17' checked> 2016-17</label></div>"
         + "</div>";
-    s = "<div id=barchart" + i + ">" + stringSort + stringYear + "</div>";
+    var stringAttr = "<div class='row' id='attr'>"
+        + "<div class=col-sm-1><label><input name='optradio' type='radio' id='AttackScore' checked> Attack</label></div>"
+        + "<div class=col-sm-1><label><input name='optradio' type='radio' id='DefenceScore'> Defence</label></div>"
+        + "<div class=col-sm-1><label><input name='optradio' type='radio' id='PossessionScore'> Poseession</label></div>"
+        + "<div class=col-sm-1><label><input name='optradio' type='radio' id='SquadValueNum'> Squad Value</label></div>"
+        + "</div>";
+    s = "<div id=barchart" + i + ">" + stringSort + stringYear + stringAttr + "</div>";
     $("#chart").append(s)
 }
 
 // draw all then hide [minNumChart, maxNumChart) charts
 for (i = 0; i < maxNumChart; i++) {
-//    svg = d3.select(s).append("svg").attr("width", chartWidth).attr("height", chartHeight);
+    //    svg = d3.select(s).append("svg").attr("width", chartWidth).attr("height", chartHeight);
     drawBarChart("#barchart" + i, selectedClubs);
 }
 for (i = minNumChart; i < maxNumChart; i++) {

@@ -1,12 +1,12 @@
 function drawBarChart(barchartID, clubs) {
+    const ClubNameRep = "UniqueName";
+    
     var AttrSelected = "AttackScore";
-    var ClubNameRep = "UniqueName";
-
     var selectedYears = {
         "2013-14" : false,
         "2014-15" : false,
-        "2015-16" : true,
-        "2016-17" : false
+        "2015-16" : false,
+        "2016-17" : true
     };
 
     var isSortedByValue = false;
@@ -32,7 +32,14 @@ function drawBarChart(barchartID, clubs) {
             break;
         }
     });
-
+    
+    $(':radio').change(function() {
+        AttrSelected = this.id;
+        d3.selectAll("svg > *").remove();
+        render();
+    });
+    
+    
     function render() {
         var margin = {
                 top : 20,
@@ -78,7 +85,12 @@ function drawBarChart(barchartID, clubs) {
             x.domain(data.map(function(d) {
                 return d[ClubNameRep];
             }));
-            y.domain([ 0, d3.max(data, function(d) {
+            
+            var minY = Math.min(0, d3.min(data, function(d){
+                return d[AttrSelected];
+            }))
+            minY < 0 ? minY = minY-10 : 0;
+            y.domain([minY, d3.max(data, function(d) {
                 return d[AttrSelected];
             }) ]);
 
@@ -107,9 +119,17 @@ function drawBarChart(barchartID, clubs) {
                 .attr("class", "d3-tip")
                 .offset([ -8, 0 ])
                 .html(function(d) {
-                    return "Club: " + d["Club"] + "<br>"
+                    if (AttrSelected == "SquadValueNum") {
+                        return "Club: " + d["Club"] + "<br>"
+                        + "Year: " + d["Year"] + "<br>"
+                        + "Squad Value: " + d["SquadValue"];                        
+                    } else {
+                        return "Club: " + d["Club"] + "<br>"
                         + "Year: " + d["Year"] + "<br>"
                         + AttrSelected + ": " + d[AttrSelected];
+                    }
+                        
+                    
                 });
             svg.call(tooltip);
 
