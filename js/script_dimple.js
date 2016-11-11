@@ -59,16 +59,21 @@ var oldVal;
 
 // create chart containers
 for (i = 0; i < maxNumChart; i++) {
-    //    s = "<div id=barchart" + i + "></div>";
-    s = "<div id=barchart" + i + ">" + "<label><input type='checkbox'> Sort</label>" + "</div>";
+    var stringSort = "<label><input type='checkbox' id='sort'> Sort Values</label>";
+    var stringYear = "<div class='row' id='year'>"
+        + "<div class=col-sm-1><label><input type='checkbox' id='2013-14'> 2013-14</label></div>"
+        + "<div class=col-sm-1><label><input type='checkbox' id='2014-15'> 2014-15</label></div>"
+        + "<div class=col-sm-1><label><input type='checkbox' id='2015-16' checked> 2015-16</label></div>"
+        + "<div class=col-sm-1><label><input type='checkbox' id='2016-17'> 2016-17</label></div>"
+        + "</div>";
+    s = "<div id=barchart" + i + ">" + stringSort + stringYear + "</div>";
     $("#chart").append(s)
 }
 
 // draw all then hide [minNumChart, maxNumChart) charts
 for (i = 0; i < maxNumChart; i++) {
-    s = "#barchart" + i;
-    svg = d3.select(s).append("svg").attr("width", chartWidth).attr("height", chartHeight);
-    drawBarChart(svg, selectedClubs);
+//    svg = d3.select(s).append("svg").attr("width", chartWidth).attr("height", chartHeight);
+    drawBarChart("#barchart" + i, selectedClubs);
 }
 for (i = minNumChart; i < maxNumChart; i++) {
     s = "#barchart" + i;
@@ -82,47 +87,3 @@ $('#barchart').slider().on('slide', function(event) {
         i < event.value ? $(s).show() : $(s).hide();
     }
 });
-
-
-
-
-
-//var svg = dimple.newSvg("#chartContainer", larghezzaChart, altezzaChart);
-//var data = [
-//    {
-//        "Club" : "A",
-//        "Attack" : 100,
-//        "Defense" : 80,
-//        "P" : 0.7
-//    },
-//    {
-//        "Club" : "B",
-//        "Attack" : 80,
-//        "Defense" : 60,
-//        "P" : 0.6
-//    },
-//    {
-//        "Club" : "C",
-//        "Attack" : 60,
-//        "Defense" : 100,
-//        "P" : 0.5
-//    },
-//];
-//var myChart = new dimple.chart(svg, data);
-//myChart.addCategoryAxis("x", "Attack");
-//myChart.addCategoryAxis("y", "Defense");
-//myChart.addMeasureAxis("z", "P");
-//myChart.addSeries("Club", dimple.plot.bubble);
-//myChart.addLegend(60, 10, 510, 20, "right");
-//myChart.draw();
-//
-//var svg = dimple.newSvg("#chartContainer", larghezzaChart, altezzaChart);
-//d3.tsv("/data/networth.tsv", function(data) {
-//    var myChart = new dimple.chart(svg, data);
-//    myChart.setBounds(75, 30, 480, 330)
-//    myChart.addMeasureAxis("x", "Networth");
-//    var y = myChart.addCategoryAxis("y", "Clubs");
-//    y.addOrderRule("Date");
-//    myChart.addSeries(null, dimple.plot.bar);
-//    myChart.draw();
-//});

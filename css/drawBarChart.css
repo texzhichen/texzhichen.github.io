@@ -9,3 +9,7 @@
 .axis--x path {
   display: none;
 }
+
+.col-sm-1 {
+	width: 11%
+}
