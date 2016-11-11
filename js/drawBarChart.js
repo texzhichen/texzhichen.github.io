@@ -1,6 +1,6 @@
 function drawBarChart(barchartID, clubs) {
     var AttrSelected = "AttackScore";
-    var ClubName = "ClubCode";
+    var ClubNameRep = "UniqueName";
 
     var selectedYears = {
         "2013-14" : false,
@@ -8,10 +8,11 @@ function drawBarChart(barchartID, clubs) {
         "2015-16" : true,
         "2016-17" : false
     };
-    
-    var isSorted = false;
+
+    var isSortedByValue = false;
     var svg = d3.select(barchartID).append("svg").attr("width", 860).attr("height", 335);
 
+    render();
     $(':checkbox').change(function() {
         switch (this.id) {
         case '2013-14':
@@ -23,7 +24,7 @@ function drawBarChart(barchartID, clubs) {
             render();
             break;
         case 'sort':
-            this.checked ? isSorted = true : isSorted = false;
+            this.checked ? isSortedByValue = true : isSortedByValue = false;
             d3.selectAll("svg > *").remove();
             render();
             break;
@@ -32,7 +33,6 @@ function drawBarChart(barchartID, clubs) {
         }
     });
 
-    render();
     function render() {
         var margin = {
                 top : 20,
@@ -45,9 +45,12 @@ function drawBarChart(barchartID, clubs) {
 
         var x = d3.scaleBand().rangeRound([ 0, width ]).padding(0.1),
             y = d3.scaleLinear().rangeRound([ height, 0 ]);
+        
+        var color = d3.scaleOrdinal(d3.schemeCategory10);
 
         var g = svg.append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
         d3.tsv("data/uefa.tsv", function(d) {
             d[AttrSelected] = +d[AttrSelected];
             return d;
@@ -62,18 +65,18 @@ function drawBarChart(barchartID, clubs) {
                     || (selectedYears["2016-17"] && d['Year'] == '2016-17');
             })
 
-            if (!isSorted) {
+            if (isSortedByValue) {
                 var data = data.sort(function(a, b) {
-                    return d3.ascending(a[ClubName], b[ClubName]);
+                    return b[AttrSelected] - a[AttrSelected];
                 })
             } else {
                 var data = data.sort(function(a, b) {
-                    return b[AttrSelected] - a[AttrSelected];
-                })                
+                    return d3.ascending(a[ClubNameRep], b[ClubNameRep]);
+                })
             }
 
             x.domain(data.map(function(d) {
-                return d[ClubName];
+                return d[ClubNameRep];
             }));
             y.domain([ 0, d3.max(data, function(d) {
                 return d[AttrSelected];
@@ -92,14 +95,17 @@ function drawBarChart(barchartID, clubs) {
                 .attr("y", 6)
                 .attr("dy", "0.71em")
                 .attr("text-anchor", "end")
-                .text("Frequency");
+                .text(ClubNameRep);
 
-            g.selectAll(".bar")
+            var bar = g.selectAll(".bar")
                 .data(data)
                 .enter().append("rect")
+                .style("fill", function(d) {
+                    return color(d["Year"]);
+                })
                 .attr("class", "bar")
                 .attr("x", function(d) {
-                    return x(d[ClubName]);
+                    return x(d[ClubNameRep]);
                 })
                 .attr("y", function(d) {
                     return y(d[AttrSelected]);
@@ -108,51 +114,6 @@ function drawBarChart(barchartID, clubs) {
                 .attr("height", function(d) {
                     return height - y(d[AttrSelected]);
                 });
-
-
-            d3.select(barchartID).select('#sort').select("input").on("change", change);
-
-            //            $(':checkbox').change(function() {
-            //                if (this.id == 'sort') {
-            //                    change();
-            //                }
-            //            });
-
-            function change() {
-                // Copy-on-write since tweens are evaluated after a delay.
-                var x0 = x.domain(data.sort(this.checked
-                    ? function(a, b) {
-                        return b[AttrSelected] - a[AttrSelected];
-                    }
-                    : function(a, b) {
-                        return d3.ascending(a[ClubName], b[ClubName]);
-                    })
-                    .map(function(d) {
-                        return d[ClubName];
-                    }))
-                    .copy();
-
-                svg.selectAll(".bar")
-                    .sort(function(a, b) {
-                        return x0(a[ClubName]) - x0(b[ClubName]);
-                    });
-
-                var transition = svg.transition().duration(500);
-                var delay = function(d, i) {
-                    return i * 50;
-                };
-
-                transition.selectAll(".bar")
-                    .delay(delay)
-                    .attr("x", function(d) {
-                        return x0(d[ClubName]);
-                    });
-
-                transition.select(".axis")
-                    .call(d3.axisBottom(x))
-                    .selectAll("g")
-                    .delay(delay);
-            }
         });
     }
 }
