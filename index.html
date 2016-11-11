@@ -35,7 +35,7 @@
 <script src="js/d3-tip.js"></script>
 <script src="js/bootstrap-toggle.min.js"></script>
 <script src="js/bootstrap-slider.js"></script>
-<script src="js/uefa_slider.js"></script>
+
 <style>
 body {
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
@@ -90,7 +90,7 @@ text {
 			Spanish La Liga <br>
 			<div class="col-sm-2">
 				<div class="checkbox">
-					<label> <input id="Atletico Madrid" type="checkbox"
+					<label> <input id="ATL" type="checkbox"
 						data-toggle="toggle" checked data-size="small" data-onstyle="info">Atletico
 						Madrid
 					</label>
@@ -98,14 +98,14 @@ text {
 			</div>
 			<div class="col-sm-2">
 				<div class="checkbox">
-					<label> <input id="Barcelona" type="checkbox"
+					<label> <input id="FCB" type="checkbox"
 						data-toggle="toggle" checked data-size="small" data-onstyle="info">Barcelona
 					</label>
 				</div>
 			</div>
 			<div class="col-sm-2">
 				<div class="checkbox">
-					<label> <input id="Real Madrid" type="checkbox"
+					<label> <input id="RMA" type="checkbox"
 						data-toggle="toggle" checked data-size="small" data-onstyle="info">Real
 						Madrid
 					</label>
@@ -113,14 +113,14 @@ text {
 			</div>
 			<div class="col-sm-2">
 				<div class="checkbox">
-					<label> <input id="Sevilla" type="checkbox"
+					<label> <input id="SEV" type="checkbox"
 						data-toggle="toggle" checked data-size="small" data-onstyle="info">Sevilla
 					</label>
 				</div>
 			</div>
 			<div class="col-sm-2">
 				<div class="checkbox">
-					<label> <input id="Valencia" type="checkbox"
+					<label> <input id="VAL" type="checkbox"
 						data-toggle="toggle" checked data-size="small" data-onstyle="info">Valencia
 					</label>
 				</div>
@@ -131,7 +131,7 @@ text {
 			German Bundasliga <br>
 			<div class="col-sm-2">
 				<div class="checkbox">
-					<label> <input id="Bayern Munich" type="checkbox"
+					<label> <input id="BAY" type="checkbox"
 						data-toggle="toggle" checked data-size="small" data-onstyle="info">Bayern
 						Munich
 					</label>
@@ -139,21 +139,21 @@ text {
 			</div>
 			<div class="col-sm-2">
 				<div class="checkbox">
-					<label> <input id="Leverkusen" type="checkbox"
+					<label> <input id="LEV" type="checkbox"
 						data-toggle="toggle" checked data-size="small" data-onstyle="info">Leverkusen
 					</label>
 				</div>
 			</div>
 			<div class="col-sm-2">
 				<div class="checkbox">
-					<label> <input id="Gladbach" type="checkbox"
+					<label> <input id="MGB" type="checkbox"
 						data-toggle="toggle" checked data-size="small" data-onstyle="info">Gladbach
 					</label>
 				</div>
 			</div>
 			<div class="col-sm-2">
 				<div class="checkbox">
-					<label> <input id="Wolfsburg" type="checkbox"
+					<label> <input id="WOL" type="checkbox"
 						data-toggle="toggle" checked data-size="small" data-onstyle="info">Wolfsburg
 					</label>
 				</div>
@@ -164,21 +164,21 @@ text {
 			English Premier League <br>
 			<div class="col-sm-2">
 				<div class="checkbox">
-					<label> <input id="Arsenal" type="checkbox"
+					<label> <input id="ARS" type="checkbox"
 						data-toggle="toggle" checked data-size="small" data-onstyle="info">Arsenal
 					</label>
 				</div>
 			</div>
 			<div class="col-sm-2">
 				<div class="checkbox">
-					<label> <input id="Chelsea" type="checkbox"
+					<label> <input id="CHE" type="checkbox"
 						data-toggle="toggle" checked data-size="small" data-onstyle="info">Chelsea
 					</label>
 				</div>
 			</div>
 			<div class="col-sm-2">
 				<div class="checkbox">
-					<label> <input id="Man City" type="checkbox"
+					<label> <input id="MC" type="checkbox"
 						data-toggle="toggle" checked data-size="small" data-onstyle="info">Man
 						City
 					</label>
@@ -186,7 +186,7 @@ text {
 			</div>
 			<div class="col-sm-2">
 				<div class="checkbox">
-					<label> <input id="Man Utd" type="checkbox"
+					<label> <input id="MUN" type="checkbox"
 						data-toggle="toggle" checked data-size="small" data-onstyle="info">Man
 						Utd
 					</label>
@@ -198,7 +198,7 @@ text {
 			French Ligue 1 <br>
 			<div class="col-sm-2">
 				<div class="checkbox">
-					<label> <input id="Lyon" type="checkbox"
+					<label> <input id="LYO" type="checkbox"
 						data-toggle="toggle" checked data-size="small" data-onstyle="info">Lyon
 					</label>
 				</div>
@@ -216,14 +216,14 @@ text {
 			Italian Serie A <br>
 			<div class="col-sm-2">
 				<div class="checkbox">
-					<label> <input id="Juventus" type="checkbox"
+					<label> <input id="JUV" type="checkbox"
 						data-toggle="toggle" checked data-size="small" data-onstyle="info">Juventus
 					</label>
 				</div>
 			</div>
 			<div class="col-sm-2">
 				<div class="checkbox">
-					<label> <input id="Roma" type="checkbox"
+					<label> <input id="ROM" type="checkbox"
 						data-toggle="toggle" checked data-size="small" data-onstyle="info">Roma
 					</label>
 				</div>
@@ -234,14 +234,14 @@ text {
 			Portuguese Liga <br>
 			<div class="col-sm-2">
 				<div class="checkbox">
-					<label> <input id="Benfica" type="checkbox"
+					<label> <input id="BEN" type="checkbox"
 						data-toggle="toggle" checked data-size="small" data-onstyle="info">Benfica
 					</label>
 				</div>
 			</div>
 			<div class="col-sm-2">
 				<div class="checkbox">
-					<label> <input id="Portu" type="checkbox"
+					<label> <input id="POR" type="checkbox"
 						data-toggle="toggle" checked data-size="small" data-onstyle="info">Portu
 					</label>
 				</div>
@@ -257,29 +257,30 @@ text {
 			</div>
 			<div class="col-sm-4">
 				<span id="scatterplotcurr"><span id="scatterplotval">scatter
-						plot: 1</span></span>
+						plot: 0</span></span>
 			</div>
 			<div class="col-sm-4">
 				<span id="treemapcurr"><span id="treemapval">tree map:
-						1</span></span>
+						0</span></span>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-sm-4">
 				<input id="barchart" type="text" data-slider-min="0"
-					data-slider-max="10" data-slider-step="1" data-slider-value="1" />
+					data-slider-max="5" data-slider-step="1" data-slider-value="1" />
 			</div>
-			<div class="col-sm-4">
-				<input id="scatterplot" type="text" data-slider-min="0"
-					data-slider-max="10" data-slider-step="1" data-slider-value="1" />
-			</div>
-			<div class="col-sm-4">
-				<input id="treemap" type="text" data-slider-min="0"
-					data-slider-max="10" data-slider-step="1" data-slider-value="1" />
-			</div>
+            <div class="col-sm-4">
+                <input id="scatterplot" type="text" data-slider-min="0"
+                    data-slider-max="5" data-slider-step="1" data-slider-value="-1" />
+            </div>
+            <div class="col-sm-4">
+                <input id="treemap" type="text" data-slider-min="0"
+                    data-slider-max="5" data-slider-step="1" data-slider-value="-1" />
+            </div>            			
 		</div>
 
+<br>
 		<h6 align="center">Visualization</h6>
 		<div class="large-12 columns small-6 columns ">
 			<ul class="large-block-grid-2 small-block-grid-1" id="chart"></ul>
@@ -287,7 +288,7 @@ text {
 
 	</div>
 
-
+    <script src="js/uefa_slider.js"></script>
 	<script src="/js/drawBarChart.js"></script>
 	<script src="/js/script_dimple.js"></script>
 

@@ -1,6 +1,6 @@
-function drawBarChart(barchartID, clubs) {
+function drawBarChart(barchartID) {
     const ClubNameRep = "UniqueName";
-    
+
     var AttrSelected = "AttackScore";
     var selectedYears = {
         "2013-14" : false,
@@ -9,11 +9,50 @@ function drawBarChart(barchartID, clubs) {
         "2016-17" : true
     };
 
+    const clubsID = [ "RMA",
+        "FCB",
+        "ATL",
+        "VAL",
+        "SEV",
+        "MC",
+        "MUN",
+        "CHE",
+        "ARS",
+        "PSG",
+        "LYO",
+        "BAY",
+        "LEV",
+        "MGB",
+        "WOL",
+        "JUV",
+        "ROM",
+        "BEN",
+        "POR" ];
+    var clubsOn = {};
+    var selectedClubs = [];
+    for (var i in clubsID) {
+        clubsOn[clubsID[i]] = true;
+        selectedClubs.push(clubsID[i]);
+    }
+
     var isSortedByValue = false;
     var svg = d3.select(barchartID).append("svg").attr("width", 860).attr("height", 335);
-
     render();
+
     $(':checkbox').change(function() {
+        var isClub = $.inArray(this.id, clubsID) > -1;
+        if (isClub) {
+            clubsOn[this.id] = $(this).prop('checked') ? true : false;
+            selectedClubs = [];
+            for (var i in clubsID) {
+                if (clubsOn[clubsID[i]])
+                    selectedClubs.push(clubsID[i])
+            }
+            console.log(selectedClubs.length)
+            d3.selectAll("svg > *").remove();
+            render();
+        }
+
         switch (this.id) {
         case '2013-14':
         case '2014-15':
@@ -32,14 +71,14 @@ function drawBarChart(barchartID, clubs) {
             break;
         }
     });
-    
+
     $(':radio').change(function() {
         AttrSelected = this.id;
         d3.selectAll("svg > *").remove();
         render();
     });
-    
-    
+
+
     function render() {
         var margin = {
                 top : 20,
@@ -71,6 +110,9 @@ function drawBarChart(barchartID, clubs) {
                     || (selectedYears["2015-16"] && d['Year'] == '2015-16')
                     || (selectedYears["2016-17"] && d['Year'] == '2016-17');
             })
+            data = data.filter(function(d) {
+                return $.inArray(d["ClubCode"], selectedClubs) > -1
+            });
 
             if (isSortedByValue) {
                 var data = data.sort(function(a, b) {
@@ -85,12 +127,12 @@ function drawBarChart(barchartID, clubs) {
             x.domain(data.map(function(d) {
                 return d[ClubNameRep];
             }));
-            
-            var minY = Math.min(0, d3.min(data, function(d){
+
+            var minY = Math.min(0, d3.min(data, function(d) {
                 return d[AttrSelected];
             }))
-            minY < 0 ? minY = minY-10 : 0;
-            y.domain([minY, d3.max(data, function(d) {
+            minY < 0 ? minY = minY - 10 : 0;
+            y.domain([ minY, d3.max(data, function(d) {
                 return d[AttrSelected];
             }) ]);
 
@@ -121,15 +163,15 @@ function drawBarChart(barchartID, clubs) {
                 .html(function(d) {
                     if (AttrSelected == "SquadValueNum") {
                         return "Club: " + d["Club"] + "<br>"
-                        + "Year: " + d["Year"] + "<br>"
-                        + "Squad Value: " + d["SquadValue"];                        
+                            + "Year: " + d["Year"] + "<br>"
+                            + "Squad Value: " + d["SquadValue"];
                     } else {
                         return "Club: " + d["Club"] + "<br>"
-                        + "Year: " + d["Year"] + "<br>"
-                        + AttrSelected + ": " + d[AttrSelected];
+                            + "Year: " + d["Year"] + "<br>"
+                            + AttrSelected + ": " + d[AttrSelected];
                     }
-                        
-                    
+
+
                 });
             svg.call(tooltip);
 
@@ -185,8 +227,6 @@ function drawBarChart(barchartID, clubs) {
                 .style("fill", function(d) {
                     return color(d);
                 });
-
-
         });
     }
 }

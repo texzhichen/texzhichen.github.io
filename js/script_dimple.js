@@ -1,53 +1,3 @@
-const clubsName = [ "Atletico Madrid", "Barcelona", "Real Madrid", "Sevilla", "Valencia",
-    "Bayern Munich", "Leverkusen", "Gladbach", "Wolfsburg",
-    "Arsenal", "Chelsea", "Man City", "Man Utd",
-    "Lyon", "PSG",
-    "Juventus", "Roma",
-    "Benfica", "Portu" ];
-
-var clubsOn = {};
-var selectedClubs = [];
-for (var i in clubsName) {
-    clubsOn[clubsName[i]] = true;
-    selectedClubs.push(clubsName[i]);
-}
-
-$(":checkbox").on('change', function(event) {
-    var id = event.target.id;
-    var isClub = $.inArray(id, clubsName) > -1;
-    if (isClub) {
-        clubsOn[id] = $(this).prop('checked') ? true : false;
-    }
-    selectedClubs = [];
-    for (var i in clubsName) {
-        if (clubsOn[clubsName[i]])
-            selectedClubs.push(clubsName[i])
-    }
-});
-
-const chartWidth = 860;
-const chartHeight = 335;
-var primoBound = 80;
-var secondoBound = 30;
-var terzoBound = 340;
-var quartoBound = 200;
-
-function title(svg, title) {
-    svg.selectAll("title_text")
-        .data([ title ])
-        .enter()
-        .append("text")
-        .attr("x", 10)
-        .attr("y", 15)
-        .style("font-family", "sans-serif")
-        .style("font-size", "16px")
-        .style("color", "Black")
-        .text(function(d) {
-            return d;
-        });
-}
-
-
 // constants
 const minNumChart = 1;
 const maxNumChart = 1;
@@ -80,8 +30,7 @@ for (i = 0; i < maxNumChart; i++) {
 
 // draw all then hide [minNumChart, maxNumChart) charts
 for (i = 0; i < maxNumChart; i++) {
-    //    svg = d3.select(s).append("svg").attr("width", chartWidth).attr("height", chartHeight);
-    drawBarChart("#barchart" + i, selectedClubs);
+    drawBarChart("#barchart" + i);
 }
 for (i = minNumChart; i < maxNumChart; i++) {
     s = "#barchart" + i;
@@ -92,6 +41,18 @@ for (i = minNumChart; i < maxNumChart; i++) {
 $('#barchart').slider().on('slide', function(event) {
     for (i = 0; i < maxNumChart; i++) {
         s = "#barchart" + i;
+        i < event.value ? $(s).show() : $(s).hide();
+    }
+});
+$('#scatterplot').slider().on('slide', function(event) {
+    for (i = 0; i < maxNumChart; i++) {
+        s = "#scatterplot" + i;
+        i < event.value ? $(s).show() : $(s).hide();
+    }
+});
+$('#treemap').slider().on('slide', function(event) {
+    for (i = 0; i < maxNumChart; i++) {
+        s = "#treemap" + i;
         i < event.value ? $(s).show() : $(s).hide();
     }
 });
