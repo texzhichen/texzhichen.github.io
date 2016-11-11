@@ -45,7 +45,7 @@ function drawBarChart(barchartID, clubs) {
 
         var x = d3.scaleBand().rangeRound([ 0, width ]).padding(0.1),
             y = d3.scaleLinear().rangeRound([ height, 0 ]);
-        
+
         var color = d3.scaleOrdinal(d3.schemeCategory10);
 
         var g = svg.append("g")
@@ -85,21 +85,39 @@ function drawBarChart(barchartID, clubs) {
             g.append("g")
                 .attr("class", "axis axis--x")
                 .attr("transform", "translate(0," + height + ")")
-                .call(d3.axisBottom(x));
+                .call(d3.axisBottom(x))
+                .selectAll("text")
+                .style("text-anchor", "end")
+                .attr("dx", "-.8em")
+                .attr("dy", "-1.5em")
+                .attr("transform", "rotate(-65)")
+                .style("font-size", "8px");
 
             g.append("g")
                 .attr("class", "axis axis--y")
                 .call(d3.axisLeft(y))
                 .append("text")
-                .attr("transform", "rotate(-90)")
+                .attr("transform", "rotate(90)")
                 .attr("y", 6)
                 .attr("dy", "0.71em")
                 .attr("text-anchor", "end")
-                .text(ClubNameRep);
+                .text(AttrSelected);
+
+            var tooltip = d3.tip()
+                .attr("class", "d3-tip")
+                .offset([ -8, 0 ])
+                .html(function(d) {
+                    return "Club: " + d["Club"] + "<br>"
+                        + "Year: " + d["Year"] + "<br>"
+                        + AttrSelected + ": " + d[AttrSelected];
+                });
+            svg.call(tooltip);
 
             var bar = g.selectAll(".bar")
                 .data(data)
                 .enter().append("rect")
+                .on('mouseover', tooltip.show)
+                .on('mouseout', tooltip.hide)
                 .style("fill", function(d) {
                     return color(d["Year"]);
                 })
@@ -114,6 +132,41 @@ function drawBarChart(barchartID, clubs) {
                 .attr("height", function(d) {
                     return height - y(d[AttrSelected]);
                 });
+
+
+            var options = d3.keys(selectedYears).filter(function(key) {
+                return selectedYears[key];
+            });
+
+            var legend = svg.selectAll(".legend")
+                .data(options.slice())
+                .enter().append("g")
+                .attr("class", "legend")
+                .attr("transform", function(d, i) {
+                    return "translate(0," + i * 20 + ")";
+                });
+
+            legend.append("text")
+                .attr("x", width - 24)
+                .attr("y", 9)
+                .attr("dy", ".35em")
+                .attr("transform", "translate(50,0)")
+                .style("text-anchor", "end")
+                .style("font-size", "10px")
+                .text(function(d) {
+                    return d;
+                });
+
+            legend.append("rect")
+                .attr("x", width - 18)
+                .attr("width", 18)
+                .attr("height", 18)
+                .attr("transform", "translate(-15,0)")
+                .style("fill", function(d) {
+                    return color(d);
+                });
+
+
         });
     }
 }
