@@ -1,14 +1,5 @@
 function drawBarChart(barchartID) {
     const ClubNameRep = "UniqueName";
-
-    var AttrSelected = "AttackScore";
-    var selectedYears = {
-        "2013-14" : false,
-        "2014-15" : false,
-        "2015-16" : false,
-        "2016-17" : true
-    };
-
     const clubsID = [ "RMA",
         "FCB",
         "ATL",
@@ -28,18 +19,26 @@ function drawBarChart(barchartID) {
         "ROM",
         "BEN",
         "POR" ];
-    var clubsOn = {};
+    
     var selectedClubs = [];
+    var clubsOn = {};
     for (var i in clubsID) {
         clubsOn[clubsID[i]] = true;
         selectedClubs.push(clubsID[i]);
     }
-
+    var AttrSelected = "AttackScore";
+    var selectedYears = {
+        "2013-14" : false,
+        "2014-15" : false,
+        "2015-16" : false,
+        "2016-17" : true
+    };
     var isSortedByValue = false;
+
     var svg = d3.select(barchartID).append("svg").attr("width", 860).attr("height", 335);
     render();
 
-    $(':checkbox').change(function() {
+    $(' :checkbox').change(function() {
         var isClub = $.inArray(this.id, clubsID) > -1;
         if (isClub) {
             clubsOn[this.id] = $(this).prop('checked') ? true : false;
@@ -48,37 +47,38 @@ function drawBarChart(barchartID) {
                 if (clubsOn[clubsID[i]])
                     selectedClubs.push(clubsID[i])
             }
-            console.log(selectedClubs.length)
-            d3.selectAll("svg > *").remove();
-            render();
+            redraw();
         }
-
+    });
+    
+    $(barchartID + ' :checkbox').change(function() {
         switch (this.id) {
         case '2013-14':
         case '2014-15':
         case '2015-16':
         case '2016-17':
             this.checked ? selectedYears[this.id] = true : selectedYears[this.id] = false;
-            d3.selectAll("svg > *").remove();
-            render();
+            redraw();
             break;
         case 'sort':
             this.checked ? isSortedByValue = true : isSortedByValue = false;
-            d3.selectAll("svg > *").remove();
-            render();
+            redraw();
             break;
         default:
             break;
         }
     });
 
-    $(':radio').change(function() {
+    $(barchartID + ' :radio').change(function() {
         AttrSelected = this.id;
-        d3.selectAll("svg > *").remove();
-        render();
+        redraw();
     });
 
 
+    function redraw() {
+        d3.select(barchartID).selectAll("svg > *").remove();
+        render();
+    }
     function render() {
         var margin = {
                 top : 20,
@@ -104,6 +104,7 @@ function drawBarChart(barchartID) {
             if (error)
                 throw error;
 
+            // process data
             var data = data.filter(function(d) {
                 return (selectedYears["2013-14"] && d['Year'] == '2013-14')
                     || (selectedYears["2014-15"] && d['Year'] == '2014-15')
@@ -124,6 +125,7 @@ function drawBarChart(barchartID) {
                 })
             }
 
+            // draw x and y axises
             x.domain(data.map(function(d) {
                 return d[ClubNameRep];
             }));
@@ -157,6 +159,7 @@ function drawBarChart(barchartID) {
                 .attr("text-anchor", "end")
                 .text(AttrSelected);
 
+            // tooltip setting
             var tooltip = d3.tip()
                 .attr("class", "d3-tip")
                 .offset([ -8, 0 ])
@@ -170,11 +173,10 @@ function drawBarChart(barchartID) {
                             + "Year: " + d["Year"] + "<br>"
                             + AttrSelected + ": " + d[AttrSelected];
                     }
-
-
                 });
             svg.call(tooltip);
 
+            // draw bar
             var bar = g.selectAll(".bar")
                 .data(data)
                 .enter().append("rect")
@@ -196,6 +198,7 @@ function drawBarChart(barchartID) {
                 });
 
 
+            // legend
             var options = d3.keys(selectedYears).filter(function(key) {
                 return selectedYears[key];
             });

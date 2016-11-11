@@ -1,6 +1,6 @@
 // constants
 const minNumChart = 1;
-const maxNumChart = 1;
+const maxNumChart = 5;
 
 // temporary variable declaration
 var i;
