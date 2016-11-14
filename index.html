@@ -20,7 +20,10 @@
 <link rel="stylesheet" href="css/bootstrap-toggle.min.css">
 <link rel="stylesheet" href="css/slider.css" />
 
+<link rel="stylesheet" href="css/main.css" />
+<link rel="stylesheet" href="css/drawSunburst.css" />
 <link rel="stylesheet" href="css/drawBarChart.css" />
+<link rel="stylesheet" href="css/drawScatterPlot.css" />
 <link rel="stylesheet" href="css/transport.css" />
 
 <!-- JS libraries -->
@@ -31,10 +34,9 @@
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="js/tether.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/d3.v4.min.js"></script>
-<script src="js/d3-tip.js"></script>
 <script src="js/bootstrap-toggle.min.js"></script>
 <script src="js/bootstrap-slider.js"></script>
+<script src="js/pym.min.js"></script>
 
 <style>
 body {
@@ -77,222 +79,79 @@ text {
 
 	<div class="row">
 		<div class="large-12 columns small-12 columns">
-
 			<h1 id="titolo">UEFA Champion Leagues</h1>
-			<h6>Visualize Top 19 Clubs in Top 6 Leagues (13-16)</h6>
+			<h6>Visualize Top 34 Clubs in Top 6 Leagues (13-16)</h6>
 		</div>
 		<hr>
 	</div>
 
 	<div class="row">
-		<h6 align="center">Clubs</h6>
-		<div class="row">
-			Spanish La Liga <br>
-			<div class="col-sm-2">
-				<div class="checkbox">
-					<label> <input id="ATL" type="checkbox"
-						data-toggle="toggle" checked data-size="small" data-onstyle="info">Atletico
-						Madrid
-					</label>
-				</div>
-			</div>
-			<div class="col-sm-2">
-				<div class="checkbox">
-					<label> <input id="FCB" type="checkbox"
-						data-toggle="toggle" checked data-size="small" data-onstyle="info">Barcelona
-					</label>
-				</div>
-			</div>
-			<div class="col-sm-2">
-				<div class="checkbox">
-					<label> <input id="RMA" type="checkbox"
-						data-toggle="toggle" checked data-size="small" data-onstyle="info">Real
-						Madrid
-					</label>
-				</div>
-			</div>
-			<div class="col-sm-2">
-				<div class="checkbox">
-					<label> <input id="SEV" type="checkbox"
-						data-toggle="toggle" checked data-size="small" data-onstyle="info">Sevilla
-					</label>
-				</div>
-			</div>
-			<div class="col-sm-2">
-				<div class="checkbox">
-					<label> <input id="VAL" type="checkbox"
-						data-toggle="toggle" checked data-size="small" data-onstyle="info">Valencia
-					</label>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			German Bundasliga <br>
-			<div class="col-sm-2">
-				<div class="checkbox">
-					<label> <input id="BAY" type="checkbox"
-						data-toggle="toggle" checked data-size="small" data-onstyle="info">Bayern
-						Munich
-					</label>
-				</div>
-			</div>
-			<div class="col-sm-2">
-				<div class="checkbox">
-					<label> <input id="LEV" type="checkbox"
-						data-toggle="toggle" checked data-size="small" data-onstyle="info">Leverkusen
-					</label>
-				</div>
-			</div>
-			<div class="col-sm-2">
-				<div class="checkbox">
-					<label> <input id="MGB" type="checkbox"
-						data-toggle="toggle" checked data-size="small" data-onstyle="info">Gladbach
-					</label>
-				</div>
-			</div>
-			<div class="col-sm-2">
-				<div class="checkbox">
-					<label> <input id="WOL" type="checkbox"
-						data-toggle="toggle" checked data-size="small" data-onstyle="info">Wolfsburg
-					</label>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			English Premier League <br>
-			<div class="col-sm-2">
-				<div class="checkbox">
-					<label> <input id="ARS" type="checkbox"
-						data-toggle="toggle" checked data-size="small" data-onstyle="info">Arsenal
-					</label>
-				</div>
-			</div>
-			<div class="col-sm-2">
-				<div class="checkbox">
-					<label> <input id="CHE" type="checkbox"
-						data-toggle="toggle" checked data-size="small" data-onstyle="info">Chelsea
-					</label>
-				</div>
-			</div>
-			<div class="col-sm-2">
-				<div class="checkbox">
-					<label> <input id="MC" type="checkbox"
-						data-toggle="toggle" checked data-size="small" data-onstyle="info">Man
-						City
-					</label>
-				</div>
-			</div>
-			<div class="col-sm-2">
-				<div class="checkbox">
-					<label> <input id="MUN" type="checkbox"
-						data-toggle="toggle" checked data-size="small" data-onstyle="info">Man
-						Utd
-					</label>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			French Ligue 1 <br>
-			<div class="col-sm-2">
-				<div class="checkbox">
-					<label> <input id="LYO" type="checkbox"
-						data-toggle="toggle" checked data-size="small" data-onstyle="info">Lyon
-					</label>
-				</div>
-			</div>
-			<div class="col-sm-2">
-				<div class="checkbox">
-					<label> <input id="PSG" type="checkbox"
-						data-toggle="toggle" checked data-size="small" data-onstyle="info">PSG
-					</label>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			Italian Serie A <br>
-			<div class="col-sm-2">
-				<div class="checkbox">
-					<label> <input id="JUV" type="checkbox"
-						data-toggle="toggle" checked data-size="small" data-onstyle="info">Juventus
-					</label>
-				</div>
-			</div>
-			<div class="col-sm-2">
-				<div class="checkbox">
-					<label> <input id="ROM" type="checkbox"
-						data-toggle="toggle" checked data-size="small" data-onstyle="info">Roma
-					</label>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			Portuguese Liga <br>
-			<div class="col-sm-2">
-				<div class="checkbox">
-					<label> <input id="BEN" type="checkbox"
-						data-toggle="toggle" checked data-size="small" data-onstyle="info">Benfica
-					</label>
-				</div>
-			</div>
-			<div class="col-sm-2">
-				<div class="checkbox">
-					<label> <input id="POR" type="checkbox"
-						data-toggle="toggle" checked data-size="small" data-onstyle="info">Portu
-					</label>
-				</div>
-			</div>
-		</div>
-
-		<h6 align="center">Plots</h6>
-
-		<div class="row">
-			<div class="col-sm-4">
-				<span id="barchartcurr"><span id="barchartval">bar
-						chart: 1</span></span>
-			</div>
-			<div class="col-sm-4">
-				<span id="scatterplotcurr"><span id="scatterplotval">scatter
-						plot: 0</span></span>
-			</div>
-			<div class="col-sm-4">
-				<span id="treemapcurr"><span id="treemapval">tree map:
-						0</span></span>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-sm-4">
-				<input id="barchart" type="text" data-slider-min="0"
-					data-slider-max="5" data-slider-step="1" data-slider-value="1" />
-			</div>
-            <div class="col-sm-4">
-                <input id="scatterplot" type="text" data-slider-min="0"
-                    data-slider-max="5" data-slider-step="1" data-slider-value="-1" />
-            </div>
-            <div class="col-sm-4">
-                <input id="treemap" type="text" data-slider-min="0"
-                    data-slider-max="5" data-slider-step="1" data-slider-value="-1" />
-            </div>            			
-		</div>
-
-<br>
-		<h6 align="center">Visualization</h6>
 		<div class="large-12 columns small-6 columns ">
 			<ul class="large-block-grid-2 small-block-grid-1" id="chart"></ul>
 		</div>
-
+		<div id="cont" class="container-fluid text-center">
+			<div class="row scatter">
+				<div class="col-sm-9">
+					<div id="chart"></div>
+				</div>
+				<div id="legend" class="col-sm-3"
+					style="padding-right: 0px; padding-left: 0px;">
+					<div class="dropdown">
+						<p>
+							<span><label for="x-axis">Select x-axis</label></span> <select
+								id="x-value" onchange="setGraph()">
+								<option selected="selected" value="AttackScore">Attack
+									Score</option>
+								<option value="DefenceScore">Defence Score</option>
+								<option value="PossessionScore">Possession Score</option>
+							</select>
+						<p>
+							<span><label for="y-axis">Select y-axis</label></span> <select
+								id="y-value" onchange="setGraph()">
+								<option value="AttackScore">Attack Score</option>
+								<option selected="selected" value="DefenceScore">Defence
+									Score</option>
+								<option value="PossessionScore">Possession Score</option>
+							</select>
+						<p>
+							<span><label for="size">Select size</label></span> <select
+								id="r-value" onchange="setGraph()">
+								<option value="AttackScore">Attack Score</option>
+								<option value="DefenceScore">Defence Score</option>
+								<option selected="selected" value="PossessionScore">Possession
+									Score</option>
+								<option value="FinalStage">Final Stage</option>
+							</select>
+						<p>
+							<span><label for="color">Select color</label></span> <select
+								id="c-value" onchange="setGraph()">
+								<option selected="selected" value="League">League</option>
+								<option value="Season">Season</option>
+								<option value="FinalStage">Final Stage</option>
+							</select>
+					</div>
+					<div class="legendTitle" style="font-size: 12px;">League</div>
+					<div class="legendText" style="font-size: 11px; color: #BABABA;">click
+						to select all clubs within a league</div>
+					<div id="legend"></div>
+				</div>
+			</div>
+		</div>
 	</div>
 
-    <script src="js/uefa_slider.js"></script>
-	<script src="/js/drawBarChart.js"></script>
-	<!-- <script src="/js/script_dimple.js"></script>  -->
-    <script src="/js/main.js"></script>
 
+	<!-- <script src="js/uefa_slider.js"></script> -->
+	<!-- <script src="/js/script_dimple.js"></script> -->
+	<script src="js/d3.v4.js"></script>
+	<script src="js/d3-tip.js"></script>
+	<script src="js/drawBarChart.js"></script>
+	<script src="js/drawSunburst.js"></script>
+	<script src="js/drawScatterPlot.js"></script>
+	<script src="js/writeIntro.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/clubs.js"></script>
+
+	<script src="js/drawScatterPlot.js"></script>
 
 </body>
 

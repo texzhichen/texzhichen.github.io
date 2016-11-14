@@ -1,5 +1,14 @@
-// sunburst
+var s;
 
+// sunburst
+s = "<div class='row'>"
+    + "<div class=col-sm-6 id=sunburst></div>"
+    + "<div class=col-sm-6 id=intro></div>"
+    + "</div>"
+$("#chart").append(s)
+
+drawSunburst("#sunburst")
+writeIntro("uefa")
 
 
 // bar chart

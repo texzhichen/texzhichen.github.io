@@ -1,0 +1,206 @@
+{
+  "name": "UEFA",
+  "children": [
+    {
+      "name": "League: Spanish La Liga",
+      "children": [
+        {
+          "name": "Club: Real Madrid",
+          "children": [
+            {
+              "name": "Name: Real Madrid",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Club: Barcelona",
+          "children": [
+            {
+              "name": "Name: Barcelona",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Club: Atletico Madrid",
+          "children": [
+            {
+              "name": "Name: Atletico Madrid",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Club: Valencia",
+          "children": [
+            {
+              "name": "Name: Valencia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Club: Sevilla",
+          "children": [
+            {
+              "name": "Name: Sevilla",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "English Premier League",
+      "children": [
+        {
+          "name": "Manchester City",
+          "children": [
+            {
+              "name": "Name: Manchester City",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manchester Utd"
+        },
+        [
+          {
+            "name": "Name: Manchester Utd",
+            "size": 1
+          }
+        ],
+        {
+          "name": "Chelsea",
+          "children": [
+            {
+              "name": "Name: Chelsea",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Arsenal",
+          "children": [
+            {
+              "name": "Name: Arsenal",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "French Ligue 1",
+      "children": [
+        {
+          "name": "Paris Saint-Germain",
+          "children": [
+            {
+              "name": "Name: Paris Saint-Germain",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Lyon",
+          "children": [
+            {
+              "name": "Name: Lyon",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "German Bundesliga",
+      "children": [
+        {
+          "name": "Bayern Munich",
+          "children": [
+            {
+              "name": "Name: Bayern Munich",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Bayer Leverkusen",
+          "children": [
+            {
+              "name": "Name: Bater Leverkusen",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Borussia Mönchengladbach",
+          "children": [
+            {
+              "name": "Name: Borussia Mönchengladbach",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Wolfsburg",
+          "children": [
+            {
+              "name": "Name: Wolfsburg",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Italian Serie A",
+      "children": [
+        {
+          "name": "Juventus",
+          "children": [
+            {
+              "name": "Name: Juventus",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Roma",
+          "children": [
+            {
+              "name": "Name: Roma",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Portuguese Liga Nos",
+      "children": [
+        {
+          "name": "Benfica",
+          "children": [
+            {
+              "name": "Name: Benfica",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Porto",
+          "children": [
+            {
+              "name": "Name: Porto",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
