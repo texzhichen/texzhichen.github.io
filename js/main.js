@@ -7,7 +7,7 @@ s = "<div class='row'>"
     + "</div>"
 $("#chart").append(s)
 
-drawSunburst("#sunburst")
+//drawSunburst("#sunburst")
 writeIntro("uefa")
 
 

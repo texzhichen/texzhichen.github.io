@@ -19,7 +19,7 @@ function drawBarChart(barchartID) {
         "ROM",
         "BEN",
         "POR" ];
-    
+
     var selectedClubs = [];
     var clubsOn = {};
     for (var i in clubsID) {
@@ -38,7 +38,7 @@ function drawBarChart(barchartID) {
     var svg = d3.select(barchartID).append("svg").attr("width", 860).attr("height", 335);
     render();
 
-    $(' :checkbox').change(function() {
+    $(':checkbox').change(function() {
         var isClub = $.inArray(this.id, clubsID) > -1;
         if (isClub) {
             clubsOn[this.id] = $(this).prop('checked') ? true : false;
@@ -50,7 +50,7 @@ function drawBarChart(barchartID) {
             redraw();
         }
     });
-    
+
     $(barchartID + ' :checkbox').change(function() {
         switch (this.id) {
         case '2013-14':
@@ -89,10 +89,16 @@ function drawBarChart(barchartID) {
             width = +svg.attr("width") - margin.left - margin.right,
             height = +svg.attr("height") - margin.top - margin.bottom;
 
-        var x = d3.scaleBand().rangeRound([ 0, width ]).padding(0.1),
-            y = d3.scaleLinear().rangeRound([ height, 0 ]);
+        //      d3.v4        
+            //        var x = d3.scaleBand().rangeRound([ 0, width ]).padding(0.1);
+            //        var y = d3.scaleLinear().rangeRound([ height, 0 ]);
+            //        var color = d3.scaleOrdinal(d3.schemeCategory10);
 
-        var color = d3.scaleOrdinal(d3.schemeCategory10);
+        //      d3.v3        
+        var x = d3.scale.ordinal().rangeRoundBands([ 0, width ], .1, 1);
+        var y = d3.scale.linear().range([ height, 0 ]);
+        var color = d3.scale.category10();
+
 
         var g = svg.append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -137,11 +143,19 @@ function drawBarChart(barchartID) {
             y.domain([ minY, d3.max(data, function(d) {
                 return d[AttrSelected];
             }) ]);
-
+            
+            var xAxis = d3.svg.axis()
+                .scale(x)
+                .orient("bottom");
+            
+            var yAxis = d3.svg.axis()
+                .scale(y)
+                .orient("left");
+            
             g.append("g")
-                .attr("class", "axis axis--x")
-                .attr("transform", "translate(0," + height + ")")
-                .call(d3.axisBottom(x))
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + (height) + ")")
+                .call(xAxis)
                 .selectAll("text")
                 .style("text-anchor", "end")
                 .attr("dx", "-.8em")
@@ -150,14 +164,12 @@ function drawBarChart(barchartID) {
                 .style("font-size", "8px");
 
             g.append("g")
-                .attr("class", "axis axis--y")
-                .call(d3.axisLeft(y))
+                .attr("class", "y axis")
+                .call(yAxis)
                 .append("text")
                 .attr("transform", "rotate(90)")
                 .attr("y", 6)
-                .attr("dy", "0.71em")
-                .attr("text-anchor", "end")
-                .text(AttrSelected);
+                .attr("dy", "0.71em");
 
             // tooltip setting
             var tooltip = d3.tip()
@@ -192,7 +204,7 @@ function drawBarChart(barchartID) {
                 .attr("y", function(d) {
                     return y(d[AttrSelected]);
                 })
-                .attr("width", x.bandwidth())
+                .attr("width", x.rangeBand())
                 .attr("height", function(d) {
                     return height - y(d[AttrSelected]);
                 });
