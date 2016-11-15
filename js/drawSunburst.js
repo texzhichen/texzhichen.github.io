@@ -42,7 +42,7 @@ function drawSunburst(sunburstID) {
     d3.json("/data/clubs.json", function(error, root) {
         if (error)
             throw error;
-
+        
         node = root;
         var path = svg.datum(root).selectAll("path")
             .data(partition.nodes)

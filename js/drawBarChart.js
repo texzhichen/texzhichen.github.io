@@ -98,8 +98,7 @@ function drawBarChart(barchartID) {
         var x = d3.scale.ordinal().rangeRoundBands([ 0, width ], .1, 1);
         var y = d3.scale.linear().range([ height, 0 ]);
         var color = d3.scale.category10();
-
-
+        
         var g = svg.append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
