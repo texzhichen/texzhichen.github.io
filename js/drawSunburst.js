@@ -39,7 +39,7 @@ function drawSunburst(sunburstID) {
             return Math.max(0, y(d.y + d.dy));
         });
 
-    d3.json("./data/clubsInfo.json", function(error, root) {
+    d3.json("./data/sunburst.json", function(error, root) {
         if (error)
             throw error;
         
