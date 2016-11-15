@@ -1,2 +1,177 @@
-#left { float:left }
-#right { float:right }
+/*drawScatterPlot*/
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #525252;
+    text-align: center;
+}
+html,
+body {
+    width: auto;
+    height: auto;
+}
+label {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.headline {
+    padding-top: 60px;
+}
+
+.scatter {
+    padding-top: 60px;
+}
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #B3B3B3;
+    shape-rendering: crispEdges;
+}
+.axis text {
+    font-size: 10px;
+    fill: #6B6B6B;
+}
+.popover {
+    pointer-events: none;
+}
+.manager-checkbox {
+    padding-left: 15%;
+    text-align: left;
+}
+.image-checkbox
+{
+    cursor: pointer;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: 2px solid transparent;
+    border-radius: 4px；
+    outline: 0;
+}
+.image-checkbox img {
+    border-radius: 4px;
+}
+.image-checkbox figcaption {
+    text-align: center;
+    font-size: 11px;
+}
+.image-checkbox input[type="checkbox"]
+{
+    display: none;
+}
+.image-checkbox-checked
+{
+    border-color: #FFA500;
+    border-radius: 4px;
+}
+.dropdown {
+    text-align: left;
+}
+.dropdown label{
+    width: 70px;
+}
+.legendCircle {
+    stroke-width: 1;
+    stroke: #999;
+    stroke-dasharray: 2 2;
+    fill: none;
+}
+.legendLine {
+    stroke-width: 1;
+    stroke: #D1D1D1;
+    shape-rendering: crispEdges;
+}
+.legendTitle {
+    fill: #1A1A1A;
+    color: #1A1A1A;
+    text-anchor: middle;
+    font-size: 10px;
+}
+.legendText {
+    fill: #949494;
+    text-anchor: start;
+    font-size: 9px;
+}
+@media (min-width: 500px) {
+    .col-sm-3,
+    .col-sm-9 {
+        float: left;
+    }
+    .col-sm-9 {
+        width: 75%;
+    }
+    .col-sm-3 {
+        width: 25%;
+    }
+    .col-sm-3 {
+        width: 8%;
+    }
+}
+
+/*drawBarChart*/
+.bar {
+	fill: steelblue;
+	fill-opacity: 1;
+}
+
+.bar:hover {
+	fill: orange;
+}
+
+.axis--x path {
+	display: none;
+}
+
+.d3-tip {
+	line-height: 1;
+	padding: 6px;
+	background: rgba(0, 0, 0, 0.8);
+	color: #fff;
+	border-radius: 4px;
+	font-size: 12px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+	box-sizing: border-box;
+	display: inline;
+	font-size: 10px;
+	width: 100%;
+	line-height: 1;
+	color: rgba(0, 0, 0, 0.8);
+	content: "\25BC";
+	position: absolute;
+	text-align: center;
+}
+
+/* Style northward tooltips specifically */
+.d3-tip.n:after {
+	margin: -2px 0 0 0;
+	top: 100%;
+	left: 0;
+}
+
+.legend {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 60%;
+}
+
+#barchart0 {
+    padding-top: 60px;
+    padding-bottom: 100px;
+}
+
+#barchart0 label {
+    float: left;
+}
+
+/*drawSunburst*/
+#intro {
+    text-align: left;
+}
+
+#sunburst path {
+  stroke: #fff;
+}

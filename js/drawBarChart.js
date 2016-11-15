@@ -35,7 +35,7 @@ function drawBarChart(barchartID) {
     };
     var isSortedByValue = false;
 
-    var svg = d3.select(barchartID).append("svg").attr("width", 860).attr("height", 335);
+    var svg = d3.select(barchartID).append("svg").attr("width", 1160).attr("height", 335);
     render();
 
     $(':checkbox').change(function() {
@@ -98,7 +98,7 @@ function drawBarChart(barchartID) {
         var x = d3.scale.ordinal().rangeRoundBands([ 0, width ], .1, 1);
         var y = d3.scale.linear().range([ height, 0 ]);
         var color = d3.scale.category10();
-        
+
         var g = svg.append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -142,15 +142,15 @@ function drawBarChart(barchartID) {
             y.domain([ minY, d3.max(data, function(d) {
                 return d[AttrSelected];
             }) ]);
-            
+
             var xAxis = d3.svg.axis()
                 .scale(x)
                 .orient("bottom");
-            
+
             var yAxis = d3.svg.axis()
                 .scale(y)
                 .orient("left");
-            
+
             g.append("g")
                 .attr("class", "x axis")
                 .attr("transform", "translate(0," + (height) + ")")
