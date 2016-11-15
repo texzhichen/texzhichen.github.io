@@ -161,7 +161,7 @@ function drawBarChart(barchartID) {
                 .attr("dx", "-.8em")
                 .attr("dy", "-1.5em")
                 .attr("transform", "rotate(-65)")
-                .style("font-size", "8px");
+                .style("font-size", "8px")
 
             g.append("g")
                 .attr("class", "y axis")

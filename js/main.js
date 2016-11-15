@@ -5,9 +5,9 @@ s = "<div class='row'>"
     + "<div class=col-sm-6 id=sunburst></div>"
     + "<div class=col-sm-6 id=intro></div>"
     + "</div>"
-$("#chart").append(s)
+$("#chart0").append(s)
 
-//drawSunburst("#sunburst")
+drawSunburst("#sunburst")
 writeIntro("uefa")
 
 
@@ -28,6 +28,6 @@ var stringAttr = "<div class='row' id='attr'>"
     + "<div class=col-sm-1><label><input name='optradio' type='radio' id='SquadValueNum'> Squad Value</label></div>"
     + "</div>";
 s = "<div id=barchart0>" + stringSort + stringYear + stringAttr + "</div>";
-$("#chart").append(s)
+$("#chart0").append(s)
 
 drawBarChart("#barchart0")
