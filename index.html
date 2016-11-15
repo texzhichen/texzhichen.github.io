@@ -1,166 +1,172 @@
 <!DOCTYPE html>
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js" lang="en">
-<!--<![endif]-->
+<html>
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width" />
-<title>Visualize UEFA</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>UEFA Visualization</title>
 
-<!-- CSS libraries -->
-<link rel="stylesheet" href="css/tether.css">
-<link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css">
-<!-- <link rel="stylesheet" href="bootstrap/css/bootstrap.css"> -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="css/normalize.css" />
-<link rel="stylesheet" href="css/foundation.css" />
-<link rel="stylesheet" href="css/social_foundicons.css">
-
-<link rel="stylesheet" href="css/style_dimple.css" />
-<link rel="stylesheet" href="css/bootstrap-toggle.min.css">
-<link rel="stylesheet" href="css/slider.css" />
-<link rel="stylesheet" href="css/main.css" />
-<link rel="stylesheet" href="css/drawSunburst.css" />
-<link rel="stylesheet" href="css/drawBarChart.css" />
-<link rel="stylesheet" href="css/drawScatterPlot.css" />
-<link rel="stylesheet" href="css/transport.css" />
-
-<!-- JS libraries -->
-<!-- <script src="js/d3/d3.v3.min.js"></script> -->
-<!-- <script src="dist/dimple.v1.js"></script> -->
-<!-- <script src="/js/d3.v3.4.8.min.js"></script> -->
-<!-- <script src="/js/dimple.v2.2.0.min.js"></script> -->
-<script src="js/jquery-3.1.1.min.js"></script>
-<script src="js/tether.min.js"></script>
-<!-- <script src="js/bootstrap.min.js"></script> -->
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="js/bootstrap-toggle.min.js"></script>
-<script src="js/bootstrap-slider.js"></script>
-<script src="js/pym.min.js"></script>
-
-<style>
-body {
-	font-family: "Helvetica Neue", Helvetica, sans-serif;
-}
-
-#body {
-	position: relative;
-}
-
-h1 {
-	font-size: 64px;
-	font-weight: 300;
-	letter-spacing: -2px;
-	margin: .3em 0 .1em 0;
-}
-
-h2 {
-	margin-top: 2em;
-}
-
-h1, h2 {
-	text-rendering: optimizeLegibility;
-}
-
-.testo {
-	font-size: 0.7em;
-}
-
-text {
-	font-size: 0.7em;
-}
-
-#heading {
-    font-size: 20px;
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
-}
-</style>
-
-
+    <!-- Lato & CSS -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:700,400,300' rel='stylesheet' type='text/css'>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css" />
+    
+    <script src="js/clubs.js"></script>
 </head>
 
-
 <body>
-
-	<div class="row">
-		<div class="large-12 columns small-12 columns">
-			<h1 id="titolo">UEFA Champion Leagues</h1>
-			<h6>Visualize Top 34 Clubs in Top 6 Leagues (13-16)</h6>
-		</div>
-		<hr>
-	</div>
-
-	<div class="row">
-		<div class="large-12 columns small-6 columns ">
-			<ul class="large-block-grid-2 small-block-grid-1" id="chart0"></ul>
-			<p id=heading>Scatter Plot</p>
-			<div class="row scatter">
-				<div class="col-sm-9">
-					<div id="chart"></div>
-				</div>
-				<div id="legend" class="col-sm-3"
-					style="padding-right: 0px; padding-left: 0px;">
-					<div class="dropdown">
-						<p>
-							<span><label for="x-axis">Select x-axis</label></span> <select
-								id="x-value" onchange="setGraph()">
-								<option selected="selected" value="AttackScore">Attack
-									Score</option>
-								<option value="DefenceScore">Defence Score</option>
-								<option value="PossessionScore">Possession Score</option>
-							</select>
-						<p>
-							<span><label for="y-axis">Select y-axis</label></span> <select
-								id="y-value" onchange="setGraph()">
-								<option value="AttackScore">Attack Score</option>
-								<option selected="selected" value="DefenceScore">Defence
-									Score</option>
-								<option value="PossessionScore">Possession Score</option>
-							</select>
-						<p>
-							<span><label for="size">Select size</label></span> <select
-								id="r-value" onchange="setGraph()">
-								<option value="AttackScore">Attack Score</option>
-								<option value="DefenceScore">Defence Score</option>
-								<option selected="selected" value="PossessionScore">Possession
-									Score</option>
-								<option value="FinalStage">Final Stage</option>
-							</select>
-						<p>
-							<span><label for="color">Select color</label></span> <select
-								id="c-value" onchange="setGraph()">
-								<option selected="selected" value="League">League</option>
-								<option value="Season">Season</option>
-								<option value="FinalStage">Final Stage</option>
-							</select>
-					</div>
-					<div class="legendTitle" style="font-size: 12px;">League</div>
-					<div class="legendText" style="font-size: 11px; color: #BABABA;">click
-						to select all clubs within a league</div>
-					<div id="legend"></div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<!-- <script src="js/uefa_slider.js"></script> -->
-	<!-- <script src="/js/script_dimple.js"></script> -->
-	<!-- 	<script src="js/d3.v4.js"></script> -->
-	<script src="js/d3.v3.js"></script>
-	<script src="js/d3-tip.js"></script>
-	<script src="js/drawBarChart.js"></script>
-	<script src="js/drawSunburst.js"></script>
-	<script src="js/drawScatterPlot.js"></script>
-	<script src="js/writeIntro.js"></script>
-	<script src="js/main.js"></script>
-	<script src="js/clubs.js"></script>
-
-	<script src="js/drawScatterPlot.js"></script>
-
+    <div id="cont" class="container-fluid text-center">
+        <div class="row">
+            <h5 style="color: #3B3B3B; font-size: 26px; padding-top: 40px">UEFA Champions League</h5>
+            <h6 style="color: #A6A6A6; font-size: 18px; margin-bottom: 40px;">The Race Between Top European Leagues 2015-16</h6>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-4">
+                <div id=sunburst></div>
+            </div>
+            <div class="col-sm-5">
+                <div id=intro></div>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-9 scatter">
+                <div class="manager-checkbox">
+                    <h6>Select from the managers below:</h6>
+                    <label class="image-checkbox" title="Pep Guardiola">
+                        <img src="./img/manager/PepGuardiola.png" / width="80" height="60">
+                        <figcaption>Pep Guardiola</figcaption>
+                        <input type="checkbox" value="PepGuardiola" />
+                    </label>
+                    <label class="image-checkbox" title="Jose Mourinho">
+                        <img src="./img/manager/JoseMourinho.png" / width="80" height="60">
+                        <figcaption>Jose Mourinho</figcaption>
+                        <input type="checkbox" value="JoseMourinho" />
+                    </label>
+                    <label class="image-checkbox" title="Diego Simeone">
+                        <img src="./img/manager/DiegoSimeone.png" / width="80" height="60">
+                        <figcaption>Diego Simeone</figcaption>
+                        <input type="checkbox" value="DiegoSimeone" />
+                    </label>
+                    <label class="image-checkbox" title="Arsene Wenger">
+                        <img src="./img/manager/ArseneWenger.png" / width="80" height="60">
+                        <figcaption>Arsene Wenger</figcaption>
+                        <input type="checkbox" value="ArseneWenger" />
+                    </label>
+                    <label class="image-checkbox" title="Jurger Klopp">
+                        <img src="./img/manager/JurgerKlopp.png" / width="80" height="60">
+                        <figcaption>Jurger Klopp</figcaption>
+                        <input type="checkbox" value="JurgerKlopp" />
+                    </label>
+                    <label class="image-checkbox" title="Carlos Ancelotti">
+                        <img src="./img/manager/CarlosAncelotti.png" / width="80" height="60">
+                        <figcaption>Carlos Ancelotti</figcaption>
+                        <input type="checkbox" value="CarlosAncelotti" />
+                    </label>
+                    <label class="image-checkbox" title="Luis Enrique">
+                        <img src="./img/manager/LuisEnrique.png" / width="80" height="60">
+                        <figcaption>Luis Enrique</figcaption>
+                        <input type="checkbox" value="LuisEnrique" />
+                    </label>
+                    <label class="image-checkbox" title="Manuel Pellegrini">
+                        <img src="./img/manager/ManuelPellegrini.png" / width="80" height="60">
+                        <figcaption>Manuel Pellegrini</figcaption>
+                        <input type="checkbox" value="ManuelPellegrini" />
+                    </label>
+                    <label class="image-checkbox" title="Laurent Blanc">
+                        <img src="./img/manager/LaurentBlanc.png" / width="80" height="60">
+                        <figcaption>Laurent Blanc</figcaption>
+                        <input type="checkbox" value="LaurentBlanc" />
+                    </label>
+                </div>
+                <div id="chart"></div>
+            </div>
+            <div id="legend" class="col-sm-3 scatter" style="padding-right: 0px; padding-left: 0px;">
+                <div class="dropdown">
+                    <p><span><label for="x-axis">Select x-axis</label></span>
+                        <select id="x-value" onchange="setGraph()">
+                            <option value="OverallPerformanceScore">Overall Performance Score</option>
+                            <option selected="selected" value="AttackScore">Attack Score</option>
+                            <option value="DefenceScore">Defence Score</option>
+                            <option value="PossessionScore">Possession Score</option>
+                            <option value="SquadValue(Million)">Squad Value</option>
+                        </select>
+                    <p><span><label for="y-axis">Select y-axis</label></span>
+                        <select id="y-value" onchange="setGraph()">
+                            <option value="OverallPerformanceScore">Overall Performance Score</option>
+                            <option value="AttackScore">Attack Score</option>
+                            <option selected="selected" value="DefenceScore">Defence Score</option>
+                            <option value="PossessionScore">Possession Score</option>
+                            <option value="SquadValue(Million)">Squad Value</option>
+                        </select>
+                    <p><span><label for="size">Select size</label></span>
+                        <select id="r-value" onchange="setGraph()">
+                            <option value="OverallPerformanceScore">Overall Performance Score</option>
+                            <option value="AttackScore">Attack Score</option>
+                            <option value="DefenceScore">Defence Score</option>
+                            <option selected="selected" value="PossessionScore">Possession Score</option>
+                            <option value="SquadValue(Million)">Squad Value</option>
+                        </select>
+                    <p><span><label for="color">Select color</label></span>
+                        <select id="c-value" onchange="setGraph()">
+                            <option selected="selected" value="League">League</option>
+                            <option value="Season">Season</option>
+                            <option value="FinalRound">Round Reached</option>
+                        </select>
+                    </div>
+                    <div class="legendTitle" style="font-size: 12px;">League</div>
+                    <div class="legendText" style="font-size: 11px; color: #BABABA;">click to select all clubs within a league</div>
+                    <div id="legend"></div>
+            </div>
+            <div id="barchart0" class="col-sm-12">
+                <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-1 sort" style="padding-left: 30px">
+                    <label><input type="checkbox" id="sort">Sort Values</label>
+                </div>
+                </div>
+                <div class="row" id="year">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-1" style="padding-left: 30px">
+                    <label><input type="checkbox" id="2013-14">2013-14</label>
+                </div>
+                <div class="col-sm-1">
+                    <label><input type="checkbox" id="2014-15">2014-15</label>
+                </div>
+                <div class="col-sm-1">
+                    <label><input type="checkbox" id="2015-16">2015-16</label>
+                </div>
+                <div class="col-sm-1">
+                    <label><input type="checkbox" id="2016-17" checked>2016-17</label>
+                </div>
+                </div>
+                <div class="row" id='attr'>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-1" style="padding-left: 30px"><label><input name='optradio' type='radio' id='AttackScore' checked> Attack</label>
+                </div>
+                <div class="col-sm-1"><label><input name='optradio' type='radio' id='DefenceScore'> Defence</label>
+                </div>
+                <div class="col-sm-1"><label><input name='optradio' type='radio' id='PossessionScore'> Poseession</label>
+                </div>
+                <div class="col-sm-1"><label><input name='optradio' type='radio' id='SquadValueNum'> Squad Value</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- D3.js -->
+    <script src="http://d3js.org/d3.v3.js"></script>
+    <!-- Pym -->
+    <script src="js/pym.min.js"></script>
+    <!-- jQuery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="js/d3-tip.js"></script>
+    <script src="js/drawBarChart.js"></script>
+    <script src="js/drawSunburst.js"></script>
+    <script src="js/drawScatterPlot.js"></script>
+    <script src="js/writeIntro.js"></script>
+    <script src="js/drawScatterPlot.js"></script>
+    <script>
+        drawSunburst("#sunburst");
+        writeIntro("uefa");
+        drawBarChart("#barchart0");
+    </script>
 </body>
-
-<footer> </footer>
-
 </html>

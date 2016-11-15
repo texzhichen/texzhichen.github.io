@@ -35,7 +35,7 @@ function drawBarChart(barchartID) {
     };
     var isSortedByValue = false;
 
-    var svg = d3.select(barchartID).append("svg").attr("width", 860).attr("height", 335);
+    var svg = d3.select(barchartID).append("svg").attr("width", 1160).attr("height", 335);
     render();
 
     $(':checkbox').change(function() {
