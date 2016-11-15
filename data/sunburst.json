@@ -4,7 +4,7 @@
   "name": "UEFA",
   "children": [
     {
-      "img": "img/spanish_laliga.svg",
+      
       "nickname": "spanish",
       "name": "Spanish La Liga",
       "children": [
@@ -20,15 +20,29 @@
         },
         {
           "name": "Club: Atletico Madrid",
+          "nickname": "atletico",
           "size": 1
         },
         {
           "name": "Club: Valencia",
-          "size": 1
+          "size": 1,
+          "nickname":"valencia"
         },
         {
           "name": "Club: Sevilla",
-          "size": 1
+          "size": 1,
+          "nickname":"sevilla"
+        },
+        {
+          "name": "Atletic Bilbao",
+          "size": 1,
+          "nickname":"bilbao"
+        }
+		,
+        {
+          "name": "Real Sociedad",
+          "size": 1,
+          "nickname":"sociedad"
         }
       ]
     },
@@ -38,79 +52,148 @@
       "children": [
         {
           "name": "Manchester City",
-          "size": 1
+          "size": 1,
+          "nickname":"mancity"
         },
         {
           "name": "Manchester Utd",
-          "size": 1
+          "size": 1,
+          "nickname":"manu"
         },
         {
           "name": "Chelsea",
-          "size": 1
+          "size": 1,
+          "nickname":"chelsea"
         },
         {
           "name": "Arsenal",
-          "size": 1
+          "size": 1,
+          "nickname":"arsenal"
+        },
+        {
+          "name": "Tottenham Hotspur",
+          "size": 1,
+          "nickname":"hotspur"
+        },
+        {
+          "name": "Leicester City",
+          "size": 1,
+          "nickname":"leicester"
+        },
+        {
+          "name": "Liverpool",
+          "size": 1,
+          "nickname":"liverpool"
         }
       ]
     },
     {
       "name": "French Ligue 1",
+      "nickname":"french",
       "children": [
         {
           "name": "Paris Saint-Germain",
-          "size": 1
+          "size": 1,
+          "nickname":"psg"
         },
         {
-          "name": "Lyon",
-          "size": 1
+          "name": "Lyonnais",
+          "size": 1,
+          "nickname":"lyon"
+        },
+        {
+          "name": "Monaco",
+          "size": 1,
+          "nickname":"monaco"
+        },
+        {
+          "name":"Olympique de Marseille",
+          "size":1,
+          "nickname":"marseille"
         }
       ]
     },
     {
       "name": "German Bundesliga",
+      "nickname":"german",
       "children": [
         {
           "name": "Bayern Munich",
-          "size": 1
+          "size": 1,
+          "nickname":"bayern"
+          
         },
         {
           "name": "Bayer Leverkusen",
-          "size": 1
+          "size": 1,
+          "nickname":"leverkusen"
         },
         {
           "name": "Borussia Mönchengladbach",
-          "size": 1
+          "size": 1,
+          "nickname":"monchen"
         },
         {
           "name": "Wolfsburg",
-          "size": 1
+          "size": 1,
+          "nickname":"wolfsburg"
+        },
+        {
+          "name": "Borussia Dortmund",
+          "size": 1,
+          "nickname":"bvb"
+        },
+        {
+          "name": "Schalke 04",
+          "size": 1,
+          "nickname":"schalke"
         }
       ]
     },
     {
       "name": "Italian Serie A",
+      "nickname":"italian",
       "children": [
         {
           "name": "Juventus",
-          "size": 1
+          "size": 1,
+          "nickname":"juve"
         },
         {
           "name": "Roma",
-          "size": 1
+          "size": 1,
+          "nickname":"roma"
+        },
+        {
+          "name": "Napoli",
+          "size": 1,
+          "nickname":"napoli"
+        },
+        {
+          "name": "AC Milan",
+          "size": 1,
+          "nickname":"milan"
         }
       ]
     },
     {
       "name": "Portuguese Liga Nos",
+      "nickname":"portuguese",
       "children": [
         {
           "name": "Benfica",
-          "size": 1
+          "size": 1,
+          "nickname":"benfica"
         },
         {
           "name": "Porto",
-          "size": 1
+          "size": 1,
+          "nickname":"porto"
+        },
+        {
+          "name": "Sporting CP",
+          "size": 1,
+          "nickname":"sporting"
         }
       ]
     }
