@@ -1,7 +1,13 @@
 ////////////////////////////////////////////////////////////
 //////////////////////// Set-up ////////////////////////////
 ////////////////////////////////////////////////////////////
-var svg, wrapper, opacityCircles, color, height, margin, width, height, voronoi, voronoiGroup, cText;
+
+function update() {
+    console.log(1);
+    opacityCircles = 0;
+}
+
+var svg, wrapper, opacityCircles, color, height, margin, width, height, voronoi, voronoiGroup, cText, managerSelected;
 
 //Quick fix for resizing some things for mobile-ish viewers
 function drawGraph(xText, yText, rText, cText) {
@@ -30,21 +36,24 @@ function drawGraph(xText, yText, rText, cText) {
     ///////////// Initialize Axes & Scales ///////////////
     //////////////////////////////////////////////////////
 
-    opacityCircles = 0.5;
+    opacityCircles = 0.6;
 
+    var League = ["Spanish La Liga", "English Premier League", "French Ligue 1", "German Bundesliga", "Italian Serie A", "Portuguese Liga Nos"];
+    var Season = ["2013-14", "2014-15", "2015-16", "2016-17"];
+    var FinalRound = ["TBD", "Group Stage", "Round of 16", "Quarter-finals", "Semi-finals", "Final", "Winner"];
     //Set the color for each league
     if (cText == "League") {
         color = d3.scale.ordinal()
             .range(["#EFB605", "#E01A25", "#991C71", "#2074A0", "#10A66E", "#7EB852"])
-            .domain(["Spanish La Liga", "English Premier League", "French Ligue 1", "German Bundesliga", "Italian Serie A", "Portuguese Liga Nos"]);
+            .domain(League);
     } else if (cText == "Season") {
         color = d3.scale.ordinal()
             .range(["#EFB605", "#E01A25", "#991C71", "#2074A0"])
-            .domain(["2013-14", "2014-15", "2015-16", "2016-17"]);
+            .domain(Season);
     } else if (cText == "FinalRound") {
         color = d3.scale.ordinal()
             .range(["#EEEEEE", "#FA9FB5", "#F768A1", "#DD3497", "#AE017E", "#7A0177", "#49006A"])
-            .domain(["TBD", "Group Stage", "Round of 16", "Quarter-finals", "Semi-finals", "Final", "Winner"]);
+            .domain(FinalRound);
     }
 
 
@@ -101,7 +110,7 @@ function drawGraph(xText, yText, rText, cText) {
                 } else {
                     return d
                 }
-            }));
+        }));
 
     //Scale for the bubble size
     var rScale = d3.scale.sqrt()
@@ -181,11 +190,10 @@ function drawGraph(xText, yText, rText, cText) {
         //.style("stroke", "#2074A0") //I use this to look at how the cells are dispersed as a check
         .style("fill", "none")
         .style("pointer-events", "all")
-        .on("mouseover", showTooltip)
-        .on("mouseout", removeTooltip)
-        .on("click", function(){
-            ;
-        });
+        .on("mouseover", function(d) {
+            showTooltip(d, color); 
+        })
+        .on("mouseout", removeTooltip);
 
     //////////////////////////////////////////////////////
     ///////////////// Initialize Labels //////////////////
@@ -210,6 +218,7 @@ function drawGraph(xText, yText, rText, cText) {
         .style("font-size", (mobileScreen ? 8 : 12) + "px")
         .attr("transform", "translate(23, 0) rotate(-90)")
         .text(yLabel);
+
 
     ///////////////////////////////////////////////////////////////////////////
     ///////////////////////// Create the Legend////////////////////////////////
@@ -297,79 +306,78 @@ function setGraph() {
 //////////////////////////////////////////////////////
 
 function bubbleLegend(wrapperVar, scale, sizes, titleName) {
+    var legendSize1 = sizes[0],
+        legendSize2 = sizes[1],
+        legendSize3 = sizes[2],
+        legendCenter = 0,
+        legendBottom = 50,
+        legendLineLength = 25,
+        textPadding = 5,
+        numFormat = d3.format(",");
 
-        var legendSize1 = sizes[0],
-            legendSize2 = sizes[1],
-            legendSize3 = sizes[2],
-            legendCenter = 0,
-            legendBottom = 50,
-            legendLineLength = 25,
-            textPadding = 5,
-            numFormat = d3.format(",");
+    wrapperVar.append("text")
+        .attr("class", "legendTitle")
+        .attr("transform", "translate(" + legendCenter + "," + 0 + ")")
+        .attr("x", 0 + "px")
+        .attr("y", 0 + "px")
+        .attr("dy", "1em")
+        .text(titleName);
 
-        wrapperVar.append("text")
-            .attr("class", "legendTitle")
-            .attr("transform", "translate(" + legendCenter + "," + 0 + ")")
-            .attr("x", 0 + "px")
-            .attr("y", 0 + "px")
-            .attr("dy", "1em")
-            .text(titleName);
+    wrapperVar.append("circle")
+        .attr('r', scale(legendSize1))
+        .attr('class', "legendCircle")
+        .attr('cx', legendCenter)
+        .attr('cy', (legendBottom - scale(legendSize1)));
+    wrapperVar.append("circle")
+        .attr('r', scale(legendSize2))
+        .attr('class', "legendCircle")
+        .attr('cx', legendCenter)
+        .attr('cy', (legendBottom - scale(legendSize2)));
+    wrapperVar.append("circle")
+        .attr('r', scale(legendSize3))
+        .attr('class', "legendCircle")
+        .attr('cx', legendCenter)
+        .attr('cy', (legendBottom - scale(legendSize3)));
 
-        wrapperVar.append("circle")
-            .attr('r', scale(legendSize1))
-            .attr('class', "legendCircle")
-            .attr('cx', legendCenter)
-            .attr('cy', (legendBottom - scale(legendSize1)));
-        wrapperVar.append("circle")
-            .attr('r', scale(legendSize2))
-            .attr('class', "legendCircle")
-            .attr('cx', legendCenter)
-            .attr('cy', (legendBottom - scale(legendSize2)));
-        wrapperVar.append("circle")
-            .attr('r', scale(legendSize3))
-            .attr('class', "legendCircle")
-            .attr('cx', legendCenter)
-            .attr('cy', (legendBottom - scale(legendSize3)));
+    wrapperVar.append("line")
+        .attr('class', "legendLine")
+        .attr('x1', legendCenter)
+        .attr('y1', (legendBottom - 2 * scale(legendSize1)))
+        .attr('x2', (legendCenter + legendLineLength))
+        .attr('y2', (legendBottom - 2 * scale(legendSize1)));
+    wrapperVar.append("line")
+        .attr('class', "legendLine")
+        .attr('x1', legendCenter)
+        .attr('y1', (legendBottom - 2 * scale(legendSize2)))
+        .attr('x2', (legendCenter + legendLineLength))
+        .attr('y2', (legendBottom - 2 * scale(legendSize2)));
+    wrapperVar.append("line")
+        .attr('class', "legendLine")
+        .attr('x1', legendCenter)
+        .attr('y1', (legendBottom - 2 * scale(legendSize3)))
+        .attr('x2', (legendCenter + legendLineLength))
+        .attr('y2', (legendBottom - 2 * scale(legendSize3)));
 
-        wrapperVar.append("line")
-            .attr('class', "legendLine")
-            .attr('x1', legendCenter)
-            .attr('y1', (legendBottom - 2 * scale(legendSize1)))
-            .attr('x2', (legendCenter + legendLineLength))
-            .attr('y2', (legendBottom - 2 * scale(legendSize1)));
-        wrapperVar.append("line")
-            .attr('class', "legendLine")
-            .attr('x1', legendCenter)
-            .attr('y1', (legendBottom - 2 * scale(legendSize2)))
-            .attr('x2', (legendCenter + legendLineLength))
-            .attr('y2', (legendBottom - 2 * scale(legendSize2)));
-        wrapperVar.append("line")
-            .attr('class', "legendLine")
-            .attr('x1', legendCenter)
-            .attr('y1', (legendBottom - 2 * scale(legendSize3)))
-            .attr('x2', (legendCenter + legendLineLength))
-            .attr('y2', (legendBottom - 2 * scale(legendSize3)));
+    wrapperVar.append("text")
+        .attr('class', "legendText")
+        .attr('x', (legendCenter + legendLineLength + textPadding))
+        .attr('y', (legendBottom - 2 * scale(legendSize1)))
+        .attr('dy', '0.25em')
+        .text(numFormat(Math.round(legendSize1)));
+    wrapperVar.append("text")
+        .attr('class', "legendText")
+        .attr('x', (legendCenter + legendLineLength + textPadding))
+        .attr('y', (legendBottom - 2 * scale(legendSize2)))
+        .attr('dy', '0.25em')
+        .text(numFormat(Math.round(legendSize2)));
+    wrapperVar.append("text")
+        .attr('class', "legendText")
+        .attr('x', (legendCenter + legendLineLength + textPadding))
+        .attr('y', (legendBottom - 2 * scale(legendSize3)))
+        .attr('dy', '0.25em')
+        .text(numFormat(Math.round(legendSize3)));
 
-        wrapperVar.append("text")
-            .attr('class', "legendText")
-            .attr('x', (legendCenter + legendLineLength + textPadding))
-            .attr('y', (legendBottom - 2 * scale(legendSize1)))
-            .attr('dy', '0.25em')
-            .text(numFormat(Math.round(legendSize1)));
-        wrapperVar.append("text")
-            .attr('class', "legendText")
-            .attr('x', (legendCenter + legendLineLength + textPadding))
-            .attr('y', (legendBottom - 2 * scale(legendSize2)))
-            .attr('dy', '0.25em')
-            .text(numFormat(Math.round(legendSize2)));
-        wrapperVar.append("text")
-            .attr('class', "legendText")
-            .attr('x', (legendCenter + legendLineLength + textPadding))
-            .attr('y', (legendBottom - 2 * scale(legendSize3)))
-            .attr('dy', '0.25em')
-            .text(numFormat(Math.round(legendSize3)));
-
-    } //bubbleLegend
+} //bubbleLegend
 
 ///////////////////////////////////////////////////////////////////////////
 //////////////////// Hover function for the legend ////////////////////////
@@ -377,16 +385,16 @@ function bubbleLegend(wrapperVar, scale, sizes, titleName) {
 
 //Decrease opacity of non selected circles when hovering in the legend  
 function selectLegend(opacity) {
-        return function(d, i) {
-            var chosen = color.domain()[i];
-            wrapper.selectAll(".clubs")
-                .filter(function(d) {
-                    return d[cText] != chosen;
-                })
-                .transition()
-                .style("opacity", opacity);
-        };
-    } //function selectLegend
+    return function(d, i) {
+        var chosen = color.domain()[i];
+        wrapper.selectAll(".clubs")
+            .filter(function(d) {
+                return d[cText] != chosen;
+            })
+            .transition()
+            .style("opacity", opacity);
+    };
+} //function selectLegend
 
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////// Click functions for legend //////////////////////////
@@ -394,65 +402,67 @@ function selectLegend(opacity) {
 
 //Function to show only the circles for the clicked sector in the legend
 function clickLegend(cText) {
-        return function(d, i) {
-            event.stopPropagation();
+    return function(d, i) {
+        event.stopPropagation();
 
-            //deactivate the mouse over and mouse out events
-            d3.selectAll(".legendSquare")
-                .on("mouseover", null)
-                .on("mouseout", null);
+        //deactivate the mouse over and mouse out events
+        d3.selectAll(".legendSquare")
+            .on("mouseover", null)
+            .on("mouseout", null);
 
-            //Chosen legend item
-            var chosen = color.domain()[i];
+        //Chosen legend item
+        var chosen = color.domain()[i];
 
-            //Only show the circles of the chosen sector
-            wrapper.selectAll(".clubs")
-                .style("opacity", opacityCircles)
-                .style("visibility", function(d) {
-                    if (d[cText] != chosen) {
-                        return "hidden";
-                    } else {
-                        return "visible";
-                    }
-                });
+        //Only show the circles of the chosen sector
+        wrapper.selectAll(".clubs")
+            .style("opacity", opacityCircles)
+            .style("visibility", function(d) {
+                if (d[cText] != chosen) {
+                    return "hidden";
+                } else {
+                    return "visible";
+                }
+            });
 
-            //Make sure the pop-ups are only shown for the clicked on legend item
-            wrapper.selectAll(".voronoi")
-                .on("mouseover", function(d, i) {
-                    if (d[cText] != chosen) {
-                        return null;
-                    } else {
-                        return showTooltip.call(this, d, i);
-                    }
-                })
-                .on("mouseout", function(d, i) {
-                    if (d[cText] != chosen) return null;
-                    else return removeTooltip.call(this, d, i);
-                });
-        };
-    } //sectorClick
+        //Make sure the pop-ups are only shown for the clicked on legend item
+        wrapper.selectAll(".voronoi")
+            .on("mouseover", function(d, i) {
+                if (d[cText] != chosen) {
+                    return null;
+                } else {
+                    return showTooltip.call(this, d, color);
+                }
+            })
+            .on("mouseout", function(d, i) {
+                if (d[cText] != chosen) return null;
+                else return removeTooltip.call(this, d, i);
+            });
+    };
+} //sectorClick
 
 //Show all the cirkels again when clicked outside legend
 function resetClick() {
 
-        //Activate the mouse over and mouse out events of the legend
-        d3.selectAll(".legendSquare")
-            .on("mouseover", selectLegend(0.02))
-            .on("mouseout", selectLegend(opacityCircles));
+    //Activate the mouse over and mouse out events of the legend
+    d3.selectAll(".legendSquare")
+        .on("mouseover", selectLegend(0.02))
+        .on("mouseout", selectLegend(opacityCircles));
 
-        //Show all circles
-        wrapper.selectAll(".clubs")
-            .style("opacity", opacityCircles)
-            .style("visibility", "visible");
+    //Show all circles
+    wrapper.selectAll(".clubs")
+        .style("opacity", opacityCircles)
+        .style("visibility", "visible");
 
-        //Activate all pop-over events
-        wrapper.selectAll(".voronoi")
-            .on("mouseover", showTooltip)
-            .on("mouseout", function(d, i) {
-                removeTooltip.call(this, d, i);
-            });
+    //Activate all pop-over events
+    wrapper.selectAll(".voronoi")
+        .on("mouseover", function(d) {
+            showTooltip(d, color); 
+        })
+        .on("mouseout", function(d, i) {
+            removeTooltip.call(this, d, i);
+        });
 
-    } //resetClick
+} //resetClick
 
 //Reset the click event when the user clicks anywhere but the legend
 d3.select("#chart").on("click", resetClick);
@@ -464,75 +474,119 @@ d3.select("#chart").on("click", resetClick);
 //Hide the tooltip when the mouse moves away
 function removeTooltip(d, i) {
 
-        //Save the chosen circle (so not the voronoi)
-        var element = d3.selectAll(".clubs." + d.ClubCode);
+    //Save the chosen circle (so not the voronoi)
+    var element = d3.selectAll(".clubs." + d.ClubCode);
 
-        //Fade out the bubble again
-        element.style("opacity", opacityCircles);
+    //Fade out the bubble again
+    element.style("opacity", opacityCircles);
 
-        //Hide tooltip
-        $('.popover').each(function() {
-            $(this).remove();
-        });
+    //Hide tooltip
+    d3.select("#tooltip")
+        .transition().duration(100)
+        .style("opacity", 0);   
 
-        //Fade out guide lines, then remove them
-        d3.selectAll(".guide")
-            .transition().duration(200)
-            .style("opacity", 0)
-            .remove();
+    //Fade out guide lines, then remove them
+    d3.selectAll(".guide")
+        .transition().duration(200)
+        .style("opacity", 0)
+        .remove();
 
-    } //function removeTooltip
+    d3.selectAll(".trend")
+        .transition().duration(200)
+        .style("opacity", 0)
+        .remove();
+
+
+} //function removeTooltip
 
 //Show the tooltip on the hovered over slice
-function showTooltip(d, i) {
-        //Save the chosen circle (so not the voronoi)
-        var highlightElement = d3.selectAll(".clubs." + d.ClubCode);
-        var element = d3.selectAll(".clubs." + d.ClubCode + "." + d.UniqueName)
+function showTooltip(d, color) {
+    //Save the chosen circle (so not the voronoi)
+    var highlightElement = d3.selectAll(".clubs." + d.ClubCode);
+    var element = d3.selectAll(".clubs." + d.ClubCode + "." + d.UniqueName);
 
-        //Define and show the tooltip
-        $(element).popover({
-            placement: 'auto top',
-            container: '#chart',
-            trigger: 'manual',
-            html: true,
-            content: function() {
-                return "<span style='font-size: 11px; text-align: center;'>" + d.Club + "</span>" + "<br>" + "<span style='font-size: 11px; text-align: center;'>" + d.Season + "</span>";
-            }
-        });
-        $(element).popover('show');
+    //Define and show the tooltip
+    //Find location of mouse on page
+    var xpos =  d3.event.pageX - 15;
+    var ypos =  d3.event.pageY - 15;
 
-        //Make chosen circle more visible
-        highlightElement.style("opacity", 1);
+    //Rest font-style
+    d3.select("#tooltip-country").style("font-size", null);
 
-        //Append lines to bubbles that will be used to show the precise data points
-        //vertical line
-        wrapper.append("g")
-            .attr("class", "guide")
-            .append("line")
-            .attr("x1", element.attr("cx"))
-            .attr("x2", element.attr("cx"))
-            .attr("y1", +element.attr("cy"))
-            .attr("y2", (height))
-            .style("stroke", element.style("fill"))
-            .style("opacity", 0)
-            .style("pointer-events", "none")
-            .transition().duration(200)
-            .style("opacity", 0.5);
-        //horizontal line
-        wrapper.append("g")
-            .attr("class", "guide")
-            .append("line")
-            .attr("x1", +element.attr("cx"))
-            .attr("x2", 0)
-            .attr("y1", element.attr("cy"))
-            .attr("y2", element.attr("cy"))
-            .style("stroke", element.style("fill"))
-            .style("opacity", 0)
-            .style("pointer-events", "none")
-            .transition().duration(200)
-            .style("opacity", 0.5);
+    //Set the title and discipline
+    d3.select("#tooltip .tooltip-season").text(d.Season);
+    d3.select("#tooltip .tooltip-club").text(d.Club);
+    d3.select("#tooltip .tooltip-league").text(d.League);
 
-    } //function showTooltip
+    //Set country
+    var roundColor;
+    if (d.FinalRound == "TBD") {
+        roundColor = '#EEEEEE';
+    } else if (d.FinalRound == "Group Stage") {
+        roundColor = '#FA9FB5';
+    } else if (d.FinalRound == "Round of 16") {
+        roundColor = '#F768A1';
+    } else if (d.FinalRound == "Quarter-finals") {
+        roundColor = '#DD3497';
+    } else if (d.FinalRound == "Semi-finals") {
+        roundColor = '#AE017E';
+    } else if (d.FinalRound == "Final") {
+        roundColor = '#7A0177';
+    } else {
+        roundColor = '#49006A';
+    }
+    d3.select("#tooltip-stage")
+        .style('color', roundColor)
+        .text(d.FinalRound);
+
+    //Set edition
+    d3.select("#tooltip-attributes")
+        .html('<span><span style="color:#17A554">' + "Squad Value " + d.SquadValue);
+    //Set edition
+    d3.select("#tooltip-games")
+        .html('<span><span style="color:#17A554">W ' + d.Win + '</span> - <span style="color:#EFB605">D ' + d.Draw
+            + '</span> - <span style="color:#E01A25">L ' + d.Loss + "</span>");
+
+    //Set the tooltip in the right location and have it appear
+    console.log(document.getElementById("sunburst").offsetLeft);
+
+    d3.select("#tooltip")
+        .style("top", (parseInt(element.attr("cy") + document.getElementById("chart").offsetTop)+650) + "px")
+        .style("left", (parseInt(element.attr("cx") + document.getElementById("chart").offsetLeft)+150) + "px")
+        .transition().duration(0)
+        .style("opacity", 1);
+
+    //Make chosen circle more visible
+    highlightElement.style("opacity", 1);
+
+    //Append lines to bubbles that will be used to show the precise data points
+    //vertical line
+    wrapper.append("g")
+        .attr("class", "guide")
+        .append("line")
+        .attr("x1", element.attr("cx"))
+        .attr("x2", element.attr("cx"))
+        .attr("y1", +element.attr("cy"))
+        .attr("y2", (height))
+        .style("stroke", element.style("fill"))
+        .style("opacity", 0)
+        .style("pointer-events", "none")
+        .transition().duration(200)
+        .style("opacity", 0.5);
+    //horizontal line
+    wrapper.append("g")
+        .attr("class", "guide")
+        .append("line")
+        .attr("x1", +element.attr("cx"))
+        .attr("x2", 0)
+        .attr("y1", element.attr("cy"))
+        .attr("y2", element.attr("cy"))
+        .style("stroke", element.style("fill"))
+        .style("opacity", 0)
+        .style("pointer-events", "none")
+        .transition().duration(200)
+        .style("opacity", 0.5);
+} //function showTooltip
 
 jQuery(function ($) {
     // init the state from the input
@@ -544,20 +598,97 @@ jQuery(function ($) {
             $(this).removeClass('image-checkbox-checked');
         }
     });
+});
 
-    // sync the state to the input
-    $(".image-checkbox").on("click", function (e) {
-        if ($(this).hasClass('image-checkbox-checked')) {
-            $(this).removeClass('image-checkbox-checked');
-            $(this).find('input[type="checkbox"]').first().removeAttr("checked");
-        }
-        else {
-            $(this).addClass('image-checkbox-checked');
-            $(this).find('input[type="checkbox"]').first().attr("checked", "checked");
-        }
-        e.preventDefault();
+// sync the state to the input
+$(document).ready(function() {
+    $(".image-checkbox").on("change", function() {
+        filterImage(this);
+        console.log("hi");
     });
 });
+    
+function filterCheckbox() {    
+    managerSelected = [];
+    $('.filter-option:checked').each(function() {
+        managerSelected.push($(this).val());
+    });
+    console.log(55);
+    console.log(managerSelected);
+}
+
+function filterImage(e) {
+    var $e = $(e);
+    if ($e.hasClass('image-checkbox-checked')) {
+        $e.removeClass('image-checkbox-checked');
+        $e.find('input[type="checkbox"]').first().removeAttr("checked");
+        filterCheckbox();
+        //Only show the circles of the chosen sector
+        wrapper.selectAll(".clubs")
+            .style("opacity", opacityCircles)
+            .style("visibility", function(d) {
+                if (managerSelected.length == 0) {
+                    return "visible";
+                } else if ($.inArray(d.ClubManager, managerSelected) > -1) {
+                    return "visible";
+                } else {
+                    return "hidden";
+                }
+            });
+
+        //Make sure the pop-ups are only shown for the clicked on legend item
+        wrapper.selectAll(".voronoi")
+            .on("mouseover", function(d, i) {
+                if (managerSelected.length == 0) {
+                    return showTooltip.call(this, d, color);
+                } else if ($.inArray(d.ClubManager, managerSelected) > -1) {
+                    return showTooltip.call(this, d, color);
+                } else {
+                    return null;
+                }
+            })
+            .on("mouseout", function(d, i) {
+                if (managerSelected.length == 0) {
+                    return removeTooltip.call(this, d, i);
+                } else if ($.inArray(d.ClubManager, managerSelected) > -1)
+                    return removeTooltip.call(this, d, i);
+                else
+                    return null;
+            });
+                    console.log(44);
+    } else {
+        $e.addClass('image-checkbox-checked');
+        $e.find('input[type="checkbox"]').first().attr("checked", "checked");
+        filterCheckbox();
+        //Only show the circles of the chosen sector
+        wrapper.selectAll(".clubs")
+            .style("opacity", opacityCircles)
+            .style("visibility", function(d) {
+                if ($.inArray(d.ClubManager, managerSelected) <= -1) {
+                    return "hidden";
+                } else {
+                    return "visible";
+                }
+            });
+
+        //Make sure the pop-ups are only shown for the clicked on legend item
+        wrapper.selectAll(".voronoi")
+            .on("mouseover", function(d, i) {
+                if ($.inArray(d.ClubManager, managerSelected) <= -1) {
+                    return null;
+                } else {
+                    return showTooltip.call(this, d, color);
+                }
+            })
+            .on("mouseout", function(d, i) {
+                if ($.inArray(d.ClubManager, managerSelected) <= -1)
+                    return null;
+                else {
+                    return removeTooltip.call(this, d, i);
+                }
+            });
+    }
+}
 
 //iFrame handler
 var pymChild = new pym.Child();
