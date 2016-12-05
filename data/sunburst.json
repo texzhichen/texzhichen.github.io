@@ -87,33 +87,7 @@
         }
       ]
     },
-    {
-      "name": "French Ligue 1",
-      "nickname":"french",
-      "children": [
-        {
-          "name": "Paris Saint-Germain",
-          "size": 1,
-          "nickname":"psg"
-        },
-        {
-          "name": "Lyonnais",
-          "size": 1,
-          "nickname":"lyon"
-        },
-        {
-          "name": "Monaco",
-          "size": 1,
-          "nickname":"monaco"
-        },
-        {
-          "name":"Olympique de Marseille",
-          "size":1,
-          "nickname":"marseille"
-        }
-      ]
-    },
-    {
+	   {
       "name": "German Bundesliga",
       "nickname":"german",
       "children": [
@@ -176,6 +150,33 @@
         }
       ]
     },
+    {
+      "name": "French Ligue 1",
+      "nickname":"french",
+      "children": [
+        {
+          "name": "Paris Saint-Germain",
+          "size": 1,
+          "nickname":"psg"
+        },
+        {
+          "name": "Lyonnais",
+          "size": 1,
+          "nickname":"lyon"
+        },
+        {
+          "name": "Monaco",
+          "size": 1,
+          "nickname":"monaco"
+        },
+        {
+          "name":"Olympique de Marseille",
+          "size":1,
+          "nickname":"marseille"
+        }
+      ]
+    },
+ 
     {
       "name": "Portuguese Liga Nos",
       "nickname":"portuguese",

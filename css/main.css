@@ -1,18 +1,6 @@
-/*drawStackedBar*/
-#stackedbar .axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.x.axis path {
-  display: none;
-}
-
 /*drawScatterPlot*/
 body {
-    font-family: 'Lato', 'Helvetica Neue', sans-serif;
+    font-family: 'Lato', sans-serif;
     font-size: 12px;
     font-weight: 400;
     color: #525252;
@@ -26,10 +14,6 @@ body {
 label {
     font-size: 12px;
     font-weight: 400;
-}
-
-.headline {
-    padding-top: 60px;
 }
 
 .scatter {
@@ -84,6 +68,78 @@ label {
 .dropdown label{
     width: 70px;
 }
+
+/* tooltip */
+#tooltip {
+  text-align: center;  
+  z-index: 1000;
+  position: absolute;
+  opacity: 0;
+}
+
+#tooltip-container{
+  position: absolute;
+  bottom: 0;
+  width: 140px;
+  left: -70px; /* 250/2 */
+  line-height: 14px;
+  padding: 5px;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.2);  
+  border: 1px solid rgba(200,200,200,0.5);
+  cursor: default;
+  pointer-events: none;
+}
+
+#tooltip .tooltip-season {
+  text-transform: uppercase;
+  font-size: 9px;
+  margin-bottom: 2px;
+  color: #8A90E4;
+  margin-top: 2px;
+  text-align: center;
+  font-weight: 400;  
+}
+
+#tooltip .tooltip-club {
+  text-transform: uppercase;
+  font-size: 10px;
+  margin-bottom: 4px;
+  color: #333333;
+  margin-top: 2px;
+  text-align: center;
+  font-weight: 400;  
+}
+
+#tooltip .tooltip-rule {
+  height: 1px;
+  margin: 1px auto 3px;
+  background: #d1d1d1;
+  width: 110px;
+}
+
+#tooltip .tooltip-league {
+  color: #a2a2a2;
+  font-size: 10px;   
+  margin-bottom: 4px;  
+  font-weight: 300;
+}
+
+#tooltip-stage {
+  margin-top: 1px;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+#tooltip-games, 
+#tooltip-attributes {
+  color: #848484;
+  font-size: 10px;
+  font-weight: 300;
+}
+
 .legendCircle {
     stroke-width: 1;
     stroke: #999;
@@ -124,45 +180,45 @@ label {
 
 /*drawBarChart*/
 .bar {
-	fill: steelblue;
-	fill-opacity: 0.5;
+    fill: steelblue;
+    fill-opacity: 0.5;
 }
 
 .bar:hover {
-	fill-opacity: 1;
+    fill-opacity: 1;
 }
 
 .axis--x path {
-	display: none;
+    display: none;
 }
 
 .d3-tip {
-	line-height: 1;
-	padding: 6px;
-	background: rgba(0, 0, 0, 0.8);
-	color: #fff;
-	border-radius: 4px;
-	font-size: 12px;
+    line-height: 1;
+    padding: 6px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 12px;
 }
 
 /* Creates a small triangle extender for the tooltip */
 .d3-tip:after {
-	box-sizing: border-box;
-	display: inline;
-	font-size: 10px;
-	width: 100%;
-	line-height: 1;
-	color: rgba(0, 0, 0, 0.8);
-	content: "\25BC";
-	position: absolute;
-	text-align: center;
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.8);
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
 }
 
 /* Style northward tooltips specifically */
 .d3-tip.n:after {
-	margin: -2px 0 0 0;
-	top: 100%;
-	left: 0;
+    margin: -2px 0 0 0;
+    top: 100%;
+    left: 0;
 }
 
 .legend {
