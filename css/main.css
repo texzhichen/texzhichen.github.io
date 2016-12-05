@@ -181,7 +181,7 @@ label {
 /*drawBarChart*/
 .bar {
     fill: steelblue;
-    fill-opacity: 0.5;
+    fill-opacity: 0.7;
 }
 
 .bar:hover {

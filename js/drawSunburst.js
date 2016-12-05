@@ -12,6 +12,9 @@ function drawSunburst(sunburstID) {
         .range([ 0, radius ]);
 
     var color = d3.scale.category20c();
+//    var color = d3.scale.ordinal()
+//    .range(["#3182bd","#f0d278", "#e07076", "#994c81", "#5085a1", "#53a687", "#84b85c"])
+//    .domain(["UEFA","Spanish La Liga", "English Premier League", "French Ligue 1", "German Bundesliga", "Italian Serie A", "Portuguese Liga Nos"]);
 
     var svg = d3.select(sunburstID).append("svg")
         .attr("width", width)
