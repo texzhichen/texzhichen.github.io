@@ -1,3 +1,15 @@
+/*drawStackedBar*/
+#stackedbar .axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
 /*drawScatterPlot*/
 body {
     font-family: 'Lato', 'Helvetica Neue', sans-serif;

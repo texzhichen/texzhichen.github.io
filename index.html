@@ -20,6 +20,8 @@
 				Champions League</h5>
 			<h6 style="color: #A6A6A6; font-size: 18px; margin-bottom: 40px;">The
 				Race Between Top European Leagues 2015-16</h6>
+
+			<!-- sunburst div -->
 			<div class="col-sm-1"></div>
 			<div class="col-sm-4">
 				<div id=sunburst></div>
@@ -27,6 +29,30 @@
 			<div class="col-sm-5">
 				<div id=intro></div>
 			</div>
+
+			<!-- stackedbar div -->
+			<div class="col-sm-1"></div>
+			<div id="stackedbar" class="col-sm-9 stacked"></div>
+
+			<div id="legendstack" class="col-sm-3 stacked"
+				style="padding-right: 0px; padding-left: 0px;">
+				<div class="checkbox">
+					<label><input type="checkbox" value="">Show Split</label>
+				</div>
+				<div class="dropdown">
+					<p>
+						<span><label for="x-axis">Select </label></span> <select
+							id="x-value">
+							<option value="spanish">Spanish La Liga</option>
+						</select>
+					<p>
+                        <span><label for="x-axis">Select </label></span> <select
+                            id="x-value">
+                            <option value="2016">2016-17</option>
+                        </select>					
+				</div>
+			</div>
+			<!-- scatterplot div -->
 			<div class="col-sm-1"></div>
 			<div class="col-sm-9 scatter">
 				<div class="manager-checkbox">
@@ -120,49 +146,6 @@
 					to select all clubs within a league</div>
 				<div id="legend"></div>
 			</div>
-			<div id="barchart0" class="col-sm-12">
-				<div class="row">
-					<div class="col-sm-1"></div>
-					<div class="col-sm-1 sort" style="padding-left: 30px">
-						<label><input type="checkbox" id="sort">Sort
-							Values</label>
-					</div>
-				</div>
-				<div class="row" id="year">
-					<div class="col-sm-1"></div>
-					<div class="col-sm-1" style="padding-left: 30px">
-						<label><input type="checkbox" id="2013-14">2013-14</label>
-					</div>
-					<div class="col-sm-1">
-						<label><input type="checkbox" id="2014-15">2014-15</label>
-					</div>
-					<div class="col-sm-1">
-						<label><input type="checkbox" id="2015-16">2015-16</label>
-					</div>
-					<div class="col-sm-1">
-						<label><input type="checkbox" id="2016-17" checked>2016-17</label>
-					</div>
-				</div>
-				<div class="row" id='attr'>
-					<div class="col-sm-1"></div>
-					<div class="col-sm-1" style="padding-left: 30px">
-						<label><input name='optradio' type='radio'
-							id='AttackScore' checked> Attack</label>
-					</div>
-					<div class="col-sm-1">
-						<label><input name='optradio' type='radio'
-							id='DefenceScore'> Defence</label>
-					</div>
-					<div class="col-sm-1">
-						<label><input name='optradio' type='radio'
-							id='PossessionScore'> Poseession</label>
-					</div>
-					<div class="col-sm-1">
-						<label><input name='optradio' type='radio'
-							id='SquadValueNum'> Squad Value</label>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 
@@ -177,14 +160,14 @@
 
 	<!-- scripts -->
 	<script src="./data/clubs.js"></script>
-	<script src="./js/drawBarChart.js"></script>
+	<script src="./js/drawStackedBar.js"></script>
 	<script src="./js/drawSunburst.js"></script>
 	<script src="./js/drawScatterPlot.js"></script>
 	<script src="./js/writeIntro.js"></script>
 	<script>
-        drawSunburst("#sunburst");
-        writeIntro("uefa");
-        drawBarChart("#barchart0");
-    </script>
+		drawSunburst("#sunburst");
+		writeIntro("uefa");
+		drawStackedBar("#stackedbar");
+	</script>
 </body>
 </html>
