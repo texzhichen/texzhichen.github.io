@@ -101,17 +101,17 @@ function drawSunburst(sunburstID) {
                 writeIntro("italian")
             });		
 		svg.append("g").append("svg:image")
-            .attr('width', 30)
-            .attr('height', 30)
-            .attr("transform", "translate("+((-0.85)*radius*0.8-0.53*15)+","+((-0.53)*radius*0.8+0.85*15)+")rotate("+-59+")")
+            .attr('width', 100)
+            .attr('height', 40)
+            .attr("transform", "translate("+((-0.85)*radius*0.8-0.53*50)+","+((-0.53)*radius*0.8+0.85*50)+")rotate("+-59+")")
             .attr("xlink:href", "img/Ligue1Logo.png")
             .on("click", function(d) {
                 writeIntro("france")
             });		
 		svg.append("g").append("svg:image")
-            .attr('width', 30)
+            .attr('width', 76)
             .attr('height', 30)
-            .attr("transform", "translate("+((-0.3)*radius*0.8-0.95*15)+","+((-0.95)*radius*0.8+0.3*15)+")rotate("+-18.4+")")
+            .attr("transform", "translate("+((-0.3)*radius*0.8-0.95*38)+","+((-0.95)*radius*0.8+0.3*38)+")rotate("+-18.4+")")
             .attr("xlink:href", "img/LigaPortugalLogo.png")
             .on("click", function(d) {
                 writeIntro("portugal")
