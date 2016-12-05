@@ -10,6 +10,8 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
     href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
 <link rel="stylesheet" href="./css/main.css" />
 </head>
 
@@ -28,97 +30,105 @@
                 <div id=intro></div>
             </div>
             <div class="col-sm-1"></div>
-            <div class="col-sm-9 scatter">
+              <div class="col-sm-9 scatter">
                 <div class="manager-checkbox">
                     <h6>Select from the managers below:</h6>
-                    <label class="image-checkbox" title="Pep Guardiola"> <img
-                        src="./img/manager/PepGuardiola.png" width="80" height="60">
-                        <figcaption>Pep Guardiola</figcaption> <input type="checkbox"
-                        value="PepGuardiola" />
-                    </label> <label class="image-checkbox" title="Jose Mourinho"> <img
-                        src="./img/manager/JoseMourinho.png" width="80" height="60">
-                        <figcaption>Jose Mourinho</figcaption> <input type="checkbox"
-                        value="JoseMourinho" />
-                    </label> <label class="image-checkbox" title="Diego Simeone"> <img
-                        src="./img/manager/DiegoSimeone.png" width="80" height="60">
-                        <figcaption>Diego Simeone</figcaption> <input type="checkbox"
-                        value="DiegoSimeone" />
-                    </label> <label class="image-checkbox" title="Arsene Wenger"> <img
-                        src="./img/manager/ArseneWenger.png" width="80" height="60">
-                        <figcaption>Arsene Wenger</figcaption> <input type="checkbox"
-                        value="ArseneWenger" />
-                    </label> <label class="image-checkbox" title="Jurger Klopp"> <img
-                        src="./img/manager/JurgerKlopp.png" width="80" height="60">
-                        <figcaption>Jurger Klopp</figcaption> <input type="checkbox"
-                        value="JurgerKlopp" />
-                    </label> <label class="image-checkbox" title="Carlos Ancelotti"> <img
-                        src="./img/manager/CarlosAncelotti.png" width="80" height="60">
-                        <figcaption>Carlos Ancelotti</figcaption> <input type="checkbox"
-                        value="CarlosAncelotti" />
-                    </label> <label class="image-checkbox" title="Luis Enrique"> <img
-                        src="./img/manager/LuisEnrique.png" width="80" height="60">
-                        <figcaption>Luis Enrique</figcaption> <input type="checkbox"
-                        value="LuisEnrique" />
-                    </label> <label class="image-checkbox" title="Manuel Pellegrini"> <img
-                        src="./img/manager/ManuelPellegrini.png" width="80" height="60">
-                        <figcaption>Manuel Pellegrini</figcaption> <input type="checkbox"
-                        value="ManuelPellegrini" />
-                    </label> <label class="image-checkbox" title="Laurent Blanc"> <img
-                        src="./img/manager/LaurentBlanc.png" width="80" height="60">
-                        <figcaption>Laurent Blanc</figcaption> <input type="checkbox"
-                        value="LaurentBlanc" />
+                    <label class="image-checkbox" title="Pep Guardiola">
+                        <img src="./img/manager/PepGuardiola.png" / width="80" height="60">
+                        <figcaption>Pep Guardiola</figcaption>
+                        <input class="filter-option" type="checkbox" value="Pep Guardiola" />
+                    </label>
+                    <label class="image-checkbox" title="Jose Mourinho">
+                        <img src="./img/manager/JoseMourinho.png" / width="80" height="60">
+                        <figcaption>Jose Mourinho</figcaption>
+                        <input class="filter-option" type="checkbox" value="Jose Mourinho" />
+                    </label>
+                    <label class="image-checkbox" title="Diego Simeone">
+                        <img src="./img/manager/DiegoSimeone.png" / width="80" height="60">
+                        <figcaption>Diego Simeone</figcaption>
+                        <input class="filter-option" type="checkbox" value="Diego Simeone" />
+                    </label>
+                    <label class="image-checkbox" title="Arsene Wenger">
+                        <img src="./img/manager/ArseneWenger.png" / width="80" height="60">
+                        <figcaption>Arsene Wenger</figcaption>
+                        <input class="filter-option" type="checkbox" value="Arsene Wenger" />
+                    </label>
+                    <label class="image-checkbox" title="Jurger Klopp">
+                        <img src="./img/manager/JurgerKlopp.png" / width="80" height="60">
+                        <figcaption>Jurger Klopp</figcaption>
+                        <input class="filter-option" type="checkbox" value="Jurger Klopp" />
+                    </label>
+                    <label class="image-checkbox" title="Carlos Ancelotti">
+                        <img src="./img/manager/CarlosAncelotti.png" / width="80" height="60">
+                        <figcaption>Carlos Ancelotti</figcaption>
+                        <input class="filter-option" type="checkbox" value="Carlos Ancelotti" />
+                    </label>
+                    <label class="image-checkbox" title="Luis Enrique">
+                        <img src="./img/manager/LuisEnrique.png" / width="80" height="60">
+                        <figcaption>Luis Enrique</figcaption>
+                        <input class="filter-option" type="checkbox" value="Luis Enrique" />
+                    </label>
+                    <label class="image-checkbox" title="Manuel Pellegrini">
+                        <img src="./img/manager/ManuelPellegrini.png" / width="80" height="60">
+                        <figcaption>Manuel Pellegrini</figcaption>
+                        <input class="filter-option" type="checkbox" value="Manuel Pellegrini" />
+                    </label>
+                    <label class="image-checkbox" title="Laurent Blanc">
+                        <img src="./img/manager/LaurentBlanc.png" / width="80" height="60">
+                        <figcaption>Laurent Blanc</figcaption>
+                        <input class="filter-option" name='v' type="checkbox" value="Laurent Blanc" />
                     </label>
                 </div>
                 <div id="chart"></div>
             </div>
-            <div id="legend" class="col-sm-3 scatter"
-                style="padding-right: 0px; padding-left: 0px;">
+            <div id="legend" class="col-sm-3 scatter" style="padding-right: 0px; padding-left: 0px;">
                 <div class="dropdown">
-                    <p>
-                        <span><label for="x-axis">Select x-axis</label></span> <select
-                            id="x-value" onchange="setGraph()">
-                            <option value="OverallPerformanceScore">Overall
-                                Performance Score</option>
-                            <option selected="selected" value="AttackScore">Attack
-                                Score</option>
+                    <p><span><label for="x-axis">Select x-axis</label></span>
+                        <select class="selectpicker" id="x-value" onchange="setGraph()">
+                            <option value="OverallPerformanceScore">Overall Performance Score</option>
+                            <option selected="selected" value="AttackScore">Attack Score</option>
                             <option value="DefenceScore">Defence Score</option>
                             <option value="PossessionScore">Possession Score</option>
                             <option value="SquadValue(Million)">Squad Value</option>
                         </select>
-                    <p>
-                        <span><label for="y-axis">Select y-axis</label></span> <select
-                            id="y-value" onchange="setGraph()">
-                            <option value="OverallPerformanceScore">Overall
-                                Performance Score</option>
+                    <p><span><label for="y-axis">Select y-axis</label></span>
+                        <select class="selectpicker" id="y-value" onchange="setGraph()">
+                            <option value="OverallPerformanceScore">Overall Performance Score</option>
                             <option value="AttackScore">Attack Score</option>
-                            <option selected="selected" value="DefenceScore">Defence
-                                Score</option>
+                            <option selected="selected" value="DefenceScore">Defence Score</option>
                             <option value="PossessionScore">Possession Score</option>
                             <option value="SquadValue(Million)">Squad Value</option>
                         </select>
-                    <p>
-                        <span><label for="size">Select size</label></span> <select
-                            id="r-value" onchange="setGraph()">
-                            <option value="OverallPerformanceScore">Overall
-                                Performance Score</option>
+                    <p><span><label for="size">Select size</label></span>
+                        <select class="selectpicker" id="r-value" onchange="setGraph()">
+                            <option value="OverallPerformanceScore">Overall Performance Score</option>
                             <option value="AttackScore">Attack Score</option>
                             <option value="DefenceScore">Defence Score</option>
-                            <option selected="selected" value="PossessionScore">Possession
-                                Score</option>
+                            <option selected="selected" value="PossessionScore">Possession Score</option>
                             <option value="SquadValue(Million)">Squad Value</option>
                         </select>
-                    <p>
-                        <span><label for="color">Select color</label></span> <select
-                            id="c-value" onchange="setGraph()">
+                    <p><span><label for="color">Select color</label></span>
+                        <select class="selectpicker" id="c-value" onchange="setGraph()">
                             <option selected="selected" value="League">League</option>
                             <option value="Season">Season</option>
                             <option value="FinalRound">Round Reached</option>
                         </select>
+                    </div>
+                    <div class="legendTitle" style="font-size: 12px;">League</div>
+                    <div class="legendText" style="font-size: 11px; color: #BABABA;">click to select all clubs within a league</div>
+                    <div id="legend"></div>
                 </div>
-                <div class="legendTitle" style="font-size: 12px;">League</div>
-                <div class="legendText" style="font-size: 11px; color: #BABABA;">click
-                    to select all clubs within a league</div>
-                <div id="legend"></div>
+                <!-- Tooltip -->
+                <div id="tooltip">
+                    <div id="tooltip-container">
+                    <div class="tooltip-season"></div>
+                    <div class="tooltip-club"></div>
+                    <div class="tooltip-rule"></div>
+                    <div class="tooltip-league"></div>
+                    <div id="tooltip-stage"></div>
+                    <div id="tooltip-attributes"></div>
+                    <div id="tooltip-games"></div>
+                </div>
             </div>
             <div id="barchart0" class="col-sm-12">
                 <div class="row" id="year">
@@ -169,11 +179,14 @@
         src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
     <!-- scripts -->
-    <script src="./data/clubs.js"></script>
+    <script src="./data/clubsInfo.js"></script>
     <script src="./js/drawBarChart.js"></script>
     <script src="./js/drawSunburst.js"></script>
     <script src="./js/drawScatterPlot.js"></script>
     <script src="./js/writeIntro.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+    <script src="js/box.js"></script>
     <script>
         drawSunburst("#sunburst");
         writeIntro("uefa");

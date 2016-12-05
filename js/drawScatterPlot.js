@@ -551,8 +551,8 @@ function showTooltip(d, color) {
     console.log(document.getElementById("sunburst").offsetLeft);
 
     d3.select("#tooltip")
-        .style("top", (parseInt(element.attr("cy") + document.getElementById("chart").offsetTop)+650) + "px")
-        .style("left", (parseInt(element.attr("cx") + document.getElementById("chart").offsetLeft)+150) + "px")
+        .style("top", (parseInt(element.attr("cy") + document.getElementById("chart").offsetTop) + 800) + "px")
+        .style("left", (parseInt(element.attr("cx") + document.getElementById("chart").offsetLeft) + 220) + "px")
         .transition().duration(0)
         .style("opacity", 1);
 
