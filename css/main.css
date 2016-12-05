@@ -125,11 +125,11 @@ label {
 /*drawBarChart*/
 .bar {
 	fill: steelblue;
-	fill-opacity: 1;
+	fill-opacity: 0.5;
 }
 
 .bar:hover {
-	fill: orange;
+	fill-opacity: 1;
 }
 
 .axis--x path {
