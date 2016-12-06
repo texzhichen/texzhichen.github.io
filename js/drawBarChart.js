@@ -1,38 +1,38 @@
 function drawBarChart(barchartID) {
     const ClubNameRep = "UniqueName";
-    const clubsID = ["ARS",
-                     "ATH",
-                     "ATL",
-                     "BAY",
-                     "BEN",
-                     "CHE",
-                     "DOR",
-                     "FCB",
-                     "JUV",
-                     "LEV",
-                     "LIV",
-                     "LYO",
-                     "MAR",
-                     "MC",
-                     "MGB",
-                     "MIL",
-                     "MON",
-                     "MUN",
-                     "NAP",
-                     "POR",
-                     "PSG",
-                     "RMA",
-                     "ROM",
-                     "RSO",
-                     "SCH",
-                     "SCP",
-                     "SEV",
-                     "VAL",
-                     "WOL"];
+    const clubsID = [ "ARS",
+        "ATH",
+        "ATL",
+        "BAY",
+        "BEN",
+        "CHE",
+        "DOR",
+        "FCB",
+        "JUV",
+        "LEV",
+        "LIV",
+        "LYO",
+        "MAR",
+        "MC",
+        "MGB",
+        "MIL",
+        "MON",
+        "MUN",
+        "NAP",
+        "POR",
+        "PSG",
+        "RMA",
+        "ROM",
+        "RSO",
+        "SCH",
+        "SCP",
+        "SEV",
+        "VAL",
+        "WOL" ];
 
-    const leagues = ["Spanish La Liga","English Premier League","French Ligue 1",
-                     "German Bundesliga","Italian Serie A","Portuguese Liga Nos"]
-    
+    const leagues = [ "Spanish La Liga", "English Premier League", "French Ligue 1",
+        "German Bundesliga", "Italian Serie A", "Portuguese Liga Nos" ]
+
     var selectedClubs = [];
     var clubsOn = {};
     for (var i in clubsID) {
@@ -40,6 +40,12 @@ function drawBarChart(barchartID) {
         selectedClubs.push(clubsID[i]);
     }
     var AttrSelected = "Overall";
+    var AttrName = {
+        "Overall" : "Overall Performance Score",
+        "PossessionScore" : "Possession Score",
+        "AttackScore" : "Attack Score",
+        "DefenceScore" : "Defence Score"
+    };
     var selectedYears = {
         "2013-14" : false,
         "2014-15" : false,
@@ -97,7 +103,7 @@ function drawBarChart(barchartID) {
             AttrSelected = this.id;
             break;
         }
-        
+
         redraw();
     });
 
@@ -115,7 +121,7 @@ function drawBarChart(barchartID) {
             },
             width = +svg.attr("width") - margin.left - margin.right,
             height = +svg.attr("height") - margin.top - margin.bottom;
-        //      d3.v4        
+            //      d3.v4        
             //        var x = d3.scaleBand().rangeRound([ 0, width ]).padding(0.1);
             //        var y = d3.scaleLinear().rangeRound([ height, 0 ]);
             //        var color = d3.scaleOrdinal(d3.schemeCategory10);
@@ -124,10 +130,10 @@ function drawBarChart(barchartID) {
         var x = d3.scale.ordinal().rangeRoundBands([ 0, width ], .1, 1);
         var y = d3.scale.linear().range([ height, 0 ]);
         // var color = d3.scale.category10();
-        
+
         color = d3.scale.ordinal()
-        .range(["#EFB605", "#E01A25", "#991C71", "#2074A0", "#10A66E", "#7EB852"])
-        .domain(["Spanish La Liga", "English Premier League", "French Ligue 1", "German Bundesliga", "Italian Serie A", "Portuguese Liga Nos"]);
+            .range([ "#EFB605", "#E01A25", "#991C71", "#2074A0", "#10A66E", "#7EB852" ])
+            .domain([ "Spanish La Liga", "English Premier League", "French Ligue 1", "German Bundesliga", "Italian Serie A", "Portuguese Liga Nos" ]);
 
         var g = svg.append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -149,19 +155,19 @@ function drawBarChart(barchartID) {
             data = data.filter(function(d) {
                 return $.inArray(d["ClubCode"], selectedClubs) > -1
             });
-            
+
             var data = data.sort(function(a, b) {
                 return b[AttrSelected] - a[AttrSelected];
             })
-//            if (isSortedByValue) {
-//                var data = data.sort(function(a, b) {
-//                    return b[AttrSelected] - a[AttrSelected];
-//                })
-//            } else {
-//                var data = data.sort(function(a, b) {
-//                    return d3.ascending(a[ClubNameRep], b[ClubNameRep]);
-//                })
-//            }
+            //            if (isSortedByValue) {
+            //                var data = data.sort(function(a, b) {
+            //                    return b[AttrSelected] - a[AttrSelected];
+            //                })
+            //            } else {
+            //                var data = data.sort(function(a, b) {
+            //                    return d3.ascending(a[ClubNameRep], b[ClubNameRep]);
+            //                })
+            //            }
 
             // draw x and y axises
             x.domain(data.map(function(d) {
@@ -193,30 +199,27 @@ function drawBarChart(barchartID) {
                 .attr("dx", "-.8em")
                 .attr("dy", "-1.5em")
                 .attr("transform", "rotate(-65)")
-                .style("font-size", "8px")
-
+                .style("font-size", "8px");
+            
             g.append("g")
                 .attr("class", "y axis")
                 .call(yAxis)
                 .append("text")
-                .attr("transform", "rotate(90)")
+                .attr("transform", "rotate(-90)")
                 .attr("y", 6)
-                .attr("dy", "0.71em");
+                .attr("dy", "0.71em")
+                .style("text-anchor", "end")
+                .text(AttrName[AttrSelected]);
+            
 
             // tooltip setting
             var tooltip = d3.tip()
                 .attr("class", "d3-tip")
                 .offset([ -8, 0 ])
                 .html(function(d) {
-                    if (AttrSelected == "Overall") {
-                        return "Club: " + d["Club"] + "<br>"
-                            + "League: " + d["League"] + "<br>"
-                            + "OverallScore: " + d["Overall"];
-                    } else {
-                        return "Club: " + d["Club"] + "<br>"
-                            + "League: " + d["League"] + "<br>"
-                            + AttrSelected + ": " + d[AttrSelected];
-                    }
+                    return "Club: " + d["Club"] + "<br>"
+                    + "League: " + d["League"] + "<br>"
+                    + AttrName[AttrSelected] + ": " + d[AttrSelected];
                 });
             svg.call(tooltip);
 
@@ -241,13 +244,12 @@ function drawBarChart(barchartID) {
                     return height - y(d[AttrSelected]);
                 });
 
-
             // legend
-//            var options = d3.keys(leagues).filter(function(key) {
-//                return leagues[key];
-//            });
+            //            var options = d3.keys(leagues).filter(function(key) {
+            //                return leagues[key];
+            //            });
             var options = leagues;
-            
+
             var legend = svg.selectAll(".legend")
                 .data(options.slice())
                 .enter().append("g")
@@ -257,7 +259,7 @@ function drawBarChart(barchartID) {
                 });
 
             legend.append("text")
-                .attr("x", width-170)
+                .attr("x", width - 170)
                 .attr("y", 9)
                 .attr("dy", ".35em")
                 .attr("transform", "translate(50,0)")
@@ -268,26 +270,27 @@ function drawBarChart(barchartID) {
                 });
 
             legend.append("rect")
-                .attr("x", width-130)
+                .attr("x", width - 130)
                 .attr("width", 18)
                 .attr("height", 18)
                 .attr("transform", "translate(-15,0)")
                 .style("fill", function(d) {
                     return color(d);
                 });
-            
+
             svg.select(".axis").selectAll("text").remove();
-            
+
             var ticks = svg.select(".axis").selectAll(".tick")
-            .data(data)
-            .append("svg:image")
-            .attr("xlink:href", function (d) {
-                
-                return "img/"+d.img ; })
-            .attr("x", -10)
-            .attr("y", 6)
-            .attr("width", 20)
-            .attr("height", 20);
+                .data(data)
+                .append("svg:image")
+                .attr("xlink:href", function(d) {
+
+                    return "img/" + d.img;
+                })
+                .attr("x", -13)
+                .attr("y", 4)
+                .attr("width", 25)
+                .attr("height", 25);
         });
     }
 }

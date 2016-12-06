@@ -5,7 +5,7 @@
 <title>UEFA Visualization</title>
 
 <!-- Lato & CSS -->
-<link href='http://fonts.googleapis.com/css?family=Lato:700,400,300'
+<link href='https://fonts.googleapis.com/css?family=Lato:700,400,300'
     rel='stylesheet' type='text/css'>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
@@ -131,38 +131,56 @@
                 </div>
             </div>
             <div id="barchart0" class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-12" align="left">
+                        <tab1>Choose a season</tab1>
+                    </div>
+                </div>
                 <div class="row" id="year">
                     <div class="col-sm-1"></div>
                     <div class="col-sm-1" style="padding-left: 30px">
-                        <label><input type="radio" name='optradio1' id="2013-14">2013-14</label>
+                        <label><input type="radio" name='optradio1' id="2013-14">&nbsp; 2013-14</label>
                     </div>
                     <div class="col-sm-1">
-                        <label><input type="radio" name='optradio1' id="2014-15">2014-15</label>
+                        <label><input type="radio" name='optradio1' id="2014-15">&nbsp; 2014-15</label>
                     </div>
                     <div class="col-sm-1">
-                        <label><input type="radio" name='optradio1' id="2015-16">2015-16</label>
+                        <label><input type="radio" name='optradio1' id="2015-16">&nbsp; 2015-16</label>
                     </div>
                     <div class="col-sm-1">
-                        <label><input type="radio" name='optradio1' id="2016-17" checked>2016-17</label>
+                        <label><input type="radio" name='optradio1' id="2016-17" checked>&nbsp; 2016-17</label>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-12" align="left">
+                        <tab1>Choose a performance evalution</tab1>
+                        <a data-toggle="tooltip" class="tooltipLink" data-original-title=
+                        "<p>The Overall Performance Score measures how well a team performs in soccer games. </p>
+                         <p>A higher score indicates better performance on soccer fields. </p>    
+                         <p>The Overall Performance Score is composed (the addition) of Attack (e.g., shots, crosses), 
+                         Defence (e.g., tackles, interceptions), and Possession (e.g., passes, through-balls).</p>"
+                         data-placement="top">
+                            <span class="glyphicon glyphicon-info-sign"></span>
+                        </a>                    
+                    </div>
+                </div>                
                 <div class="row" id='attr'>
                     <div class="col-sm-1"></div>
                     <div class="col-sm-1" style="padding-left: 30px">
                         <label><input name='optradio' type='radio'
-                            id='Overall' checked> Overall</label>
+                            id='Overall' checked>&nbsp; Overall</label>
                     </div>
                     <div class="col-sm-1">
                         <label><input name='optradio' type='radio'
-                            id='AttackScore'> Attack</label>
+                            id='AttackScore'>&nbsp; Attack</label>
                     </div>
                     <div class="col-sm-1">
                         <label><input name='optradio' type='radio'
-                            id='DefenceScore'> Defence</label>
+                            id='DefenceScore'>&nbsp; Defence</label>
                     </div>
                     <div class="col-sm-1">
                         <label><input name='optradio' type='radio'
-                            id='PossessionScore'> Poseession</label>
+                            id='PossessionScore'>&nbsp; Possession</label>
                     </div>
                 </div>
             </div>
@@ -170,11 +188,11 @@
     </div>
 
     <!-- libraries -->
-    <script src="http://d3js.org/d3.v3.js"></script>
+    <script src="https://d3js.org/d3.v3.js"></script>
     <script src="./lib/pym.min.js"></script>
     <script src="./lib/d3-tip.js"></script>
     <script
-        src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script
         src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
@@ -191,6 +209,7 @@
         drawSunburst("#sunburst");
         writeIntro("uefa");
         drawBarChart("#barchart0");
+        $("a.tooltipLink").tooltip({html:true});
     </script>
 </body>
 </html>
