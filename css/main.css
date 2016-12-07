@@ -16,6 +16,10 @@ label {
     font-weight: 400;
 }
 
+tab0 { 
+    padding-left: 2em; 
+}
+
 tab1 { 
 	padding-left: 10em; 
 }
