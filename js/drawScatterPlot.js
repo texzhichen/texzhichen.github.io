@@ -579,8 +579,8 @@ function showTooltip(d, color) {
 
     //Set the tooltip in the right location and have it appear
     d3.select("#tooltip")
-        .style("top", (parseInt(element.attr("cy") + document.getElementById("chart").offsetTop) + 1340) + "px")
-        .style("left", (parseInt(Number(element.attr("cx")) + document.getElementById("chart").offsetLeft) + 160) + "px")
+        .style("top", (parseInt(Number(element.attr("cy")) + document.getElementById("chart").offsetTop) + 1200) + "px")
+        .style("left", (parseInt(Number(element.attr("cx")) + document.getElementById("chart").offsetLeft) + 180) + "px")
         .transition().duration(0)
         .style("opacity", 1);
 
