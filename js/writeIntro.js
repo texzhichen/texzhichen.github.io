@@ -11,7 +11,7 @@ function writeIntro(name) {
         "<h5>Graphs</h5>" +
         "- The <b>sunburst</b> " + "contains the basic information of a club such as " +
         		"the league it belongs to, its logo and its top 3 most expensive players." +
-		"</br>- The <b>bar chart</b> " + "allows people to quickly check the performance score (see below) of clubs in terms of seasons and measures." +
+		"</br>- The <b>bar chart</b> " + "allows people to quickly check the Squawka performance score (see below) of clubs in terms of seasons and measures." +
 		"</br>- The <b>scatter plot</b> " + "is made for advanced users who want to gain insights into clubs by exploring the relationship between " +
 				"different performance measures with regard to managers, league, season, and round reached." +
 		"</br>- The <b>box plot</b> " + "helps people to learn the stability of performance of clubs in matches across seasons. " +
