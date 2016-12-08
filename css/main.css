@@ -32,7 +32,8 @@ tab2 {
 }
 
 .scatter {
-    padding-top: 60px;
+    padding-top: 20px;
+    padding-bottom: 60px;
 }
 .axis path,
 .axis line {

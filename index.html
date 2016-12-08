@@ -29,6 +29,60 @@
                 <div id=intro></div>
             </div>
             <div class="col-sm-1"></div>
+            <div id="barchart0" class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-12" align="left">
+                        <tab1>Choose a season</tab1>
+                    </div>
+                </div>
+                <div class="row" id="year">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-1" style="padding-left: 30px">
+                        <label><input type="radio" name='optradio1' id="2013-14">&nbsp; 2013-14</label>
+                    </div>
+                    <div class="col-sm-1">
+                        <label><input type="radio" name='optradio1' id="2014-15">&nbsp; 2014-15</label>
+                    </div>
+                    <div class="col-sm-1">
+                        <label><input type="radio" name='optradio1' id="2015-16">&nbsp; 2015-16</label>
+                    </div>
+                    <div class="col-sm-1">
+                        <label><input type="radio" name='optradio1' id="2016-17" checked>&nbsp; 2016-17</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" align="left">
+                        <tab1>Choose a performance evaluation</tab1>
+                        <a data-toggle="tooltip" class="tooltipLink" data-original-title=
+                        "<p>The Overall Performance Score measures how well a team performs in soccer games. </p>
+                         <p>A higher score indicates better performance on soccer fields. </p>    
+                         <p>The Overall Performance Score is composed (the addition) of Attack (e.g., shots, crosses), 
+                         Defence (e.g., tackles, interceptions), and Possession (e.g., passes, through-balls).</p>"
+                         data-placement="top">
+                            <span class="glyphicon glyphicon-info-sign"></span>
+                        </a>                    
+                    </div>
+                </div>                
+                <div class="row" id='attr'>
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-1" style="padding-left: 30px">
+                        <label><input name='optradio' type='radio'
+                            id='Overall' checked>&nbsp; Overall</label>
+                    </div>
+                    <div class="col-sm-1">
+                        <label><input name='optradio' type='radio'
+                            id='AttackScore'>&nbsp; Attack</label>
+                    </div>
+                    <div class="col-sm-1">
+                        <label><input name='optradio' type='radio'
+                            id='DefenceScore'>&nbsp; Defence</label>
+                    </div>
+                    <div class="col-sm-1">
+                        <label><input name='optradio' type='radio'
+                            id='PossessionScore'>&nbsp; Possession</label>
+                    </div>
+                </div>
+            </div>            
               <div class="col-sm-9 scatter">
                 <div class="manager-checkbox">
                     <h6>Select from the managers below:</h6>
@@ -127,60 +181,6 @@
                     <div id="tooltip-stage"></div>
                     <div id="tooltip-attributes"></div>
                     <div id="tooltip-games"></div>
-                </div>
-            </div>
-            <div id="barchart0" class="col-sm-12">
-                <div class="row">
-                    <div class="col-sm-12" align="left">
-                        <tab1>Choose a season</tab1>
-                    </div>
-                </div>
-                <div class="row" id="year">
-                    <div class="col-sm-1"></div>
-                    <div class="col-sm-1" style="padding-left: 30px">
-                        <label><input type="radio" name='optradio1' id="2013-14">&nbsp; 2013-14</label>
-                    </div>
-                    <div class="col-sm-1">
-                        <label><input type="radio" name='optradio1' id="2014-15">&nbsp; 2014-15</label>
-                    </div>
-                    <div class="col-sm-1">
-                        <label><input type="radio" name='optradio1' id="2015-16">&nbsp; 2015-16</label>
-                    </div>
-                    <div class="col-sm-1">
-                        <label><input type="radio" name='optradio1' id="2016-17" checked>&nbsp; 2016-17</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12" align="left">
-                        <tab1>Choose a performance evaluation</tab1>
-                        <a data-toggle="tooltip" class="tooltipLink" data-original-title=
-                        "<p>The Overall Performance Score measures how well a team performs in soccer games. </p>
-                         <p>A higher score indicates better performance on soccer fields. </p>    
-                         <p>The Overall Performance Score is composed (the addition) of Attack (e.g., shots, crosses), 
-                         Defence (e.g., tackles, interceptions), and Possession (e.g., passes, through-balls).</p>"
-                         data-placement="top">
-                            <span class="glyphicon glyphicon-info-sign"></span>
-                        </a>                    
-                    </div>
-                </div>                
-                <div class="row" id='attr'>
-                    <div class="col-sm-1"></div>
-                    <div class="col-sm-1" style="padding-left: 30px">
-                        <label><input name='optradio' type='radio'
-                            id='Overall' checked>&nbsp; Overall</label>
-                    </div>
-                    <div class="col-sm-1">
-                        <label><input name='optradio' type='radio'
-                            id='AttackScore'>&nbsp; Attack</label>
-                    </div>
-                    <div class="col-sm-1">
-                        <label><input name='optradio' type='radio'
-                            id='DefenceScore'>&nbsp; Defence</label>
-                    </div>
-                    <div class="col-sm-1">
-                        <label><input name='optradio' type='radio'
-                            id='PossessionScore'>&nbsp; Possession</label>
-                    </div>
                 </div>
             </div>
             <div class="col-sm-6">
