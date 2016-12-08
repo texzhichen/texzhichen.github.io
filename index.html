@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<title>UEFA Visualization</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>UEFA Visualization</title>
 
-<!-- Lato & CSS -->
-<link href='https://fonts.googleapis.com/css?family=Lato:700,400,300'
-    rel='stylesheet' type='text/css'>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
-<link rel="stylesheet" href="./css/main.css" />
+    <!-- Lato & CSS -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:700,400,300' rel='stylesheet' type='text/css'>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="css/box.css" />
 </head>
 
 <body>
@@ -81,7 +80,7 @@
                 </div>
                 <div id="chart"></div>
             </div>
-            <div id="legend" class="col-sm-3 scatter" style="padding-right: 0px; padding-left: 0px;">
+            <div class="col-sm-2 scatter" style="padding-right: 0px; padding-left: 0px;">
                 <div class="dropdown">
                     <p><span><label for="x-axis">Select x-axis</label></span>
                         <select class="selectpicker" id="x-value" onchange="setGraph()">
@@ -114,8 +113,8 @@
                             <option value="FinalRound">Round Reached</option>
                         </select>
                     </div>
-                    <div class="legendTitle" style="font-size: 12px;">League</div>
-                    <div class="legendText" style="font-size: 11px; color: #BABABA;">click to select all clubs within a league</div>
+                    <div id="legendTitle" class="legendTitle"></div>
+                    <div id="legendText" class="legendText"></div>
                     <div id="legend"></div>
                 </div>
                 <!-- Tooltip -->
@@ -183,6 +182,147 @@
                             id='PossessionScore'>&nbsp; Possession</label>
                     </div>
                 </div>
+            </div>
+            <div class="col-sm-6">
+                <h5>Filter team stats by:</h5>
+                <select id="season" class="selectpicker form-group" title="Choose season">
+                    <option value='2013/14'>13-14 Season</option>
+                    <option value='2014/15'>14-15 Season</option>
+                    <option value='2015/16'>15-16 Season</option>
+                </select>
+                <div id="club-dropdown">
+                    <select id="club" class="selectpicker form-group" title="Choose club" disabled>
+                        <optgroup data-group='2013/14' label='Spanish La Liga'>
+                            <option data-group='2013/14' value='RMA13'>Real Madrid</option>
+                            <option data-group='2013/14' value='FCB13'>Barcelona</option>
+                            <option data-group='2013/14' value='ATL13'>Atletico Madrid</option>
+                        </optgroup>
+                        <optgroup data-group='2013/14' label='English Premier League'>
+                            <option data-group='2013/14' value='MUN13'>Manchester United</option>
+                            <option data-group='2013/14' value='CHE13'>Chelsea</option>
+                        </optgroup>
+                        <optgroup data-group='2013/14' label="German Bundasliga">
+                            <option data-group='2013/14' value='BAY13'>Bayern Munich</option>
+                            <option data-group='2013/14' value='DOR13'>Borussia Dortmund</option>
+                        </optgroup>
+                        <optgroup data-group='2013/14' label="French Ligue 1">
+                            <option data-group='2013/14' value='PSG13'>Paris Saint-Germain</option>
+                        </optgroup>
+                        <optgroup data-group='2014/15' label='Spanish La Liga'>
+                            <option data-group='2014/15' value='RMA14'>Real Madrid</option>
+                            <option data-group='2014/15' value='FCB14'>Barcelona</option>
+                            <option data-group='2014/15' value='ATL14'>Atletico Madrid</option>
+                        </optgroup>
+                        <optgroup data-group='2014/15' label="German Bundasliga">
+                            <option data-group='2014/15' value='BAY14'>Bayern Munich</option>
+                        </optgroup>
+                        <optgroup data-group='2014/15' label="Serie A">
+                            <option data-group='2014/15' value='JUV14'>Juventus</option>
+                        </optgroup>
+                        <optgroup data-group='2014/15' label="French Ligue 1">
+                            <option data-group='2014/15' value='PSG14'>Paris Saint-Germain</option>
+                            <option data-group='2014/15' value='MON14'>Monaco</option>
+                        </optgroup>
+                        <optgroup data-group='2014/15' label="Portuguese Liga Nos">
+                            <option data-group='2014/15' value='POR14'>Porto</option>
+                        </optgroup>
+                        <optgroup data-group='2015/16' label='Spanish La Liga'>
+                            <option data-group='2015/16' value='RMA15'>Real Madrid</option>
+                            <option data-group='2015/16' value='FCB15'>Barcelona</option>
+                            <option data-group='2015/16' value='ATL15'>Athletico Madrid</option>
+                        </optgroup>
+                        <optgroup data-group='2015/16' label='English Premier League'>
+                            <option data-group='2015/16' value='MC15'>Manchester City</option>
+                        </optgroup>
+                        <optgroup data-group='2015/16' label="German Bundasliga">
+                            <option data-group='2015/16' value='BAY15'>Bayern Munich</option>
+                            <option data-group='2015/16' value='WOL15'>Wolfsburg</option>
+                        </optgroup>
+                        <optgroup data-group='2015/16' label="French Ligue 1">
+                            <option data-group='2015/16' value='PSG15'>Paris Saint-Germain</option>
+                        </optgroup>
+                        <optgroup data-group='2015/16' label="Portuguese Liga Nos">
+                            <option data-group='2015/16' value='BEN15'>Benfica</option>
+                        </optgroup>
+                    </select>
+                    <span id="option-container" style="display:none; visibility: hidden; position: absolute;"></span>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <h5>Filter team stats by:</h5>
+                <select id="season2" class="selectpicker form-group" title="Choose season">
+                    <option value='2013/14'>13-14 Season</option>
+                    <option value='2014/15'>14-15 Season</option>
+                    <option value='2015/16'>15-16 Season</option>
+                </select>
+                <div id="club-dropdown2">
+                    <select id="club2" class="selectpicker form-group" title="Choose club" disabled>
+                        <optgroup data-group='2013/14' label='Spanish La Liga'>
+                            <option data-group='2013/14' value='RMA13'>Real Madrid</option>
+                            <option data-group='2013/14' value='FCB13'>Barcelona</option>
+                            <option data-group='2013/14' value='ATL13'>Atletico Madrid</option>
+                        </optgroup>
+                        <optgroup data-group='2013/14' label='English Premier League'>
+                            <option data-group='2013/14' value='MUN13'>Manchester United</option>
+                            <option data-group='2013/14' value='CHE13'>Chelsea</option>
+                        </optgroup>
+                        <optgroup data-group='2013/14' label="German Bundasliga">
+                            <option data-group='2013/14' value='BAY13'>Bayern Munich</option>
+                            <option data-group='2013/14' value='DOR13'>Borussia Dortmund</option>
+                        </optgroup>
+                        <optgroup data-group='2013/14' label="French Ligue 1">
+                            <option data-group='2013/14' value='PSG13'>Paris Saint-Germain</option>
+                        </optgroup>
+                        <optgroup data-group='2014/15' label='Spanish La Liga'>
+                            <option data-group='2014/15' value='RMA14'>Real Madrid</option>
+                            <option data-group='2014/15' value='FCB14'>Barcelona</option>
+                            <option data-group='2014/15' value='ATL14'>Atletico Madrid</option>
+                        </optgroup>
+                        <optgroup data-group='2014/15' label="German Bundasliga">
+                            <option data-group='2014/15' value='BAY14'>Bayern Munich</option>
+                        </optgroup>
+                        <optgroup data-group='2014/15' label="Serie A">
+                            <option data-group='2014/15' value='JUV14'>Juventus</option>
+                        </optgroup>
+                        <optgroup data-group='2014/15' label="French Ligue 1">
+                            <option data-group='2014/15' value='PSG14'>Paris Saint-Germain</option>
+                            <option data-group='2014/15' value='MON14'>Monaco</option>
+                        </optgroup>
+                        <optgroup data-group='2014/15' label="Portuguese Liga Nos">
+                            <option data-group='2014/15' value='POR14'>Porto</option>
+                        </optgroup>
+                        <optgroup data-group='2015/16' label='Spanish La Liga'>
+                            <option data-group='2015/16' value='RMA15'>Real Madrid</option>
+                            <option data-group='2015/16' value='FCB15'>Barcelona</option>
+                            <option data-group='2015/16' value='ATL15'>Athletico Madrid</option>
+                        </optgroup>
+                        <optgroup data-group='2015/16' label='English Premier League'>
+                            <option data-group='2015/16' value='MC15'>Manchester City</option>
+                        </optgroup>
+                        <optgroup data-group='2015/16' label="German Bundasliga">
+                            <option data-group='2015/16' value='BAY15'>Bayern Munich</option>
+                            <option data-group='2015/16' value='WOL15'>Wolfsburg</option>
+                        </optgroup>
+                        <optgroup data-group='2015/16' label="French Ligue 1">
+                            <option data-group='2015/16' value='PSG15'>Paris Saint-Germain</option>
+                        </optgroup>
+                        <optgroup data-group='2015/16' label="Portuguese Liga Nos">
+                            <option data-group='2015/16' value='BEN15'>Benfica</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <span id="option-container2" style="display:none; visibility: hidden; position: absolute;"></span>
+            </div>
+            <div class="col-sm-12" id="boxlegend"> 
+            </div>
+            <div class="col-sm-12" id="boxplot"> 
+            </div>
+            <!-- Tooltip -->
+            <div id="boxtip">
+                <div id="boxtip-container">
+                <div class="boxtip-match"></div>
+                <div class="boxtip-result"></div>
+                <div class="boxtip-detail"></div>
             </div>
         </div>
     </div>
