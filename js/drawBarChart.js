@@ -1,6 +1,6 @@
 function drawBarChart(barchartID) {
     const ClubNameRep = "UniqueName";
-    const clubsID = [ "ARS",
+    const clubsID = ["ARS",
         "ATH",
         "ATL",
         "BAY",
@@ -28,10 +28,12 @@ function drawBarChart(barchartID) {
         "SCP",
         "SEV",
         "VAL",
-        "WOL" ];
+        "WOL"
+    ];
 
-    const leagues = [ "Spanish La Liga", "English Premier League", "French Ligue 1",
-        "German Bundesliga", "Italian Serie A", "Portuguese Liga Nos" ]
+    const leagues = ["Spanish La Liga", "English Premier League", "French Ligue 1",
+        "German Bundesliga", "Italian Serie A", "Portuguese Liga Nos"
+    ]
 
     var selectedClubs = [];
     var clubsOn = {};
@@ -41,16 +43,16 @@ function drawBarChart(barchartID) {
     }
     var AttrSelected = "Overall";
     var AttrName = {
-        "Overall" : "Overall Performance Score",
-        "PossessionScore" : "Possession Score",
-        "AttackScore" : "Attack Score",
-        "DefenceScore" : "Defence Score"
+        "Overall": "Overall Performance Score",
+        "PossessionScore": "Possession Score",
+        "AttackScore": "Attack Score",
+        "DefenceScore": "Defence Score"
     };
     var selectedYears = {
-        "2013-14" : false,
-        "2014-15" : false,
-        "2015-16" : false,
-        "2016-17" : true
+        "2013-14": false,
+        "2014-15": false,
+        "2015-16": false,
+        "2016-17": true
     };
     var isSortedByValue = true;
 
@@ -72,36 +74,36 @@ function drawBarChart(barchartID) {
 
     $(barchartID + ' :checkbox').change(function() {
         switch (this.id) {
-        case '2013-14':
-        case '2014-15':
-        case '2015-16':
-        case '2016-17':
-            this.checked ? selectedYears[this.id] = true : selectedYears[this.id] = false;
-            redraw();
-            break;
-        case 'sort':
-            this.checked ? isSortedByValue = true : isSortedByValue = false;
-            redraw();
-            break;
-        default:
-            break;
+            case '2013-14':
+            case '2014-15':
+            case '2015-16':
+            case '2016-17':
+                this.checked ? selectedYears[this.id] = true : selectedYears[this.id] = false;
+                redraw();
+                break;
+            case 'sort':
+                this.checked ? isSortedByValue = true : isSortedByValue = false;
+                redraw();
+                break;
+            default:
+                break;
         }
     });
 
     $(barchartID + ' :radio').change(function() {
         switch (this.id) {
-        case '2013-14':
-        case '2014-15':
-        case '2015-16':
-        case '2016-17':
-            for (var key in selectedYears) {
-                selectedYears[key] = false;
-            }
-            selectedYears[this.id] = true;
-            break;
-        default:
-            AttrSelected = this.id;
-            break;
+            case '2013-14':
+            case '2014-15':
+            case '2015-16':
+            case '2016-17':
+                for (var key in selectedYears) {
+                    selectedYears[key] = false;
+                }
+                selectedYears[this.id] = true;
+                break;
+            default:
+                AttrSelected = this.id;
+                break;
         }
 
         redraw();
@@ -112,28 +114,29 @@ function drawBarChart(barchartID) {
         d3.select(barchartID).selectAll("svg > *").remove();
         render();
     }
+
     function render() {
         var margin = {
-                top : 20,
-                right : 20,
-                bottom : 30,
-                left : 40
+                top: 20,
+                right: 20,
+                bottom: 30,
+                left: 40
             },
             width = +svg.attr("width") - margin.left - margin.right,
             height = +svg.attr("height") - margin.top - margin.bottom;
-            //      d3.v4        
-            //        var x = d3.scaleBand().rangeRound([ 0, width ]).padding(0.1);
-            //        var y = d3.scaleLinear().rangeRound([ height, 0 ]);
-            //        var color = d3.scaleOrdinal(d3.schemeCategory10);
+        //      d3.v4
+        //        var x = d3.scaleBand().rangeRound([ 0, width ]).padding(0.1);
+        //        var y = d3.scaleLinear().rangeRound([ height, 0 ]);
+        //        var color = d3.scaleOrdinal(d3.schemeCategory10);
 
-        //      d3.v3        
-        var x = d3.scale.ordinal().rangeRoundBands([ 0, width ], .1, 1);
-        var y = d3.scale.linear().range([ height, 0 ]);
+        //      d3.v3
+        var x = d3.scale.ordinal().rangeRoundBands([0, width], .1, 1);
+        var y = d3.scale.linear().range([height, 0]);
         // var color = d3.scale.category10();
 
         color = d3.scale.ordinal()
-            .range([ "#EFB605", "#E01A25", "#991C71", "#2074A0", "#10A66E", "#7EB852" ])
-            .domain([ "Spanish La Liga", "English Premier League", "French Ligue 1", "German Bundesliga", "Italian Serie A", "Portuguese Liga Nos" ]);
+            .range(["#EFB605", "#E01A25", "#991C71", "#2074A0", "#10A66E", "#7EB852"])
+            .domain(["Spanish La Liga", "English Premier League", "French Ligue 1", "German Bundesliga", "Italian Serie A", "Portuguese Liga Nos"]);
 
         var g = svg.append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -147,27 +150,27 @@ function drawBarChart(barchartID) {
 
             // process data
             var data = data.filter(function(d) {
-                return (selectedYears["2013-14"] && d['Year'] == '2013-14')
-                    || (selectedYears["2014-15"] && d['Year'] == '2014-15')
-                    || (selectedYears["2015-16"] && d['Year'] == '2015-16')
-                    || (selectedYears["2016-17"] && d['Year'] == '2016-17');
+                return (selectedYears["2013-14"] && d['Year'] == '2013-14') ||
+                    (selectedYears["2014-15"] && d['Year'] == '2014-15') ||
+                    (selectedYears["2015-16"] && d['Year'] == '2015-16') ||
+                    (selectedYears["2016-17"] && d['Year'] == '2016-17');
             })
             data = data.filter(function(d) {
                 return $.inArray(d["ClubCode"], selectedClubs) > -1
             });
 
             var data = data.sort(function(a, b) {
-                return b[AttrSelected] - a[AttrSelected];
-            })
-            //            if (isSortedByValue) {
-            //                var data = data.sort(function(a, b) {
-            //                    return b[AttrSelected] - a[AttrSelected];
-            //                })
-            //            } else {
-            //                var data = data.sort(function(a, b) {
-            //                    return d3.ascending(a[ClubNameRep], b[ClubNameRep]);
-            //                })
-            //            }
+                    return b[AttrSelected] - a[AttrSelected];
+                })
+                //            if (isSortedByValue) {
+                //                var data = data.sort(function(a, b) {
+                //                    return b[AttrSelected] - a[AttrSelected];
+                //                })
+                //            } else {
+                //                var data = data.sort(function(a, b) {
+                //                    return d3.ascending(a[ClubNameRep], b[ClubNameRep]);
+                //                })
+                //            }
 
             // draw x and y axises
             x.domain(data.map(function(d) {
@@ -178,9 +181,9 @@ function drawBarChart(barchartID) {
                 return d[AttrSelected];
             }))
             minY < 0 ? minY = minY - 10 : 0;
-            y.domain([ minY, d3.max(data, function(d) {
+            y.domain([minY, d3.max(data, function(d) {
                 return d[AttrSelected];
-            }) ]);
+            })]);
 
             var xAxis = d3.svg.axis()
                 .scale(x)
@@ -200,7 +203,7 @@ function drawBarChart(barchartID) {
                 .attr("dy", "-1.5em")
                 .attr("transform", "rotate(-65)")
                 .style("font-size", "8px");
-            
+
             g.append("g")
                 .attr("class", "y axis")
                 .call(yAxis)
@@ -210,16 +213,16 @@ function drawBarChart(barchartID) {
                 .attr("dy", "0.71em")
                 .style("text-anchor", "end")
                 .text(AttrName[AttrSelected]);
-            
+
 
             // tooltip setting
             var tooltip = d3.tip()
                 .attr("class", "d3-tip")
-                .offset([ -8, 0 ])
+                .offset([-8, 0])
                 .html(function(d) {
-                    return "Club: " + d["Club"] + "<br>"
-                    + "League: " + d["League"] + "<br>"
-                    + AttrName[AttrSelected] + ": " + d[AttrSelected];
+                    return "Club: " + d["Club"] + "<br>" +
+                        "League: " + d["League"] + "<br>" +
+                        AttrName[AttrSelected] + ": " + d[AttrSelected];
                 });
             svg.call(tooltip);
 

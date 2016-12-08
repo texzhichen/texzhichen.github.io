@@ -1,19 +1,11 @@
 function writeIntro(name) {
     var description = {}
 
-    description['uefa'] = "<h3>Introduction</h3>" +
-        "The UEFA Champions League is an annual continental club football competition " +
-        "organised by the Union of European Football Associations (UEFA) and contested " +
-        "by top-division European clubs. It is one of the most prestigious tournaments " +
-        "in the world and the most prestigious club competition in European football, " +
-        "played by the national league champion (and, for some nations, one or more runners-up) " +
-        "of each UEFA national association.</br>This system visualizes";
-
     description['uefa'] = "<h3><img src='img/uefa_champions_league.png' height=60>&nbsp;UEFA Champions League</h3>" +
     		"<h4>Introduction</h4>" + 
         "&nbsp;&nbsp;&nbsp;&nbsp;The UEFA Champions League " +
         "is an annual continental club football competition " +
-        "contested by 32 top-division European clubs." +
+        "contested by 32 top European clubs." +
         "</br>&nbsp;&nbsp;&nbsp;&nbsp;Squawka, one of the most popular soccer analysis website, evaluates the " +
         "performance of each club. However, it is hard for people to find the best " +
         "club and gain insights from the evaluation." +
