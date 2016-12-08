@@ -1,33 +1,27 @@
 function writeIntro(name) {
     var description = {}
 
-    description['uefa'] = "<h3>Introduction</h3>" +
-        "The UEFA Champions League is an annual continental club football competition " +
-        "organised by the Union of European Football Associations (UEFA) and contested " +
-        "by top-division European clubs. It is one of the most prestigious tournaments " +
-        "in the world and the most prestigious club competition in European football, " +
-        "played by the national league champion (and, for some nations, one or more runners-up) " +
-        "of each UEFA national association.</br>This system visualizes";
-
-    description['uefa'] = "<h3><img src='img/uefa_champions_league.png' height=60>&nbsp;UEFA Champions League</h3>" +
-    		"<h4>Introduction</h4>" + 
+    description['uefa'] = "<h4><img src='img/uefa_champions_league.png' height=40>&nbsp;UEFA Champions League</h4>" +
+    		"<h5>Introduction</h5>" + 
         "&nbsp;&nbsp;&nbsp;&nbsp;The UEFA Champions League " +
         "is an annual continental club football competition " +
-        "contested by 32 top European clubs." +
-        "</br>&nbsp;&nbsp;&nbsp;&nbsp;Squawka, one of the most popular soccer analysis websites, evaluates the " +
-        "performance of each club. However, it is hard for people to find the best " +
-        "club and gain insights from pure values." +
-        "</br>&nbsp;&nbsp;&nbsp;&nbsp;Hence, we create the visualization to help people study the performance of clubs and " +
-        "gain insights. " +
-        "We use D3.js to generate the visuliazation.  The performance score is from Squawka.  Other data " +
-        "such as the market value are from Opta.  The UEFA Coefficient and ranking come from " +
-        "the UEFA official website. " +
-        "<h4>Performance Measures</h4>" +
-        "<b>-UEFA coefficient:</b> " + "Statistics used for ranking and seeding teams in club and international competitions,  determined by the results of clubs in the UEFA Champions League and the UEFA Europa League over the previous five seasons."+
-        "</br><b>-UEFA coefficient ranking:</b> " + " The ranking of UEFA coefficient among all UEFA member clubs."+
-        "</br><b>-Squawka performance score:</b> " +"A score calculated by <a href='http://www.squawka.com/'>squawka.com.</a> to evaluate the performance of a team in a single match."+
-        "</br><b>-Market value of players:</b> " +" The market value of players calculated by <a href='http://www.transfermarkt.co.uk/'>Transfermarkt.com.</a>"+
-        "<h4>Data Sources</h4>" +
+        "contested by 32 top European clubs, which attracts millions of people each year. " +
+        "We use four graphs to help people with different backgrounds quickly learn " +
+        "the performance of clubs." +
+        "<h5>Graphs</h5>" +
+        "- The <b>sunburst</b> " + "contains the basic information of a club such as " +
+        		"which league it belongs to, its logo and its top 3 most expensive players." +
+		"</br>- The <b>bar chart</b> " + "allows people to quickly check the performance score (see below) of clubs in terms of seasons and measures." +
+		"</br>- The <b>scatter plot</b> " + "is made for advanced users who want to gain insights into clubs by exploring the relationship between " +
+				"different performance measures with regard to managers, league, season, and round reached." +
+		"</br>- The <b>box plot</b> " + "helps people to learn the stability of performance of clubs in matches across seasons. " +
+				"Furthermore, users may find some weird matches that a team performed much better or worse than usual." +
+        "<h5>Performance Measures</h5>" +
+        "<b>- UEFA coefficient:</b> " + "Statistics used for ranking and seeding teams in club and international competitions,  determined by the results of clubs in the UEFA Champions League and the UEFA Europa League over the previous five seasons."+
+        "</br><b>- UEFA coefficient ranking:</b> " + " The ranking of UEFA coefficient among all UEFA member clubs."+
+        "</br><b>- Squawka performance score:</b> " +"A score calculated by <a href='http://www.squawka.com/'>squawka.com.</a> to evaluate the performance of a team in a single match."+
+        "</br><b>- Market value of players:</b> " +" The market value of players calculated by <a href='http://www.transfermarkt.co.uk/'>Transfermarkt.com.</a>" +
+        "<h5>Data Sources</h5>" +
             "<a href='http://www.uefa.com/uefachampionsleague/' target='_blank'><img src='img/uefa_champions_league_logo.svg' height=80></a>" +
             "<tab0></tab0><a href='http://www.optasports.com/' target='_blank'><img src='img/opta.svg' height=30></a>" +
             "<tab0></tab0><a href='http://www.squawka.com/home/' target='_blank'><img src='img/squawka.svg' height=30></a>" +
