@@ -13,11 +13,11 @@ function writeIntro(name) {
     		"<h4>Introduction</h4>" + 
         "&nbsp;&nbsp;&nbsp;&nbsp;The UEFA Champions League " +
         "is an annual continental club football competition " +
-        "contested by 32 top-division European clubs." +
-        "</br>&nbsp;&nbsp;&nbsp;&nbsp;Squawka, one of the most popular soccer analysis website, evaluates the " +
+        "contested by 32 top European clubs." +
+        "</br>&nbsp;&nbsp;&nbsp;&nbsp;Squawka, one of the most popular soccer analysis websites, evaluates the " +
         "performance of each club. However, it is hard for people to find the best " +
-        "club and gain insights from the evaluation." +
-        "</br>&nbsp;&nbsp;&nbsp;&nbsp;In this visualization, we want to help people study the performance of clubs and " +
+        "club and gain insights from pure values." +
+        "</br>&nbsp;&nbsp;&nbsp;&nbsp;Hence, we create the visualization to help people study the performance of clubs and " +
         "gain insights. " +
         "We use D3.js to generate the visuliazation.  The performance score is from Squawka.  Other data " +
         "such as the market value are from Opta.  The UEFA Coefficient and ranking come from " +

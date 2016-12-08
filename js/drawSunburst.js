@@ -120,7 +120,7 @@ function drawSunburst(sunburstID) {
                 writeIntro("portugal")
             });				
 
-			console.log(radius);
+//			console.log(radius);
 svg.append("g").append("svg:image").attr('width', 0.144*radius).attr('height', 0.144*radius).attr("transform", "translate("+((0.101168321987432)*radius*0.9-0.072*radius)+","+((-0.994869323391895)*radius*0.9-0.072*radius)+")rotate(0)").attr("xlink:href", "img/real_madrid_logo.svg").on("click", function(d) {writeIntro("rma")});
 svg.append("g").append("svg:image").attr('width', 0.148*radius).attr('height', 0.148*radius).attr("transform", "translate("+((0.299363122973358)*radius*0.9-0.072*radius)+","+((-0.954139256400049)*radius*0.9-0.072*radius)+")rotate(0)").attr("xlink:href", "img/barcelona_logo.png").on("click", function(d) {writeIntro("barca")});
 svg.append("g").append("svg:image").attr('width', 0.148*radius).attr('height', 0.148*radius).attr("transform", "translate("+((0.485301962531081)*radius*0.9-0.072*radius)+","+((-0.874346616144582)*radius*0.9-0.072*radius)+")rotate(0)").attr("xlink:href", "img/AtleticoLogo.svg").on("click", function(d) {writeIntro("atletico")});
