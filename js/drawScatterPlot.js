@@ -2,11 +2,6 @@
 //////////////////////// Set-up ////////////////////////////
 ////////////////////////////////////////////////////////////
 
-function update() {
-    console.log(1);
-    opacityCircles = 0;
-}
-
 var svg, wrapper, opacityCircles, color, height, margin, width, height, voronoi, voronoiGroup, cText, managerSelected;
 
 //Quick fix for resizing some things for mobile-ish viewers
@@ -227,14 +222,39 @@ function drawGraph(xText, yText, rText, cText) {
     if (!mobileScreen) {
         //Legend            
         var legendMargin = {
-                left: 5,
+                left: 25,
                 top: 10,
                 right: 5,
                 bottom: 10
             },
-            legendWidth = 145,
+            legendWidth = 225,
             legendHeight = 270;
 
+        //Legend Title
+        $(function () {
+            if (cText == "League") {
+                $('#legendTitle').empty();
+                $('<p style="font-size: 14px;">League</p>').appendTo('#legendTitle');
+            } else if (cText == "Season") {
+                $('#legendTitle').empty();
+                $('<p style="font-size: 14px;">Season</p>').appendTo('#legendTitle');
+            } else {
+                $('#legendTitle').empty();
+                $('<p style="font-size: 14px;">Stage Reached</p>').appendTo('#legendTitle');
+            }
+        });
+        $(function () {
+            if (cText == "League") {
+                $('#legendText').empty();
+                $('<p style="font-size: 12px; color: #BABABA;">Click to select all clubs within a league</p>').appendTo('#legendText');
+            } else if (cText == "Season") {
+                $('#legendText').empty();
+                $('<p style="font-size: 12px; color: #BABABA;">Click to select all clubs within a season</p>').appendTo('#legendText');
+            } else {
+                $('#legendText').empty();
+                $('<p style="font-size: 12px; color: #BABABA;">Click to select all clubs eliminated at a stage</p>').appendTo('#legendText');
+            }
+        });
         var svgLegend = d3.select("#legend").append("svg")
             .attr("width", (legendWidth + legendMargin.left + legendMargin.right))
             .attr("height", (legendHeight + legendMargin.top + legendMargin.bottom));
@@ -242,9 +262,9 @@ function drawGraph(xText, yText, rText, cText) {
         var legendWrapper = svgLegend.append("g").attr("class", "legendWrapper")
             .attr("transform", "translate(" + legendMargin.left + "," + legendMargin.top + ")");
 
-        var rectSize = 15, //dimensions of the colored square
-            rowHeight = 20, //height of a row in the legend
-            maxWidth = 144; //widht of each row
+        var rectSize = 18, //dimensions of the colored square
+            rowHeight = 25, //height of a row in the legend
+            maxWidth = 230; //widht of each row
 
         //Create container per rect/text pair  
         var legend = legendWrapper.selectAll('.legendSquare')
@@ -252,7 +272,7 @@ function drawGraph(xText, yText, rText, cText) {
             .enter().append('g')
             .attr('class', 'legendSquare')
             .attr("transform", function(d, i) {
-                return "translate(" + 0 + "," + (i * rowHeight) + ")";
+                return "translate(" + 30 + "," + (i * rowHeight) + ")";
             })
             .style("cursor", "pointer")
             .on("mouseover", selectLegend(0.02, cText))
@@ -273,9 +293,9 @@ function drawGraph(xText, yText, rText, cText) {
             });
         //Append text to Legend
         legend.append('text')
-            .attr('transform', 'translate(' + 22 + ',' + (rectSize / 2) + ')')
+            .attr('transform', 'translate(' + 25 + ',' + (rectSize / 2) + ')')
             .attr("class", "legendText")
-            .style("font-size", "10px")
+            .style("font-size", "12px")
             .attr("dy", ".35em")
             .text(function(d, i) {
                 return color.domain()[i];
@@ -283,9 +303,19 @@ function drawGraph(xText, yText, rText, cText) {
 
         //Create g element for bubble size legend
         var bubbleSizeLegend = legendWrapper.append("g")
-            .attr("transform", "translate(" + (legendWidth / 2 - 30) + "," + (color.domain().length * rowHeight + 20) + ")");
+            .attr("transform", "translate(" + (legendWidth / 2 - 40) + "," + (color.domain().length * rowHeight + 20) + ")");
         //Draw the bubble size legend
-        bubbleLegend(bubbleSizeLegend, rScale, legendSizes = [-30, 40, 200], legendName = "Possession Score");
+        if (rText == "PossessionScore") {
+            bubbleLegend(bubbleSizeLegend, rScale, legendSizes = [-30, 20, 200], legendName = "Possession Score");
+        } else if (rText == "AttackScore") {
+            bubbleLegend(bubbleSizeLegend, rScale, legendSizes = [80, 180, 350], legendName = "Attack Score");
+        } else if (rText == "DefenceScore") {
+            bubbleLegend(bubbleSizeLegend, rScale, legendSizes = [0, 30, 200], legendName = "Defence Score");
+        } else if (rText == "OverallPerformanceScore") {
+            bubbleLegend(bubbleSizeLegend, rScale, legendSizes = [100, 340, 700], legendName = "Overall Performance Score");
+        } else {
+            bubbleLegend(bubbleSizeLegend, rScale, legendSizes = [150, 360, 700], legendName = "Squad Value (Million £)");
+        }
     } //if !mobileScreen
     else {
         d3.select("#legend").style("display", "none");
@@ -320,7 +350,7 @@ function bubbleLegend(wrapperVar, scale, sizes, titleName) {
         .attr("transform", "translate(" + legendCenter + "," + 0 + ")")
         .attr("x", 0 + "px")
         .attr("y", 0 + "px")
-        .attr("dy", "1em")
+        .attr("dy", "0.5em")
         .text(titleName);
 
     wrapperVar.append("circle")
@@ -548,11 +578,9 @@ function showTooltip(d, color) {
             + '</span> - <span style="color:#E01A25">L ' + d.Loss + "</span>");
 
     //Set the tooltip in the right location and have it appear
-    console.log(document.getElementById("sunburst").offsetLeft);
-
     d3.select("#tooltip")
-        .style("top", (parseInt(element.attr("cy") + document.getElementById("chart").offsetTop) + 800) + "px")
-        .style("left", (parseInt(element.attr("cx") + document.getElementById("chart").offsetLeft) + 220) + "px")
+        .style("top", (parseInt(element.attr("cy") + document.getElementById("chart").offsetTop) + 780) + "px")
+        .style("left", (parseInt(Number(element.attr("cx")) + document.getElementById("chart").offsetLeft) + 180) + "px")
         .transition().duration(0)
         .style("opacity", 1);
 
@@ -604,7 +632,6 @@ jQuery(function ($) {
 $(document).ready(function() {
     $(".image-checkbox").on("change", function() {
         filterImage(this);
-        console.log("hi");
     });
 });
     
@@ -613,8 +640,6 @@ function filterCheckbox() {
     $('.filter-option:checked').each(function() {
         managerSelected.push($(this).val());
     });
-    console.log(55);
-    console.log(managerSelected);
 }
 
 function filterImage(e) {
@@ -655,7 +680,6 @@ function filterImage(e) {
                 else
                     return null;
             });
-                    console.log(44);
     } else {
         $e.addClass('image-checkbox-checked');
         $e.find('input[type="checkbox"]').first().attr("checked", "checked");
