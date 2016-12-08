@@ -3,7 +3,7 @@ function writeIntro(name) {
 
     description['uefa'] = "<h4><img src='img/uefa_champions_league.png' height=40>&nbsp;UEFA Champions League</h4>" +
     		"<h5>Introduction</h5>" + 
-        "&nbsp;&nbsp;&nbsp;&nbsp;The UEFA Champions League " +
+        "The UEFA Champions League " +
         "is an annual continental club football competition " +
         "contested by 32 top European clubs, which attracts millions of people each year. " +
         "We use four graphs to help people with different backgrounds quickly learn " +
@@ -17,16 +17,16 @@ function writeIntro(name) {
 		"</br>- The <b>box plot</b> " + "helps people to learn the stability of performance of clubs in matches across seasons. " +
 				"Furthermore, users may find some weird matches that a team performed much better or worse than usual." +
         "<h5>Performance Measures</h5>" +
-        "<b>- UEFA coefficient:</b> " + "Statistics used for ranking and seeding teams in club and international competitions,  determined by the results of clubs in the UEFA Champions League and the UEFA Europa League over the previous five seasons."+
+        "<b>- UEFA coefficient:</b> " + "Statistics from  <a href='http://www.uefa.com/' target='_blank'>uefa.com.</a> used for ranking and seeding teams in club and international competitions,  determined by the results of clubs in the UEFA Champions League and the UEFA Europa League over the previous five seasons."+
         "</br><b>- UEFA coefficient ranking:</b> " + " The ranking of UEFA coefficient among all UEFA member clubs."+
-        "</br><b>- Squawka performance score:</b> " +"A score calculated by <a href='http://www.squawka.com/'>squawka.com.</a> to evaluate the performance of a team in a single match."+
-        "</br><b>- Market value of players:</b> " +" The market value of players calculated by <a href='http://www.transfermarkt.co.uk/'>Transfermarkt.com.</a>" +
-        "<h5>Data Sources</h5>" +
-            "<a href='http://www.uefa.com/uefachampionsleague/' target='_blank'><img src='img/uefa_champions_league_logo.svg' height=80></a>" +
-            "<tab0></tab0><a href='http://www.optasports.com/' target='_blank'><img src='img/opta.svg' height=30></a>" +
-            "<tab0></tab0><a href='http://www.squawka.com/home/' target='_blank'><img src='img/squawka.svg' height=30></a>" +
-            "<tab0></tab0><a href='http://www.transfermarkt.com' target='_blank'><img src='img/tm.png' height=90></a>"
-    ;
+        "</br><b>- Squawka performance score:</b> " +"A score calculated by <a href='http://www.squawka.com/' target='_blank'>squawka.com.</a> to evaluate the performance of a team in a single match."+
+        "</br><b>- Market value of players:</b> " +" The market value of players calculated by <a href='http://www.transfermarkt.co.uk/' target='_blank'>transfermarkt.com.</a>"
+        ;
+//        "<h5>Data Sources</h5>"
+//            "<a href='http://www.uefa.com/uefachampionsleague/' target='_blank'><img src='img/uefa_champions_league_logo.svg' height=80></a>" +
+//            "<tab0></tab0><a href='http://www.optasports.com/' target='_blank'><img src='img/opta.svg' height=30></a>" +
+//            "<tab0></tab0><a href='http://www.squawka.com/home/' target='_blank'><img src='img/squawka.svg' height=30></a>" +
+//            "<tab0></tab0><a href='http://www.transfermarkt.com' target='_blank'><img src='img/tm.png' height=90></a>"
     
 description['spanish'] = "<h3><img src=\"img\\spanish_laliga.svg\" height =\"80 px\"></br>Primera División (La Liga)</h3>" + "The top Spanish league</br>UEFA Coefficient:&nbsp94.141</br>UEFA Coefficient Ranking:&nbsp1</br>Market Value of All Players:&nbsp£3.06bn</br>Number of Players:&nbsp485</br>Number of Winners:&nbsp16&nbsptimes"
 description['german'] = "<h3><img src=\"img\\BundesligaLogo.svg\" height =\"80 px\"></br>Bundesliga </h3>" + "The top German league</br>UEFA Coefficient:&nbsp73.355</br>UEFA Coefficient Ranking:&nbsp2</br>Market Value of All Players:&nbsp£2.16bn</br>Number of Players:&nbsp524</br>Number of Winners:&nbsp7&nbsptimes"
