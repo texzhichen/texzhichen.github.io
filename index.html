@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <title>UEFA Visualization</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>UEFA Visualization</title>
 
-    <!-- Lato & CSS -->
-    <link href='https://fonts.googleapis.com/css?family=Lato:700,400,300' rel='stylesheet' type='text/css'>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="./css/main.css" />
+<!-- Lato & CSS -->
+<link href='https://fonts.googleapis.com/css?family=Lato:700,400,300'
+    rel='stylesheet' type='text/css'>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="./css/main.css" />
 </head>
 
 <body>
@@ -29,7 +30,7 @@
                 <div id=intro></div>
             </div>
             <div class="col-sm-1"></div>
-            <div class="col-sm-9 scatter">
+              <div class="col-sm-9 scatter">
                 <div class="manager-checkbox">
                     <h6>Select from the managers below:</h6>
                     <label class="image-checkbox" title="Pep Guardiola">
@@ -90,36 +91,36 @@
                             <option value="PossessionScore">Possession Score</option>
                             <option value="SquadValue(Million)">Squad Value</option>
                         </select>
-                        <p><span><label for="y-axis">Select y-axis</label></span>
-                            <select class="selectpicker" id="y-value" onchange="setGraph()">
+                    <p><span><label for="y-axis">Select y-axis</label></span>
+                        <select class="selectpicker" id="y-value" onchange="setGraph()">
                             <option value="OverallPerformanceScore">Overall Performance Score</option>
                             <option value="AttackScore">Attack Score</option>
                             <option selected="selected" value="DefenceScore">Defence Score</option>
                             <option value="PossessionScore">Possession Score</option>
                             <option value="SquadValue(Million)">Squad Value</option>
                         </select>
-                            <p><span><label for="size">Select size</label></span>
-                                <select class="selectpicker" id="r-value" onchange="setGraph()">
+                    <p><span><label for="size">Select size</label></span>
+                        <select class="selectpicker" id="r-value" onchange="setGraph()">
                             <option value="OverallPerformanceScore">Overall Performance Score</option>
                             <option value="AttackScore">Attack Score</option>
                             <option value="DefenceScore">Defence Score</option>
                             <option selected="selected" value="PossessionScore">Possession Score</option>
                             <option value="SquadValue(Million)">Squad Value</option>
                         </select>
-                                <p><span><label for="color">Select color</label></span>
-                                    <select class="selectpicker" id="c-value" onchange="setGraph()">
+                    <p><span><label for="color">Select color</label></span>
+                        <select class="selectpicker" id="c-value" onchange="setGraph()">
                             <option selected="selected" value="League">League</option>
                             <option value="Season">Season</option>
                             <option value="FinalRound">Round Reached</option>
                         </select>
+                    </div>
+                    <div class="legendTitle" style="font-size: 12px;">League</div>
+                    <div class="legendText" style="font-size: 11px; color: #BABABA;">click to select all clubs within a league</div>
+                    <div id="legend"></div>
                 </div>
-                <div class="legendTitle" style="font-size: 12px;">League</div>
-                <div class="legendText" style="font-size: 11px; color: #BABABA;">click to select all clubs within a league</div>
-                <div id="legend"></div>
-            </div>
-            <!-- Tooltip -->
-            <div id="tooltip">
-                <div id="tooltip-container">
+                <!-- Tooltip -->
+                <div id="tooltip">
+                    <div id="tooltip-container">
                     <div class="tooltip-season"></div>
                     <div class="tooltip-club"></div>
                     <div class="tooltip-rule"></div>
@@ -153,14 +154,16 @@
                 <div class="row">
                     <div class="col-sm-12" align="left">
                         <tab1>Choose a performance evaluation</tab1>
-                        <a data-toggle="tooltip" class="tooltipLink" data-original-title="<p>The Overall Performance Score measures how well a team performs in soccer games. </p>
-                         <p>A higher score indicates better performance on soccer fields. </p>
-                         <p>The Overall Performance Score is composed (the addition) of Attack (e.g., shots, crosses),
-                         Defence (e.g., tackles, interceptions), and Possession (e.g., passes, through-balls).</p>" data-placement="top">
+                        <a data-toggle="tooltip" class="tooltipLink" data-original-title=
+                        "<p>The Overall Performance Score measures how well a team performs in soccer games. </p>
+                         <p>A higher score indicates better performance on soccer fields. </p>    
+                         <p>The Overall Performance Score is composed (the addition) of Attack (e.g., shots, crosses), 
+                         Defence (e.g., tackles, interceptions), and Possession (e.g., passes, through-balls).</p>"
+                         data-placement="top">
                             <span class="glyphicon glyphicon-info-sign"></span>
-                        </a>
+                        </a>                    
                     </div>
-                </div>
+                </div>                
                 <div class="row" id='attr'>
                     <div class="col-sm-1"></div>
                     <div class="col-sm-1" style="padding-left: 30px">
@@ -184,7 +187,7 @@
         </div>
     </div>
 
-    <!-- libraries --“”>
+    <!-- libraries -->
     <script src="https://d3js.org/d3.v3.js"></script>
     <script src="./lib/pym.min.js"></script>
     <script src="./lib/d3-tip.js"></script>
@@ -206,10 +209,7 @@
         drawSunburst("#sunburst");
         writeIntro("uefa");
         drawBarChart("#barchart0");
-        $("a.tooltipLink").tooltip({
-            html: true
-        });
+        $("a.tooltipLink").tooltip({html:true});
     </script>
 </body>
-
 </html>
