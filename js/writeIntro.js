@@ -23,10 +23,10 @@ function writeIntro(name) {
         "such as the market value are from Opta.  The UEFA Coefficient and ranking come from " +
         "the UEFA official website. " +
         "<h4>Performance Measures</h4>" +
-        "UEFA coefficient: " +
-        "</br>UEFA coefficient ranking: " +
-        "</br>Squawka performance score: " +
-        "</br>Market value of players: " +
+        "<b>-UEFA coefficient:</b> " + "Statistics used for ranking and seeding teams in club and international competitions,  determined by the results of clubs in the UEFA Champions League and the UEFA Europa League over the previous five seasons."+
+        "</br><b>-UEFA coefficient ranking:</b> " + " The ranking of UEFA coefficient among all UEFA member clubs."+
+        "</br><b>-Squawka performance score:</b> " +"A score calculated by <a href='http://www.squawka.com/'>squawka.com.</a> to evaluate the performance of a team in a single match."+
+        "</br><b>-Market value of players:</b> " +" The market value of players calculated by <a href='http://www.transfermarkt.co.uk/'>Transfermarkt.com.</a>"+
         "<h4>Data Sources</h4>" +
             "<a href='http://www.uefa.com/uefachampionsleague/' target='_blank'><img src='img/uefa_champions_league_logo.svg' height=80></a>" +
             "<tab0></tab0><a href='http://www.optasports.com/' target='_blank'><img src='img/opta.svg' height=30></a>" +
