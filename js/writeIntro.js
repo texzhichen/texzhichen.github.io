@@ -5,22 +5,22 @@ function writeIntro(name) {
     		"<h5>Introduction</h5>" + 
         "The UEFA Champions League " +
         "is an annual continental club football competition " +
-        "contested by 32 top European clubs, which attracts millions of people each year. " +
+        "contested by top-division European clubs, which attracts millions of people each year. " +
         "We use four graphs to help people with different backgrounds quickly learn " +
-        "the performance of clubs." +
+        "the information and performance of clubs." +
         "<h5>Graphs</h5>" +
         "- The <b>sunburst</b> " + "contains the basic information of a club such as " +
-        		"which league it belongs to, its logo and its top 3 most expensive players." +
+        		"the league it belongs to, its logo and its top 3 most expensive players." +
 		"</br>- The <b>bar chart</b> " + "allows people to quickly check the performance score (see below) of clubs in terms of seasons and measures." +
 		"</br>- The <b>scatter plot</b> " + "is made for advanced users who want to gain insights into clubs by exploring the relationship between " +
 				"different performance measures with regard to managers, league, season, and round reached." +
 		"</br>- The <b>box plot</b> " + "helps people to learn the stability of performance of clubs in matches across seasons. " +
 				"Furthermore, users may find some weird matches that a team performed much better or worse than usual." +
         "<h5>Performance Measures</h5>" +
-        "<b>- UEFA coefficient:</b> " + "Statistics from  <a href='http://www.uefa.com/' target='_blank'>uefa.com.</a> used for ranking and seeding teams in club and international competitions,  determined by the results of clubs in the UEFA Champions League and the UEFA Europa League over the previous five seasons."+
+        "<b>- UEFA coefficient:</b> " + "Statistics from  <a href='http://www.uefa.com/' target='_blank'>uefa.com</a> used for ranking and seeding teams in club and international competitions,  determined by the results of clubs in the UEFA Champions League and the UEFA Europa League over the previous five seasons."+
         "</br><b>- UEFA coefficient ranking:</b> " + " The ranking of UEFA coefficient among all UEFA member clubs."+
-        "</br><b>- Squawka performance score:</b> " +"A score calculated by <a href='http://www.squawka.com/' target='_blank'>squawka.com.</a> to evaluate the performance of a team in a single match."+
-        "</br><b>- Market value of players:</b> " +" The market value of players calculated by <a href='http://www.transfermarkt.co.uk/' target='_blank'>transfermarkt.com.</a>"
+        "</br><b>- Squawka performance score:</b> " +"A score calculated by <a href='http://www.squawka.com/' target='_blank'>squawka.com</a> to evaluate the performance of a team in a single match."+
+        "</br><b>- Market value of players:</b> " +" The market value of players calculated by <a href='http://www.transfermarkt.co.uk/' target='_blank'>transfermarkt.com</a>."
         ;
 //        "<h5>Data Sources</h5>"
 //            "<a href='http://www.uefa.com/uefachampionsleague/' target='_blank'><img src='img/uefa_champions_league_logo.svg' height=80></a>" +
