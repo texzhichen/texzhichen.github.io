@@ -4,7 +4,7 @@ function writeIntro(name) {
     description['uefa'] = "<h4><img src='img/uefa_champions_league.png' height=40>&nbsp;UEFA Champions League</h4>" +
             "<h5>Introduction</h5>" + 
         "The UEFA Champions League " +
-        "is an annual continental club football competition " +
+        "is an annual continental club soccer competition " +
         "contested by top-division European clubs, which attracts millions of people each year. " +
         "We use four graphs to help people with different backgrounds quickly learn " +
         "the information and performance of clubs." +
