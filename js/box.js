@@ -260,8 +260,8 @@ function drawBox(csvName1, csvName2) {
   boxWidth = 260 - margin.left - margin.right,
   boxHeight = 480 - margin.top - margin.bottom,
   padding = 60,
-  midline = 100;
-  midline2 = 150;
+  midline = 70;
+  midline2 = 180;
   color
 
   //initialize the y scale
@@ -405,7 +405,7 @@ function drawBox(csvName1, csvName2) {
         //append the axis
         chart1.append("g")
           .attr("class", "axis")
-          .attr("transform", "translate(50, 0)")
+          .attr("transform", "translate(130, 0)")
           .call(yAxis);
 
         //draw horizontal line for lowerWhisker
@@ -692,7 +692,7 @@ function drawBox(csvName1, csvName2) {
         //append the axis
         chart2.append("g")
           .attr("class", "axis")
-          .attr("transform", "translate(50, 0)")
+          .attr("transform", "translate(130, 0)")
           .call(yAxis);
 
         //draw horizontal line for lowerWhisker
@@ -979,7 +979,7 @@ function drawBox(csvName1, csvName2) {
         //append the axis
         chart3.append("g")
           .attr("class", "axis")
-          .attr("transform", "translate(50, 0)")
+          .attr("transform", "translate(130, 0)")
           .call(yAxis);
 
         //draw horizontal line for lowerWhisker
@@ -1266,7 +1266,7 @@ function drawBox(csvName1, csvName2) {
         //append the axis
         chart4.append("g")
           .attr("class", "axis")
-          .attr("transform", "translate(50, 0)")
+          .attr("transform", "translate(130, 0)")
           .call(yAxis);
 
         //draw horizontal line for lowerWhisker
@@ -1554,7 +1554,7 @@ function drawBox(csvName1, csvName2) {
         //append the axis
         chart5.append("g")
           .attr("class", "axis")
-          .attr("transform", "translate(50, 0)")
+          .attr("transform", "translate(130, 0)")
           .call(yAxis);
 
         //draw horizontal line for lowerWhisker
