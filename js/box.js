@@ -472,7 +472,7 @@ function drawBox(csvName1, csvName2) {
           .attr("cy", function(d) {
             return yScale(d.ChancesCreated);
           })
-          .style("fill", color(boxlegendColor.range()[0]))
+          .style("fill", "#EFB605")
           .on("mouseover", function(d, i) {
             d3.selectAll("circle.pt" + i)
               .attr("r", 10)
@@ -551,7 +551,7 @@ function drawBox(csvName1, csvName2) {
           .attr("cy", function(d) {
             return yScale(d.ChancesCreated);
           })
-          .style("fill", color(boxlegendColor.range()[1]))
+          .style("fill", "#E01A25")
           .on("mouseover", function(d, i) {
             d3.selectAll("circle.pt2" + i)
               .attr("r", 10)
@@ -759,7 +759,7 @@ function drawBox(csvName1, csvName2) {
           .attr("cy", function(d) {
             return yScale(d.SuccessfulPasses);
           })
-          .style("fill", color(boxlegendColor.range()[0]))
+          .style("fill", "#EFB605")
           .on("mouseover", function(d, i) {
             d3.selectAll("circle.pt" + i)
               .attr("r", 10)
@@ -838,7 +838,7 @@ function drawBox(csvName1, csvName2) {
           .attr("cy", function(d) {
             return yScale(d.SuccessfulPasses);
           })
-          .style("fill", color(boxlegendColor.range()[1]))
+          .style("fill", "#E01A25")
           .on("mouseover", function(d, i) {
             d3.selectAll("circle.pt2" + i)
               .attr("r", 10)
@@ -1046,7 +1046,7 @@ function drawBox(csvName1, csvName2) {
           .attr("cy", function(d) {
             return yScale(d.DefensiveActions);
           })
-          .style("fill", color(boxlegendColor.range()[0]))
+          .style("fill", "#EFB605")
           .on("mouseover", function(d, i) {
             d3.selectAll("circle.pt" + i)
               .attr("r", 10)
@@ -1125,7 +1125,7 @@ function drawBox(csvName1, csvName2) {
           .attr("cy", function(d) {
             return yScale(d.DefensiveActions);
           })
-          .style("fill", color(boxlegendColor.range()[1]))
+          .style("fill", "#E01A25")
           .on("mouseover", function(d, i) {
             d3.selectAll("circle.pt2" + i)
               .attr("r", 10)
@@ -1333,7 +1333,7 @@ function drawBox(csvName1, csvName2) {
           .attr("cy", function(d) {
             return yScale(d.Possession);
           })
-          .style("fill", color(boxlegendColor.range()[0]))
+          .style("fill", "#EFB605")
           .on("mouseover", function(d, i) {
             d3.selectAll("circle.pt" + i)
               .attr("r", 10)
@@ -1412,7 +1412,7 @@ function drawBox(csvName1, csvName2) {
           .attr("cy", function(d) {
             return yScale(d.Possession);
           })
-          .style("fill", color(boxlegendColor.range()[1]))
+          .style("fill", "#E01A25")
           .on("mouseover", function(d, i) {
             d3.selectAll("circle.pt2" + i)
               .attr("r", 10)
@@ -1621,7 +1621,7 @@ function drawBox(csvName1, csvName2) {
           .attr("cy", function(d) {
             return yScale(d.FoulsCommitted);
           })
-          .style("fill", color(boxlegendColor.range()[0]))
+          .style("fill", "#EFB605")
           .on("mouseover", function(d, i) {
             d3.selectAll("circle.pt" + i)
               .attr("r", 10)
@@ -1700,7 +1700,7 @@ function drawBox(csvName1, csvName2) {
           .attr("cy", function(d) {
             return yScale(d.FoulsCommitted);
           })
-          .style("fill", color(boxlegendColor.range()[1]))
+          .style("fill", "#E01A25")
           .on("mouseover", function(d, i) {
             d3.selectAll("circle.pt2" + i)
               .attr("r", 10)
