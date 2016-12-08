@@ -1,32 +1,38 @@
 function writeIntro(name) {
     var description = {}
 
-    description['uefa'] = "<h4><img src='img/uefa_champions_league.png' height=40>&nbsp;UEFA Champions League</h4>" +
-    		"<h5>Introduction</h5>" + 
-        "The UEFA Champions League " +
+    description['uefa'] = "<h3>Introduction</h3>" +
+        "The UEFA Champions League is an annual continental club football competition " +
+        "organised by the Union of European Football Associations (UEFA) and contested " +
+        "by top-division European clubs. It is one of the most prestigious tournaments " +
+        "in the world and the most prestigious club competition in European football, " +
+        "played by the national league champion (and, for some nations, one or more runners-up) " +
+        "of each UEFA national association.</br>This system visualizes";
+
+    description['uefa'] = "<h3><img src='img/uefa_champions_league.png' height=60>&nbsp;UEFA Champions League</h3>" +
+    		"<h4>Introduction</h4>" + 
+        "&nbsp;&nbsp;&nbsp;&nbsp;The UEFA Champions League " +
         "is an annual continental club football competition " +
-        "contested by top-division European clubs, which attracts millions of people each year. " +
-        "We use four graphs to help people with different backgrounds quickly learn " +
-        "the information and performance of clubs." +
-        "<h5>Graphs</h5>" +
-        "- The <b>sunburst</b> " + "contains the basic information of a club such as " +
-        		"the league it belongs to, its logo and its top 3 most expensive players." +
-		"</br>- The <b>bar chart</b> " + "allows people to quickly check the Squawka performance score (see below) of clubs in terms of seasons and measures." +
-		"</br>- The <b>scatter plot</b> " + "is made for advanced users who want to gain insights into clubs by exploring the relationship between " +
-				"different performance measures with regard to managers, league, season, and round reached." +
-		"</br>- The <b>box plot</b> " + "helps people to learn the stability of performance of clubs in matches across seasons. " +
-				"Furthermore, users may find some weird matches that a team performed much better or worse than usual." +
-        "<h5>Performance Measures</h5>" +
-        "<b>- UEFA coefficient:</b> " + "Statistics from  <a href='http://www.uefa.com/' target='_blank'>uefa.com</a> used for ranking and seeding teams in club and international competitions,  determined by the results of clubs in the UEFA Champions League and the UEFA Europa League over the previous five seasons."+
-        "</br><b>- UEFA coefficient ranking:</b> " + " The ranking of UEFA coefficient among all UEFA member clubs."+
-        "</br><b>- Squawka performance score:</b> " +"A score calculated by <a href='http://www.squawka.com/' target='_blank'>squawka.com</a> to evaluate the performance of a team in a single match."+
-        "</br><b>- Market value of players:</b> " +"The value of players in the transfer market estimated by <a href='http://www.transfermarkt.co.uk/' target='_blank'>transfermarkt.com</a>."
-        ;
-//        "<h5>Data Sources</h5>"
-//            "<a href='http://www.uefa.com/uefachampionsleague/' target='_blank'><img src='img/uefa_champions_league_logo.svg' height=80></a>" +
-//            "<tab0></tab0><a href='http://www.optasports.com/' target='_blank'><img src='img/opta.svg' height=30></a>" +
-//            "<tab0></tab0><a href='http://www.squawka.com/home/' target='_blank'><img src='img/squawka.svg' height=30></a>" +
-//            "<tab0></tab0><a href='http://www.transfermarkt.com' target='_blank'><img src='img/tm.png' height=90></a>"
+        "contested by 32 top-division European clubs." +
+        "</br>&nbsp;&nbsp;&nbsp;&nbsp;Squawka, one of the most popular soccer analysis website, evaluates the " +
+        "performance of each club. However, it is hard for people to find the best " +
+        "club and gain insights from the evaluation." +
+        "</br>&nbsp;&nbsp;&nbsp;&nbsp;In this visualization, we want to help people study the performance of clubs and " +
+        "gain insights. " +
+        "We use D3.js to generate the visuliazation.  The performance score is from Squawka.  Other data " +
+        "such as the market value are from Opta.  The UEFA Coefficient and ranking come from " +
+        "the UEFA official website. " +
+        "<h4>Performance Measures</h4>" +
+        "<b>-UEFA coefficient:</b> " + "Statistics used for ranking and seeding teams in club and international competitions,  determined by the results of clubs in the UEFA Champions League and the UEFA Europa League over the previous five seasons."+
+        "</br><b>-UEFA coefficient ranking:</b> " + " The ranking of UEFA coefficient among all UEFA member clubs."+
+        "</br><b>-Squawka performance score:</b> " +"A score calculated by <a href='http://www.squawka.com/'>squawka.com.</a> to evaluate the performance of a team in a single match."+
+        "</br><b>-Market value of players:</b> " +" The market value of players calculated by <a href='http://www.transfermarkt.co.uk/'>Transfermarkt.com.</a>"+
+        "<h4>Data Sources</h4>" +
+            "<a href='http://www.uefa.com/uefachampionsleague/' target='_blank'><img src='img/uefa_champions_league_logo.svg' height=80></a>" +
+            "<tab0></tab0><a href='http://www.optasports.com/' target='_blank'><img src='img/opta.svg' height=30></a>" +
+            "<tab0></tab0><a href='http://www.squawka.com/home/' target='_blank'><img src='img/squawka.svg' height=30></a>" +
+            "<tab0></tab0><a href='http://www.transfermarkt.com' target='_blank'><img src='img/tm.png' height=90></a>"
+    ;
     
 description['spanish'] = "<h3><img src=\"img\\spanish_laliga.svg\" height =\"80 px\"></br>Primera División (La Liga)</h3>" + "The top Spanish league</br>UEFA Coefficient:&nbsp94.141</br>UEFA Coefficient Ranking:&nbsp1</br>Market Value of All Players:&nbsp£3.06bn</br>Number of Players:&nbsp485</br>Number of Winners:&nbsp16&nbsptimes"
 description['german'] = "<h3><img src=\"img\\BundesligaLogo.svg\" height =\"80 px\"></br>Bundesliga </h3>" + "The top German league</br>UEFA Coefficient:&nbsp73.355</br>UEFA Coefficient Ranking:&nbsp2</br>Market Value of All Players:&nbsp£2.16bn</br>Number of Players:&nbsp524</br>Number of Winners:&nbsp7&nbsptimes"
@@ -63,7 +69,7 @@ description['psg'] = "<h3><img src=\"img\\PSGLogo.svg\" height=\"80 px\" align=\
 description['monaco'] = "<h3><img src=\"img\\MonacoLogo.svg\" height=\"80 px\" align=\"bottom\">&nbsp&nbspAS Monaco</h3>" + "UEFA Coefficient: 48.066,&nbsp;&nbsp;&nbsp;Ranking: 38</br>Winners: 0,&nbsp;&nbsp;&nbsp;Years: N/A</br>Runners-up: 1,&nbsp;&nbsp;&nbsp;Years: 2004</br>Total Market Value of Players: £150.66m</br>Most Expensive Players:</br><table   style=\"border-collapse: separate; border-spacing: 20px; \" ><tr><td><img src=\"img\\TopPlayers\\monaco1.png\" alt=\"monaco1\" width=\"60px\" heigh=\"60px\"></br>Fabinho</br>Oct 23, 1993 (23)</br>Brazil</br>£17.00m  </td><td><img src=\"img\\TopPlayers\\monaco2.png\" alt=\"monaco2\" width=\"60px\" heigh=\"60px\"></br>Bernardo Silva</br>Aug 10, 1994 (22)</br>Portugal</br>£17.00m  </td><td><img src=\"img\\TopPlayers\\monaco3.png\" alt=\"monaco3\" width=\"60px\" heigh=\"60px\"></br>João Moutinho</br>Sep 8, 1986 (30)</br>Portugal</br>£12.75m  </td></tr></table>"
 description['lyon'] = "<h3><img src=\"img\\LyonnaisLogo.svg\" height=\"80 px\" align=\"bottom\">&nbsp&nbspLyon</h3>" + "UEFA Coefficient: 54.566,&nbsp;&nbsp;&nbsp;Ranking: 32</br>Winners: 0,&nbsp;&nbsp;&nbsp;Years: N/A</br>Runners-up: 0,&nbsp;&nbsp;&nbsp;Years: N/A</br>Total Market Value of Players: £155.34m</br>Most Expensive Players:</br><table   style=\"border-collapse: separate; border-spacing: 20px; \" ><tr><td><img src=\"img\\TopPlayers\\lyon1.png\" alt=\"lyon1\" width=\"60px\" heigh=\"60px\"></br>Alexandre Lacazette</br>May 28, 1991 (25)</br>France/Guadeloupe</br>£34.00m  </td><td><img src=\"img\\TopPlayers\\lyon2.png\" alt=\"lyon2\" width=\"60px\" heigh=\"60px\"></br>Corentin Tolisso</br>Aug 3, 1994 (22)</br>France/Togo</br>£14.45m  </td><td><img src=\"img\\TopPlayers\\lyon3.png\" alt=\"lyon3\" width=\"60px\" heigh=\"60px\"></br>Maxime Gonalons</br>Mar 10, 1989 (27)</br>France</br>£12.75m  </td></tr></table>"
 description['marseille'] = "<h3><img src=\"img\\MarseilleLogo.svg\" height=\"80 px\" align=\"bottom\">&nbsp&nbspMarseille</h3>" + "UEFA Coefficient: 27.066,&nbsp;&nbsp;&nbsp;Ranking: 72</br>Winners: 1,&nbsp;&nbsp;&nbsp;Years: 1993</br>Runners-up: 1,&nbsp;&nbsp;&nbsp;Years: 1990</br>Total Market Value of Players: £59.54m</br>Most Expensive Players:</br><table   style=\"border-collapse: separate; border-spacing: 20px; \" ><tr><td><img src=\"img\\TopPlayers\\marseille1.png\" alt=\"marseille1\" width=\"60px\" heigh=\"60px\"></br>Florian Thauvin</br>Jan 26, 1993 (23)</br>France</br>£9.35m  </td><td><img src=\"img\\TopPlayers\\marseille2.png\" alt=\"marseille2\" width=\"60px\" heigh=\"60px\"></br>Rémy Cabella</br>Mar 8, 1990 (26)</br>France</br>£6.80m  </td><td><img src=\"img\\TopPlayers\\marseille3.png\" alt=\"marseille3\" width=\"60px\" heigh=\"60px\"></br>Bafetimbi Gomis</br>Aug 6, 1985 (31)</br>France/Senegal</br>£5.95m  </td></tr></table>"
-description['benfica'] = "<h3><img src=\"img\\BenficaLogo.svg\" height=\"80 px\" align=\"bottom\">&nbsp&nbspMarseille</h3>" + "UEFA Coefficient: 104.399,&nbsp;&nbsp;&nbsp;Ranking: 9</br>Winners: 0,&nbsp;&nbsp;&nbsp;Years: N/A</br>Runners-up: 5,&nbsp;&nbsp;&nbsp;Years: 1963,1965,1968,1988,1990</br>Total Market Value of Players: £171.57m</br>Most Expensive Players:</br><table   style=\"border-collapse: separate; border-spacing: 20px; \" ><tr><td><img src=\"img\\TopPlayers\\benfica1.png\" alt=\"benfica1\" width=\"60px\" heigh=\"60px\"></br>Toto Salvio</br>Jul 13, 1990 (26)</br>Argentina</br>£12.75m  </td><td><img src=\"img\\TopPlayers\\benfica2.png\" alt=\"benfica2\" width=\"60px\" heigh=\"60px\"></br>Rafa Silva</br>May 17, 1993 (23)</br>Portugal</br>£12.75m  </td><td><img src=\"img\\TopPlayers\\benfica3.png\" alt=\"benfica3\" width=\"60px\" heigh=\"60px\"></br>Pizzi</br>Oct 6, 1989 (27)</br>Portugal</br>£11.05m  </td></tr></table>"
+description['benfica'] = "<h3><img src=\"img\\BenficaLogo.svg\" height=\"80 px\" align=\"bottom\">&nbsp&nbspBenfica</h3>" + "UEFA Coefficient: 104.399,&nbsp;&nbsp;&nbsp;Ranking: 9</br>Winners: 0,&nbsp;&nbsp;&nbsp;Years: N/A</br>Runners-up: 5,&nbsp;&nbsp;&nbsp;Years: 1963,1965,1968,1988,1990</br>Total Market Value of Players: £171.57m</br>Most Expensive Players:</br><table   style=\"border-collapse: separate; border-spacing: 20px; \" ><tr><td><img src=\"img\\TopPlayers\\benfica1.png\" alt=\"benfica1\" width=\"60px\" heigh=\"60px\"></br>Toto Salvio</br>Jul 13, 1990 (26)</br>Argentina</br>£12.75m  </td><td><img src=\"img\\TopPlayers\\benfica2.png\" alt=\"benfica2\" width=\"60px\" heigh=\"60px\"></br>Rafa Silva</br>May 17, 1993 (23)</br>Portugal</br>£12.75m  </td><td><img src=\"img\\TopPlayers\\benfica3.png\" alt=\"benfica3\" width=\"60px\" heigh=\"60px\"></br>Pizzi</br>Oct 6, 1989 (27)</br>Portugal</br>£11.05m  </td></tr></table>"
 description['sporting'] = "<h3><img src=\"img\\SportingLogo.png\" height=\"80 px\" align=\"bottom\">&nbsp&nbspSporting CP</h3>" + "UEFA Coefficient: 36.399,&nbsp;&nbsp;&nbsp;Ranking: 52</br>Winners: 0,&nbsp;&nbsp;&nbsp;Years: N/A</br>Runners-up: 0,&nbsp;&nbsp;&nbsp;Years: N/A</br>Total Market Value of Players: £162.35m</br>Most Expensive Players:</br><table   style=\"border-collapse: separate; border-spacing: 20px; \" ><tr><td><img src=\"img\\TopPlayers\\sporting1.png\" alt=\"sporting1\" width=\"60px\" heigh=\"60px\"></br>William Carvalho</br>Apr 7, 1992 (24)</br>Portugal/Angola</br>£25.50m  </td><td><img src=\"img\\TopPlayers\\sporting2.png\" alt=\"sporting2\" width=\"60px\" heigh=\"60px\"></br>Adrien Silva</br>Mar 15, 1989 (27)</br>Portugal/France</br>£21.25m  </td><td><img src=\"img\\TopPlayers\\sporting3.png\" alt=\"sporting3\" width=\"60px\" heigh=\"60px\"></br>Rui Patrício</br>Feb 15, 1988 (28)</br>Portugal</br>£13.60m  </td></tr></table>"
 description['porto'] = "<h3><img src=\"img\\PortoLogo.svg\" height=\"80 px\" align=\"bottom\">&nbsp&nbspPorto</h3>" + "UEFA Coefficient: 91.399,&nbsp;&nbsp;&nbsp;Ranking: 12</br>Winners: 2,&nbsp;&nbsp;&nbsp;Years: 1987,2004</br>Runners-up: 0,&nbsp;&nbsp;&nbsp;Years: N/A</br>Total Market Value of Players: £156.10m</br>Most Expensive Players:</br><table   style=\"border-collapse: separate; border-spacing: 20px; \" ><tr><td><img src=\"img\\TopPlayers\\porto1.png\" alt=\"porto1\" width=\"60px\" heigh=\"60px\"></br>Yacine Brahimi</br>Feb 8, 1990 (26)</br>Algeria/France</br>£17.00m  </td><td><img src=\"img\\TopPlayers\\porto2.png\" alt=\"porto2\" width=\"60px\" heigh=\"60px\"></br>Héctor Herrera</br>Apr 19, 1990 (26)</br>Mexico</br>£13.60m  </td><td><img src=\"img\\TopPlayers\\porto3.png\" alt=\"porto3\" width=\"60px\" heigh=\"60px\"></br>Danilo Pereira</br>Sep 9, 1991 (25)</br>Portugal/Guinea-Bissau</br>£11.90m  </td></tr></table>"
 
