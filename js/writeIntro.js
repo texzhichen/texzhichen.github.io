@@ -20,7 +20,7 @@ function writeIntro(name) {
         "<b>- UEFA coefficient:</b> " + "Statistics from  <a href='http://www.uefa.com/' target='_blank'>uefa.com</a> used for ranking and seeding teams in club and international competitions,  determined by the results of clubs in the UEFA Champions League and the UEFA Europa League over the previous five seasons."+
         "</br><b>- UEFA coefficient ranking:</b> " + " The ranking of UEFA coefficient among all UEFA member clubs."+
         "</br><b>- Squawka performance score:</b> " +"A score calculated by <a href='http://www.squawka.com/' target='_blank'>squawka.com</a> to evaluate the performance of a team in a single match."+
-        "</br><b>- Market value of players:</b> " +" The market value of players calculated by <a href='http://www.transfermarkt.co.uk/' target='_blank'>transfermarkt.com</a>."
+        "</br><b>- Market value of players:</b> " +"The value of players in the transfer market estimated by <a href='http://www.transfermarkt.co.uk/' target='_blank'>transfermarkt.com</a>."
         ;
 //        "<h5>Data Sources</h5>"
 //            "<a href='http://www.uefa.com/uefachampionsleague/' target='_blank'><img src='img/uefa_champions_league_logo.svg' height=80></a>" +
