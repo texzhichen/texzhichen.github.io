@@ -1,4 +1,4 @@
-/*drawScatterPlot*/
+/*index.html*/
 body {
     font-family: 'Lato', sans-serif;
     font-size: 12px;
@@ -31,6 +31,7 @@ tab2 {
     padding-left: 12.5em; 
 }
 
+/*drawScatterPlot*/
 .scatter {
     padding-top: 20px;
     padding-bottom: 60px;

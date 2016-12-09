@@ -54,7 +54,7 @@ function drawBarChart(barchartID) {
     };
     var isSortedByValue = true;
 
-    var svg = d3.select(barchartID).append("svg").attr("width", 1160).attr("height", 335);
+    var svg = d3.select("#barchart").append("svg").attr("width", 1160).attr("height", 335);
     redraw();
 
     $(':checkbox').change(function() {
@@ -109,7 +109,7 @@ function drawBarChart(barchartID) {
 
 
     function redraw() {
-        d3.select(barchartID).selectAll("svg > *").remove();
+        d3.select("#barchart").selectAll("svg > *").remove();
         render();
     }
     function render() {
